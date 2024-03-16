@@ -26,7 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed top-0 right-0 p-4 flex gap-2 z-10">
+          <div className="fixed top-0 right-10 p-4 flex gap-2 z-50">
             <HomeRedirect />
             <ModeToggle />
           </div>

@@ -4,7 +4,7 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 60 7% 97%;
     --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
@@ -24,12 +24,15 @@
     --input: 20 5.9% 90%;
     --ring: 24.6 95% 53.1%;
     --radius: 0.75rem;
+    --shadow-color: 0, 0, 0;
+    --card-bg: 255, 255, 255; /* Light background color for light mode */
+
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
+    --background: 255 0% 5.9%;
     --foreground: 60 9.1% 97.8%;
-    --card: 20 14.3% 4.1%;
+    --card: 60 99.1% 97.8%;
     --card-foreground: 60 9.1% 97.8%;
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
@@ -46,6 +49,9 @@
     --border: 12 6.5% 15.1%;
     --input: 12 6.5% 15.1%;
     --ring: 20.5 90.2% 48.2%;
+    --shadow-color: 255, 255, 255; /* White color for dark mode shadow */
+    --card-bg: 25, 25, 25; /* Dark background color for dark mode */
+
   }
 }
 
@@ -57,3 +63,137 @@
     @apply bg-background text-foreground;
   }
 }
+.navbar-search {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  left: 0; /* Ensure it starts from the left edge */
+  right: 0; /* Ensure it spans the full width */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  padding: 1rem; /* Padding around the navbar content */
+  padding-top: 2.5rem; /* Additional padding at the top */
+  backdrop-filter: blur(10px); /* Apply a blur effect to the content behind the navbar */
+  z-index: 25; /* Ensure the navbar is above other content */
+ }
+
+
+@keyframes slideAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card, .skeleton {
+  animation: fadeIn 1s;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-content: center;
+ }
+ 
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 350px;
+  height: 450px;
+  box-shadow: 0px 4px 6px rgba(var(--shadow-color), 0.2);
+  margin: 10px;
+  animation: slideAndFade 0.5s ease forwards;
+  background-color: rgb(var(--card-bg)); /* Use card background variable */
+
+
+ }
+ .skeleton {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 350px;
+  height: 450px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  background-color: #e0e0e0;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 200px;
+  background-color: #cccccc; /* Slightly darker to simulate an image placeholder */
+  border-radius: 5px 5px 0 0;
+}
+
+.skeleton-content {
+  padding: 10px;
+  flex-grow: 1; /* Allows the content to fill the space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spreads out the skeleton text */
+}
+
+.skeleton-text {
+  width: 60%; /* Different widths to simulate actual text */
+  height: 20px;
+  margin-bottom: 10px;
+  background-color: #dddddd; /* Slightly lighter than the card background for contrast */
+  border-radius: 5px;
+}
+
+.skeleton-text.short {
+  width: 40%; /* Shorter width for variety */
+}
+
+.skeleton-text.wide {
+  width: 80%; /* Wider for simulating longer text */
+}
+
+/* Simulate a button or reference number area at the bottom */
+.skeleton-footer {
+  height: 20px;
+  background-color: #dddddd;
+  border-radius: 5px;
+}
+ 
+ .card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+ }
+
+ .title-container {
+  line-height: 1.5em; /* Adjust line height as needed */
+  height: 3em; /* Height is twice the line height to ensure two lines */
+  overflow: hidden; /* Prevents extra lines from being visible */
+  text-overflow: ellipsis; /* Adds ellipsis if text overflows */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limits to 2 lines */
+  -webkit-box-orient: vertical;
+ }
+ .image-container {
+  overflow: hidden; /* Ensures the zoomed image does not overflow its container */
+  position: relative; /* Allows absolute positioning of the image */
+  width: 100%; /* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+  border-radius: 5px; /* Rounded corners for the image */
+  z-index: 1; /* Allows the image to be behind the text */
+
+ }
+ 
+ .image {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease;
+  border-radius: 5px; /* Smooth transition for the zoom effect */
+ }
+ 
+ .image-container:hover .image {
+  transform: scale(1.05); /* Enlarges the image by 10% on hover */
+ }
+

@@ -6,12 +6,12 @@ const openai = new OpenAI({
 });
 interface ApiResponse {
   text: string;
-  queryParams?: Record<string, string>;
 }
 // Export the handler for the POST method using uppercase
 export async function POST(req: Request): Promise<Response> {
   if (req.method === 'POST') {
     const { message } = await req.json();
+    console.log('message:', message);
 
     try {
       const response = await openai.completions.create({
@@ -24,13 +24,6 @@ export async function POST(req: Request): Promise<Response> {
 
       // Return a JSON response with the text completion
       const apiResponse: ApiResponse = { text: response.choices[0].text };
-      const params = apiResponse.text.split('&');
-      const queryParams: Record<string, string> = {};
-      for (const param of params) {
-        const [key, value] = param.split('=');
-        queryParams[key] = value;
-      }
-      apiResponse.queryParams = queryParams;
       console.log('API response:', apiResponse);
   
       

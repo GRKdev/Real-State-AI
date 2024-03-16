@@ -1,3 +1,6 @@
+// print id in the url
 export default function Page({ params }: { params: { slug: string } }) {
-    return <div>My Property: {params.slug}</div>
+    return <div>Property ID: {params.slug}
+    </div>;
+
 }
