@@ -15,9 +15,12 @@ export async function POST(req: Request): Promise<Response> {
 
     try {
       const response = await openai.completions.create({
-        model: 'ft:babbage-002:iand:api-pisos-v5:92Pa5Mv1',
+        // model: 'ft:babbage-002:iand:api-pisos-v5:92Pa5Mv1',
+        // model: 'ft:babbage-002:iand:api-pisos-v6:93jDvIGp',
+        // model: 'ft:babbage-002:iand:api-pisos-v7:93lrno9H',
+        model: 'ft:babbage-002:iand:api-pisos-v8:93mzz1fD',
         prompt: message,
-        max_tokens: 150,
+        max_tokens: 50,
         temperature: 0,
         stop: ['%'],
       });

@@ -5,9 +5,6 @@ import PropertyCard from '@/components/ui/propertry_card';
 import SkeletonCard from '@/components/ui/skeleton-card';
 import { Property } from '@/types/property';
 
-
-
-
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,9 +33,9 @@ export default function Home() {
       const data = await res.json();
 
       if (data.text) {
-        const finalResponseText = data.text + (filter ? `&orderby=${filter}` : '');
-        console.log('Final Response:', finalResponseText);
+        const finalResponseText = data.text + (filter ? `&order=${filter}` : '');
         const apiEndpoint = `/api/search?${finalResponseText}`;
+        console.log('API Endpoint:', apiEndpoint);
         const propertiesResponse = await fetch(apiEndpoint);
         if (!propertiesResponse.ok) throw new Error(`HTTP error! status: ${propertiesResponse.status}`);
 

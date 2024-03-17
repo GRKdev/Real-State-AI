@@ -1,9 +1,8 @@
 // property_card.tsx
-import { CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
+import { CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { PropertyCardProps } from '@/types/property';
 import { JSX, SVGProps } from "react";
-import Image from 'next/image'
 import MyImage from "@/components/fallback_img";
 
 
@@ -66,7 +65,7 @@ export default function PropertyCard({
                         <a href={`/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
                             <h3 className="text-lg font-semibold title-container hover:text-orange-500">{property.title_en}</h3>
                         </a>
-                        <p className="text-lg font-bold mt-2 text-orange-500 text-center items-start">
+                        <p className="text-lg font-bold text-orange-500 text-center items-start">
                             {new Intl.NumberFormat('de-DE', {
                                 style: 'currency',
                                 currency: 'EUR',
@@ -78,7 +77,7 @@ export default function PropertyCard({
 
                         <div className="flex justify-between items-center mt-2">
 
-                            <p className="flex items-center mb-1">
+                            <p className="flex items-center mb-1 gap-1">
                                 <BuildingIcon className="text-gray-500" />
                                 <span className="text-sm text-gray-500">
                                     {property.real_state === 1 ? "Baron & Cabot" : property.real_state === 2 ? "Deloitte" : property.real_state === 3 ? "Blackrock" : "Particular"}
@@ -86,6 +85,12 @@ export default function PropertyCard({
                             </p>
                             <p className="text-sm text-gray-500 text-right  ">Ref: {property.reference_number}</p>
                         </div>
+                        <p className="flex items-center gap-1">
+                            <MapIcon className="text-gray-500" />
+                            <span className="text-sm text-gray-500">
+                                {property.parish === 1 ? "Andorra la Vella" : property.parish === 2 ? "Canillo" : property.parish === 3 ? "Encamp" : property.parish === 4 ? "La Massana" : property.parish === 5 ? "Ordino" : property.parish === 6 ? "Sant Julià" : property.parish === 7 ? "Escaldes-Engordany" : ""}
+                            </span>
+                        </p>
                     </CardContent>
                     <CardFooter className="flex content-between justify-center gap-4">
                         <ShareIcon className="text-gray-500 hover:text-orange-500 cursor-pointer" />
@@ -150,8 +155,8 @@ function BuildingIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) 
         <svg
             {...props}
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -254,6 +259,26 @@ function SquareIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
             strokeLinejoin="round"
         >
             <rect width="18" height="18" x="3" y="3" rx="2" />
+        </svg>
+    )
+}
+
+function MapIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
         </svg>
     )
 }

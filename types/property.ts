@@ -10,6 +10,7 @@ export type Property = {
     price: number;
     transaction_type: number;
     real_state: number;
+    parish: number;
   };
 
 export type PropertyCardProps = {
