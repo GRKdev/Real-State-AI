@@ -8,6 +8,7 @@ const MyImage = ({ src, fallbackSrc, ...props }) => {
     <Image
       {...props}
       src={hasError ? fallbackSrc : src}
+      alt="Generic Image"
       onError={() => !hasError && setHasError(true)}
     />
   );
