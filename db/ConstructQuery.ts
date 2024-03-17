@@ -48,7 +48,6 @@ type QueryParams = {
       }
     });
   
-    baseQuery += " LIMIT 10";
     return [baseQuery, queryArgs];
   }
   

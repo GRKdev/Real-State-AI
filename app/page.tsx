@@ -36,7 +36,8 @@ export default function Home() {
       const data = await res.json();
 
       if (data.text) {
-        const finalResponseText = data.text + (filter ? `&order=${filter}` : '');
+        const finalResponseText = data.text + (filter ? `&orderby=${filter}` : '');
+        console.log('Final Response:', finalResponseText);
         const apiEndpoint = `/api/search?${finalResponseText}`;
         const propertiesResponse = await fetch(apiEndpoint);
         if (!propertiesResponse.ok) throw new Error(`HTTP error! status: ${propertiesResponse.status}`);
