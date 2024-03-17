@@ -8,7 +8,7 @@ let db: Database<sqlite3.Database, sqlite3.Statement> | null = null;
 export async function GET(request: NextRequest, res: NextApiResponse) {
   if (!db) {
     db = await open({
-      filename: "./db/superior.db",
+      filename: process.env.DATABASE_URL || "superior.db",
       driver: sqlite3.Database,
     });
   }
