@@ -10,6 +10,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [prevResponse, setPrevResponse] = useState<Property[] | null>(null);
   const [searchCount, setSearchCount] = useState(0);
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     if (response !== prevResponse) {
@@ -20,13 +21,16 @@ export default function Home() {
   const handleSearch = async (message: string, filter: string) => {
     setIsLoading(true);
     setResponse([]);
-    setSearchCount(prevCount => prevCount + 1); // Increment search count to trigger re-render
+    setSearchCount(prevCount => prevCount + 1);
+    setHasSearched(true);
 
+    const messageToAI = message + "%"
+    console.log('Message to AI:', messageToAI);
     try {
       const res = await fetch('/api/AI', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, filter }),
+        body: JSON.stringify({ message: messageToAI, filter }),
       });
 
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -71,15 +75,10 @@ export default function Home() {
         <NavbarSearch onSearch={handleSearch} onClientSort={handleClientSort} />
       </nav>
       <div className="w-full pt-28 pb-32">
-        {!isLoading && response.length > 0 && (
-          <div className="w-full text-center py-4">
-            <span>Total Results: {response.length}</span>
-          </div>
-        )}
         <div key={searchCount} className="w-full card-container">
           {isLoading ? (
             [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
-          ) : (
+          ) : response.length > 0 ? (
             response.map((property, index) => (
               <PropertyCard
                 key={property.reference_number}
@@ -90,8 +89,15 @@ export default function Home() {
                 }}
               />
             ))
+          ) : hasSearched && (
+            <p className="text-center pt-32">No results found. Please try different search criteria.</p>
           )}
         </div>
+        {!isLoading && response.length > 0 && (
+          <div className="w-full text-center py-4">
+            <span>Total Results: {response.length}</span>
+          </div>
+        )}
       </div>
     </div>
   );

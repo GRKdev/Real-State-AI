@@ -63,6 +63,12 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  .transition-fill {
+    @apply hover:fill-orange-500 hover:scale-110 ;
+  }
+
+}
 .navbar-search {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
