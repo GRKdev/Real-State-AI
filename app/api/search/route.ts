@@ -20,6 +20,15 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
   const orderby = searchParams.get('order');
   const maxPrice = searchParams.get('maxprice');
   const minPrice = searchParams.get('minprice');
+  const terrace = searchParams.get('terrace');
+  const parking = searchParams.get('parking');
+  const balcony = searchParams.get('balcony');
+  const garden = searchParams.get('garden');
+  const elevator = searchParams.get('elevator');
+  const heating = searchParams.get('heating');
+  const electrodometics = searchParams.get('electrodometics');
+  const furnished = searchParams.get('furnished');
+
 
   const transactionTypes = transaction_type ? Array.from(new Set(transaction_type.split(','))) : [];
   let propertyTypes = property_type ? Array.from(new Set(property_type.split(','))) : [];
@@ -75,6 +84,22 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
   if (conditions.length > 0) {
     sql += " WHERE " + conditions.join(" AND ");
   }
+
+  const features = {
+    terrace, parking, balcony, garden, elevator, heating, electrodometics, furnished
+  };
+  
+  const extraConditions = Object.entries(features)
+    .filter(([_, value]) => value)
+    .map(([key, _]) => {
+      params.push(true);
+      return `${key} = ?`;
+    });
+  
+  if (extraConditions.length > 0) {
+    sql += " AND " + extraConditions.join(" AND ");
+  }
+  
 
   if (orderby) {
     const [orderByColumn, orderByDirection] = orderby.split('|');

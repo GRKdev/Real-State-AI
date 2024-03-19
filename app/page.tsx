@@ -18,7 +18,7 @@ export default function Home() {
     }
   }, [response]);
 
-  const handleSearch = async (message: string, filter: string) => {
+  const handleSearch = async (message: string, combinedFilter: string) => {
     setIsLoading(true);
     setResponse([]);
     setSearchCount(prevCount => prevCount + 1);
@@ -30,14 +30,16 @@ export default function Home() {
       const res = await fetch('/api/AI', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: messageToAI, filter }),
+        body: JSON.stringify({ message: messageToAI, combinedFilter }),
       });
 
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
 
       if (data.text) {
-        const finalResponseText = data.text + (filter ? `&order=${filter}` : '');
+        const [order, ...extras] = combinedFilter.split('&');
+
+        const finalResponseText = data.text + (extras.length ? `&${extras.join('&')}` : '') + (order ? `&order=${order}` : '');
         const apiEndpoint = `/api/search?${finalResponseText}`;
         console.log('API Endpoint:', apiEndpoint);
         const propertiesResponse = await fetch(apiEndpoint);

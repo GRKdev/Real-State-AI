@@ -55,14 +55,7 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+
 @layer utilities {
   .transition-fill {
     @apply hover:fill-orange-500 hover:scale-110 ;
@@ -72,10 +65,8 @@
 .navbar-search {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  left: 0; /* Ensure it starts from the left edge */
-  right: 0; /* Ensure it spans the full width */
+  width: 100%; /* Full width */
   display: flex; /* Use flexbox for layout */
-  justify-content: center; /* Center items horizontally */
   align-items: center; /* Center items vertically */
   padding: 1rem; /* Padding around the navbar content */
   padding-top: 2.5rem; /* Additional padding at the top */
@@ -200,6 +191,10 @@
  }
  
  .image-container:hover .image {
-  transform: scale(1.05); /* Enlarges the image by 10% on hover */
+  transform: scale(1.1); /* Enlarges the image by 10% on hover */
  }
+
+.options input[type="checkbox"]:checked + label {
+  color: #F97315;
+}
 
