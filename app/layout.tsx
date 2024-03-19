@@ -34,7 +34,7 @@ export default function RootLayout({
             <HomeRedirect />
             <ModeToggle />
           </div>
-          <main className="overflow-y-auto h-screen">
+          <main className="overflow-y-auto h-screen w-full pt-28 pb-32">
             {children}
           </main>
         </ThemeProvider>

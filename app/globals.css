@@ -62,12 +62,10 @@
   }
 
 }
-.navbar-search {
+.navbar {
   position: fixed; /* Set the navbar to fixed position */
+width: 100%; /* Full width */
   top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  display: flex; /* Use flexbox for layout */
-  align-items: center; /* Center items vertically */
   padding: 1rem; /* Padding around the navbar content */
   padding-top: 2.5rem; /* Additional padding at the top */
   backdrop-filter: blur(10px); /* Apply a blur effect to the content behind the navbar */
@@ -89,13 +87,31 @@
 .card, .skeleton {
   animation: fadeIn 1s;
 }
-.card-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  justify-content: center;
-  align-content: center;
- }
- 
+ @media (max-width: 639px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: auto ;
+    justify-content: center;
+    align-content: center;
+   
+  }
+}
+@media (min-width: 640px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-content: center;  }
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-content: center;  }
+}
+
 .card {
   border: 1px solid #ddd;
   border-radius: 5px;

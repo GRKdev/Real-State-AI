@@ -2,14 +2,13 @@
 import { useState, FormEvent } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuLabel } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu";
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
-import { Checkbox } from "@/components/ui/checkbox";
 
 interface NavbarSearchProps {
     onSearch: (message: string, filter: string) => void;
-    onClientSort: (sortOption: string) => void; // Add this line
+    onClientSort: (sortOption: string) => void;
 }
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 
@@ -34,14 +33,13 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         setFilterLabel(label);
         setIsAscending(ascending);
         if (label !== 'Filters') {
-            onClientSort(value); // Call client-side sorting when a filter is applied
+            onClientSort(value);
         }
     };
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        // Build extra filters string based on selected options
         let extraFilters = '';
         if (showTerrace) extraFilters += '&terrace=1';
         if (showParking) extraFilters += '&parking=1';
@@ -54,8 +52,8 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
         const combinedFilter = `${filter}${extraFilters}`;
 
-        onSearch(message, combinedFilter); // Use provided callback to perform the search
-        setMessage(''); // Clear the input field after submitting
+        onSearch(message, combinedFilter);
+        setMessage('');
     };
 
     return (

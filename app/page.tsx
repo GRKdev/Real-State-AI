@@ -73,34 +73,33 @@ export default function Home() {
 
   return (
     <div>
-      <nav className='navbar-search'>
+      <nav className='navbar'>
         <NavbarSearch onSearch={handleSearch} onClientSort={handleClientSort} />
       </nav>
-      <div className="w-full pt-28 pb-32">
-        <div key={searchCount} className="w-full card-container">
-          {isLoading ? (
-            [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
-          ) : response.length > 0 ? (
-            response.map((property, index) => (
-              <PropertyCard
-                key={property.reference_number}
-                property={property}
-                className={!prevResponse || !prevResponse.find(prev => prev.reference_number === property.reference_number) ? 'new-result' : ''}
-                style={{
-                  animationDelay: `${index * 0.1}s`
-                }}
-              />
-            ))
-          ) : hasSearched && (
-            <p className="text-center pt-32">No results found. Please try different search criteria.</p>
-          )}
-        </div>
-        {!isLoading && response.length > 0 && (
-          <div className="w-full text-center py-4">
-            <span>Total Results: {response.length}</span>
-          </div>
+
+      <div key={searchCount} className="w-full card-container">
+        {isLoading ? (
+          [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
+        ) : response.length > 0 ? (
+          response.map((property, index) => (
+            <PropertyCard
+              key={property.reference_number}
+              property={property}
+              className={!prevResponse || !prevResponse.find(prev => prev.reference_number === property.reference_number) ? 'new-result' : ''}
+              style={{
+                animationDelay: `${index * 0.1}s`
+              }}
+            />
+          ))
+        ) : hasSearched && (
+          <p className="text-center pt-32">No results found. Please try different search criteria.</p>
         )}
       </div>
+      {!isLoading && response.length > 0 && (
+        <div className="w-full text-center py-4">
+          <span>Total Results: {response.length}</span>
+        </div>
+      )}
     </div>
   );
 }
