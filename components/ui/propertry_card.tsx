@@ -30,7 +30,6 @@ export default function PropertyCard({
                                         objectFit: "cover",
                                         transition: "transform 0.3s ease",
                                     }}
-                                    loading="lazy"
                                     fallbackSrc="/logo2.webp"
                                 />
                             </a>

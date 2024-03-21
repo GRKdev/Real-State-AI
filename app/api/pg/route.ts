@@ -1,8 +1,6 @@
 import { type NextRequest } from 'next/server';
 import { Pool } from 'pg';
-
 import type { NextApiResponse } from 'next';
-import { sql } from '@vercel/postgres';
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
@@ -60,8 +58,8 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
         params.push(loc.replace('parish', ''));
         return `parish = $${params.length}`;
       } else {
-        // Assuming 'location' is an array that needs to be expanded in an IN clause
-        params.push(loc); // This line might need adjustment based on your actual data structure
+ 
+        params.push(loc);
         return `location IN ($${params.length})`;
       }
     }).join(' OR ');
@@ -74,23 +72,21 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
     params.push(...transactionTypes);
   }
   
-  // Handling propertyTypes with 'IN' and '=' conditions
+ 
   if (propertyTypes.length > 0) {
     const propertyConditions = propertyTypes.map(pt => {
       if (pt.startsWith('default')) {
         params.push(pt.replace('default', ''));
         return `property_default = $${params.length}`;
       } else {
-        // If property_type needs to handle multiple values in an IN clause,
-        // ensure the logic here matches how you intend to structure those queries.
+
         params.push(pt);
         return `property_type IN ($${params.length})`;
       }
     }).join(' OR ');
     conditions.push(`(${propertyConditions})`);
   }
-  
-  // Handling minPrice and maxPrice conditions
+
   if (minPrice) {
     conditions.push(`price >= $${params.length + 1}`);
     params.push(minPrice);
@@ -99,20 +95,18 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
     conditions.push(`price <= $${params.length + 1}`);
     params.push(maxPrice);
   }
-  
-  // Adding WHERE conditions to the SQL query
+
   if (conditions.length > 0) {
     sqlQuery += " WHERE " + conditions.join(" AND ");
   }
-  
-  // Handling additional feature conditions
+
   const features = {
     terrace, parking, balcony, garden, elevator, heating, electrodometics, furnished
   };
   const extraConditions = Object.entries(features)
     .filter(([_, value]) => value)
     .map(([key, _]) => {
-      params.push(true); // Assuming these features are boolean
+      params.push(true); 
       return `${key} = $${params.length}`;
     });
   
@@ -124,8 +118,7 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
     }
     sqlQuery += extraConditions.join(" AND ");
   }
-  
-  // Handling ORDER BY clause
+
   if (orderby) {
     const [orderByColumn, orderByDirection] = orderby.split('|');
     sqlQuery += ` ORDER BY ${orderByColumn} ${orderByDirection.toUpperCase()}`;
