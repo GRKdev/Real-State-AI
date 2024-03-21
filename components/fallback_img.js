@@ -14,7 +14,7 @@ const MyImage = ({ src, fallbackSrc, ...props }) => {
         onError={() => !hasError && setHasError(true)}
         onLoadingComplete={() => setIsLoading(false)}
         objectFit="cover"
-        {...props} // Ensure 'width' and 'height' are not spread here if using 'fill'
+        {...props}
       />
     </>
   );
