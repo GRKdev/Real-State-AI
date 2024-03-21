@@ -180,6 +180,14 @@ width: 100%; /* Full width */
   border-radius: 5px;
  }
 
+ .image-skeleton {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  background-color: #e0e0e0; /* Light grey */
+
+ }
+
  .title-container {
   line-height: 1.5em; /* Adjust line height as needed */
   height: 3em; /* Height is twice the line height to ensure two lines */
