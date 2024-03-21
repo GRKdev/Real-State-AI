@@ -180,13 +180,21 @@ width: 100%; /* Full width */
   border-radius: 5px;
  }
 
- .image-skeleton {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  background-color: #e0e0e0; /* Light grey */
+ .loading-spinner {
+  width: 50px; /* Size of the spinner */
+  height: 50px; /* Size of the spinner */
+  border: 5px solid rgba(0, 0, 0, 0.1); /* Light grey border */
+  border-top: 5px solid orange; /* Blue border top */
+  border-radius: 50%; /* Make it round */
+  animation: spin 1s linear infinite; /* Spin animation */
+  margin: 75px auto; /* Center the spinner */
+}
 
- }
+/* Spin animation keyframes */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
  .title-container {
   line-height: 1.5em; /* Adjust line height as needed */
