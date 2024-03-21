@@ -40,7 +40,7 @@ export default function Home() {
         const [order, ...extras] = combinedFilter.split('&');
 
         const finalResponseText = data.text + (extras.length ? `&${extras.join('&')}` : '') + (order ? `&order=${order}` : '');
-        const apiEndpoint = `/api/search?${finalResponseText}`;
+        const apiEndpoint = `/api/pg?${finalResponseText}`;
         console.log('API Endpoint:', apiEndpoint);
         const propertiesResponse = await fetch(apiEndpoint);
         if (!propertiesResponse.ok) throw new Error(`HTTP error! status: ${propertiesResponse.status}`);

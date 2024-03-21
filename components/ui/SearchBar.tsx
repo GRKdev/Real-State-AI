@@ -161,7 +161,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                             checked={!!showElectrodometics}
                             onChange={() => setShowElectrodometics(!showElectrodometics)}
                         />
-                        <label htmlFor="showElectrodometics"> Electrodometics</label>
+                        <label htmlFor="showElectrodometics"> Electrod.</label>
                     </div>
                     <div className='hover:text-orange-500'>
                         <input
