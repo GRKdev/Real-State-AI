@@ -20,6 +20,7 @@ export default function PropertyCard({
                     <CardHeader>
                         <div className="image-container">
                             <a href={`/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
+
                                 <MyImage
                                     alt={property.title_cat}
                                     className="w-full h-56 object-cover image"

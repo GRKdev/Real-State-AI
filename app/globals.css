@@ -121,9 +121,8 @@ width: 100%; /* Full width */
   margin: 10px;
   animation: slideAndFade 0.5s ease forwards;
   background-color: rgb(var(--card-bg)); /* Use card background variable */
-
-
  }
+
  .skeleton {
   display: flex;
   flex-direction: column;
@@ -180,53 +179,50 @@ width: 100%; /* Full width */
   border-radius: 5px;
  }
 
- .loading-spinner {
-  width: 50px; /* Size of the spinner */
-  height: 50px; /* Size of the spinner */
-  border: 5px solid rgba(0, 0, 0, 0.1); /* Light grey border */
-  border-top: 5px solid orange; /* Blue border top */
-  border-radius: 50%; /* Make it round */
-  animation: spin 1s linear infinite; /* Spin animation */
-  margin: 75px auto; /* Center the spinner */
-}
-
-/* Spin animation keyframes */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
  .title-container {
-  line-height: 1.5em; /* Adjust line height as needed */
-  height: 3em; /* Height is twice the line height to ensure two lines */
-  overflow: hidden; /* Prevents extra lines from being visible */
-  text-overflow: ellipsis; /* Adds ellipsis if text overflows */
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limits to 2 lines */
-  -webkit-box-orient: vertical;
- }
- .image-container {
-  overflow: hidden; /* Ensures the zoomed image does not overflow its container */
-  position: relative; /* Allows absolute positioning of the image */
-  width: 100%; /* Adjust as needed */
-  height: 100%; /* Adjust as needed */
-  border-radius: 5px; /* Rounded corners for the image */
-  z-index: 1; /* Allows the image to be behind the text */
-
- }
- 
- .image {
+   line-height: 1.5em; /* Adjust line height as needed */
+   height: 3em; /* Height is twice the line height to ensure two lines */
+   overflow: hidden; /* Prevents extra lines from being visible */
+   text-overflow: ellipsis; /* Adds ellipsis if text overflows */
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* Limits to 2 lines */
+   -webkit-box-orient: vertical;
+  }
+  
+  .image {
   width: 100%;
   height: 100%;
   transition: transform 1s ease;
   border-radius: 5px; /* Smooth transition for the zoom effect */
+}
+  .image-container {
+    overflow: hidden; /* Ensures the zoomed image does not overflow its container */
+    position: relative; /* Allows absolute positioning of the image */
+    width: 100%; /* Adjust as needed */
+    height: 100%; /* Adjust as needed */
+    border-radius: 5px; /* Rounded corners for the image */
+  z-index: 1; /* Allows the image to be behind the text */
+
  }
- 
- .image-container:hover .image {
+
+.image-container:hover .image {
   transform: scale(1.1); /* Enlarges the image by 10% on hover */
- }
+}
 
 .options input[type="checkbox"]:checked + label {
   color: #F97315;
 }
 
+.loading-spinner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid orange;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

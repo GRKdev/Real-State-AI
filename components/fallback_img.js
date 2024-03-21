@@ -7,15 +7,14 @@ const MyImage = ({ src, fallbackSrc, ...props }) => {
 
   return (
     <>
-      {isLoading && (
-        <div className="loading-spinner"></div>
-      )}
+      {isLoading && <div className="loading-spinner"></div>}
       <Image
-        {...props}
         src={hasError ? fallbackSrc : src}
         alt="Generic Image"
         onError={() => !hasError && setHasError(true)}
         onLoadingComplete={() => setIsLoading(false)}
+        objectFit="cover"
+        {...props} // Ensure 'width' and 'height' are not spread here if using 'fill'
       />
     </>
   );
