@@ -7,11 +7,12 @@ import HomeRedirect from "@/components/ui/home_redirect";
 import Logo from "@/components/ui/logo";
 import { Analytics } from "@vercel/analytics/react"
 import {
-  ClerkProvider,
   SignInButton,
   UserButton,
 } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
+import ClerkProviderWrapper from "@/components/ClerkProviderWrapper";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,19 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ClerkProvider>
-
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClerkProviderWrapper>
             <div className="fixed z-50 pl-40 pt-5">
               <Logo />
             </div>
             <div className="fixed top-0 right-10 p-4 flex gap-2 z-50 items-center">
-              {!userId && <SignInButton />}
+              {!userId && <div className="hover:text-orange-500"><SignInButton /></div>}
 
               <UserButton />
               <HomeRedirect />
@@ -59,9 +59,9 @@ export default function RootLayout({
               {children}
               <Analytics />
             </main>
-          </ThemeProvider>
+          </ClerkProviderWrapper>
+        </ThemeProvider>
 
-        </ClerkProvider>
       </body>
     </html>
   );

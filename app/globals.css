@@ -235,7 +235,6 @@ width: 100%;
   overflow-y: auto; 
   line-height: 1.5em;
   border-radius: 5px;
-  border: 1px solid #ddd;
   padding: 5px;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--background);

@@ -40,7 +40,7 @@ export default function Home() {
         body: JSON.stringify({ message: messageToAI, combinedFilter }),
       });
       if (res.status === 401) {
-        throw new Error('You are unauthorized to access, please ');
+        throw new Error('You are unauthorized to search, please ');
       }
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
@@ -91,9 +91,11 @@ export default function Home() {
       </nav>
 
       {errorMessage && (
-        <div className="text-center text-red-500 pt-20">
+        <div className="flex justify-center pt-20 gap-2">
           {errorMessage}
-          <SignInButton />
+          <div className="underline hover:text-orange-500">
+            <SignInButton />
+          </div>
         </div>
       )}
       <div key={searchCount} className="w-full card-container">
