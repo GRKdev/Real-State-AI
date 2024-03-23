@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Real Estate Search Engine for Andorra
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Our Real Estate Search Engine is a cutting-edge platform designed specifically for the Andorran property market. Utilizing a fine tuned model from OpenAI (babbage-02), the search engine offers unprecedented precision and speed. This innovative approach ensures that users receive the most relevant results quickly and efficiently, more than using traditional SQL agents or directly generating SQL from a large language model (LLM).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **Multilingual Support**: Catering to a diverse audience with support for Catalan, Spanish, English, and French.
+- **Advanced Search Filters**: Users can refine their search with various filters and extra options to find their ideal property.
+- **AI-Powered Queries**: Leverages a fine-tuned OpenAI model to interpret search inputs and generate precise API queries.
+- **Real-Time Updates**: Dynamically updates search results, providing immediate access to the latest properties.
+
+## Why a Fine-Tuned Model?
+
+Choosing a fine-tuned model over traditional SQL agents or directly generating SQL from a large language model (LLM) presents several advantages:
+
+- **Precision**: Fine-tuned models can better understand and process natural language queries, leading to more accurate search parameters and results.
+- **Speed**: Although fine-tuning requires significant initial effort, the resulting model provides faster responses by directly generating API queries.
+- **Data Importance**: The quality of the paramaters API heavily depends on the underlying data. Fine-tuning allows the model to leverage specific datasets for improved performance.
+
+Expamle of a traning data:
+```json
+{"prompt": "Penthouses for sale in Les Bons less than 400000 €%", "completion": "location=33&transaction_type=1&property_type=15&maxprice=400000%"}
+{"prompt": "Lofts for sale in Ordino%", "completion": "location=5&transaction_type=1&property_type=18%"}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies
 
-## Learn More
+- **Next.js**: A React framework that enables functionality such as server-side rendering and generating static websites. Used for building the frontend interface, providing a dynamic and responsive user experience.
+- **OpenAI's GPT (Babbage-02)**: A language model fine-tuned for this application to understand and process real estate queries efficiently.
+- **Vercel PostgreSQL**: My choice for a highly scalable and managed database solution, ensuring robust and secure data management.
+- **Deployment on Vercel Servers**: For seamless hosting and superior performance, our platform is deployed on Vercel's cutting-edge infrastructure.
 
-To learn more about Next.js, take a look at the following resources:
+## Demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Experience our Real Estate Search Engine firsthand at [rs.iand.dev](https://rs.iand.dev).

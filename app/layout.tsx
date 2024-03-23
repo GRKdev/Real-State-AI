@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/ui/toggle-theme";
 import HomeRedirect from "@/components/ui/home_redirect";
 import Logo from "@/components/ui/logo";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
           </div>
           <main className="overflow-y-auto h-screen w-full pt-28 pb-32">
             {children}
+            <Analytics />
           </main>
         </ThemeProvider>
       </body>

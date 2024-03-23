@@ -116,7 +116,9 @@ export default function PropertyCard({
                                 </div>
                                 <div className="flex justify-center pt-2">
                                     <TabsList>
-                                        <TabsTrigger value="more_info"><ZoomIn className="text-gray-500 hover:text-orange-500 w-8 h-8" /></TabsTrigger>
+                                        <TabsTrigger value="more_info">
+                                            <ZoomIn className="text-gray-500 hover:text-orange-500 w-8 h-8" />
+                                        </TabsTrigger>
                                     </TabsList>
                                 </div>
                             </CardContent>
