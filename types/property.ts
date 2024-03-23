@@ -3,6 +3,9 @@ export type Property = {
     title_cat: string;
     title_es: string;
     title_en: string;
+    description_en: string;
+    description_es: string;
+    description_cat: string;
     photo: string;
     square_meters: number;
     bedrooms: number;

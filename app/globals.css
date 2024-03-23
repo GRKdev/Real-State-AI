@@ -228,3 +228,17 @@ width: 100%;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.description-container {
+  display: block;
+  max-height: 15.5em;
+  overflow-y: auto; 
+  line-height: 1.5em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--background);
+  height: 175px;
+
+}
