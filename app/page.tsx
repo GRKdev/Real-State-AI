@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react';
 import PropertyCard from '@/components/ui/propertry_card';
 import SkeletonCard from '@/components/ui/skeleton-card';
 import { Property } from '@/types/property';
-import {
-  SignInButton,
-} from "@clerk/nextjs";
+
 
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
@@ -14,8 +12,7 @@ export default function Home() {
   const [prevResponse, setPrevResponse] = useState<Property[] | null>(null);
   const [searchCount, setSearchCount] = useState(0);
   const [hasSearched, setHasSearched] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(''); // Initialize state for errorMessage
-
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (response !== prevResponse) {
@@ -28,7 +25,7 @@ export default function Home() {
     setResponse([]);
     setSearchCount(prevCount => prevCount + 1);
     setHasSearched(true);
-    setErrorMessage(''); // Clear previous error messages
+    setErrorMessage('');
 
 
     const messageToAI = message + "%"
@@ -40,9 +37,9 @@ export default function Home() {
         body: JSON.stringify({ message: messageToAI, combinedFilter }),
       });
       if (res.status === 401) {
-        throw new Error('You are unauthorized to search, please ');
+        throw new Error('You need to be logged in to use this feature. Please Log In and try again.');
       }
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      if (!res.ok) throw new Error(`HTTP error! Try again.`);
       const data = await res.json();
 
       if (data.text) {
@@ -62,7 +59,7 @@ export default function Home() {
       }
     } catch (error: any) {
       console.error('Error processing the response:', error.message);
-      setErrorMessage(error.message); // Set error message to display to the user
+      setErrorMessage(error.message);
 
       setResponse([]);
     } finally {
@@ -91,11 +88,9 @@ export default function Home() {
       </nav>
 
       {errorMessage && (
-        <div className="flex justify-center pt-20 gap-2">
+        <div className="text-center pt-20 gap-2">
           {errorMessage}
-          <div className="underline hover:text-orange-500">
-            <SignInButton />
-          </div>
+
         </div>
       )}
       <div key={searchCount} className="w-full card-container">

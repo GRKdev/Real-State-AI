@@ -25,7 +25,9 @@
     --ring: 24.6 95% 53.1%;
     --radius: 0.75rem;
     --shadow-color: 0, 0, 0;
-    --card-bg: 255, 255, 255; 
+    --card-bg: 255, 255, 255;
+    --description-bg: #F8F8F7;
+    --input-bg: white;
 
   }
 
@@ -51,10 +53,19 @@
     --ring: 20.5 90.2% 48.2%;
     --shadow-color: 255, 255, 255; 
     --card-bg: 25, 25, 25; 
+    --description-bg: #121212;
+    --input-bg: #191919;
 
   }
 }
-
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
 
 @layer utilities {
   .transition-fill {
@@ -62,6 +73,25 @@
   }
 
 }
+.input-class {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #E5E7EB;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 1.25rem;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+}
+
+.input-class:focus {
+  border-color: #F97315;
+  outline: 1px solid #F97315;
+}
+
+
+
 .navbar {
   position: fixed;
 width: 100%; 
@@ -235,9 +265,11 @@ width: 100%;
   overflow-y: auto; 
   line-height: 1.5em;
   border-radius: 5px;
-  padding: 5px;
+  border: 1px dashed #ddd;
+  padding: 6px;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--background);
   height: 175px;
+  background-color: var(--description-bg);
 
 }

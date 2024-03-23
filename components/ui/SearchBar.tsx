@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu";
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
+import { ExtraOptionsCheckbox } from '@/components/ui/extra-options';
 
 interface NavbarSearchProps {
     onSearch: (message: string, filter: string) => void;
@@ -27,6 +28,16 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     const [showElectrodometics, setShowElectrodometics] = useState<Checked>(false)
     const [showFurnished, setShowFurnished] = useState<Checked>(false)
 
+    const extraOptions = [
+        { id: "showTerrace", label: "Terrace", state: showTerrace, setState: setShowTerrace },
+        { id: "showParking", label: "Parking", state: showParking, setState: setShowParking },
+        { id: "showBalcony", label: "Balcony", state: showBalcony, setState: setShowBalcony },
+        { id: "showGarden", label: "Garden", state: showGarden, setState: setShowGarden },
+        { id: "showElevator", label: "Elevator", state: showElevator, setState: setShowElevator },
+        { id: "showHeating", label: "Heating", state: showHeating, setState: setShowHeating },
+        { id: "showElectrodometics", label: "Electrod.", state: showElectrodometics, setState: setShowElectrodometics },
+        { id: "showFurnished", label: "Furnished", state: showFurnished, setState: setShowFurnished },
+    ];
 
     const updateFilter = (value: string, label: string, ascending: boolean) => {
         setFilter(value);
@@ -58,13 +69,14 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
     return (
         <div className="flex gap-5 w-full justify-center">
-            <form onSubmit={handleSubmit} className="flex gap-5 w-1/2">
+            <form onSubmit={handleSubmit} className="flex gap-5 w-1/2 input-background">
                 <Input
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Search properties with AI..."
-                    className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-5 text-sm outline-1 placeholder:text-gray-500"
+                    className="input-class"
+                    maxLength={125}
                 />
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -92,88 +104,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
             </form>
             <aside className="fixed left-40 h-full pt-32 options">
                 <h3 className="mt-4 mb-2">Extra Options:</h3>
-                <div >
-                    <div className='hover:text-orange-500'>
-                        <input
-                            type="checkbox"
-                            className="accent-orange-500"
-                            id="showTerrace"
-                            checked={!!showTerrace}
-                            onChange={() => setShowTerrace(!showTerrace)}
-                        />
-                        <label htmlFor="showTerrace"> Terrace</label>
-                    </div>
-                    <div className='hover:text-orange-500'>
-                        <input
-                            type="checkbox"
-                            className="accent-orange-500"
-                            id="showParking"
-                            checked={!!showParking}
-                            onChange={() => setShowParking(!showParking)}
-                        />
-                        <label htmlFor="showParking"> Parking</label>
-                    </div>
-                    <div className='hover:text-orange-500'>
-                        <input
-                            type="checkbox"
-                            className="accent-orange-500"
-                            id="showBalcony"
-                            checked={!!showBalcony}
-                            onChange={() => setShowBalcony(!showBalcony)}
-                        />
-                        <label htmlFor="showBalcony"> Balcony</label>
-                    </div>
-                    <div className='hover:text-orange-500'>
-                        <input
-                            type="checkbox"
-                            className="accent-orange-500"
-                            id="showGarden"
-                            checked={!!showGarden}
-                            onChange={() => setShowGarden(!showGarden)}
-                        />
-                        <label htmlFor="showGarden"> Garden</label>
-                    </div>
-                    <div className='hover:text-orange-500'>
-                        <input
-                            type="checkbox"
-                            className="accent-orange-500"
-                            id="showElevator"
-                            checked={!!showElevator}
-                            onChange={() => setShowElevator(!showElevator)}
-                        />
-                        <label htmlFor="showElevator"> Elevator</label>
-                    </div>
-                    <div className='hover:text-orange-500'>
-                        <input
-                            type="checkbox"
-                            className="accent-orange-500"
-                            id="showHeating"
-                            checked={!!showHeating}
-                            onChange={() => setShowHeating(!showHeating)}
-                        />
-                        <label htmlFor="showHeating"> Heating</label>
-                    </div>
-                    <div className='hover:text-orange-500'>
-                        <input
-                            type="checkbox"
-                            className="accent-orange-500"
-                            id="showElectrodometics"
-                            checked={!!showElectrodometics}
-                            onChange={() => setShowElectrodometics(!showElectrodometics)}
-                        />
-                        <label htmlFor="showElectrodometics"> Electrod.</label>
-                    </div>
-                    <div className='hover:text-orange-500'>
-                        <input
-                            className="accent-orange-500"
-                            type="checkbox"
-                            id="showFurnished"
-                            checked={!!showFurnished}
-                            onChange={() => setShowFurnished(!showFurnished)}
-                        />
-                        <label htmlFor="showFurnished"> Furnished</label>
-                    </div>
-                </div>
+                <ExtraOptionsCheckbox options={extraOptions} />
             </aside>
         </div>
     );
