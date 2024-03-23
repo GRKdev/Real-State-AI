@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import { auth } from '@clerk/nextjs';
 
 // Create an OpenAI API client
 const openai = new OpenAI({
@@ -9,6 +10,10 @@ interface ApiResponse {
 }
 // Export the handler for the POST method using uppercase
 export async function POST(req: Request): Promise<Response> {
+  const {userId} = auth();
+  if(!userId){
+    return new Response("Unauthorized", { status: 401 });
+  }
   if (req.method === 'POST') {
     const { message } = await req.json();
     console.log('message:', message);

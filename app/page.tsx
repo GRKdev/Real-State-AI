@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import PropertyCard from '@/components/ui/propertry_card';
 import SkeletonCard from '@/components/ui/skeleton-card';
 import { Property } from '@/types/property';
+import {
+  SignInButton,
+} from "@clerk/nextjs";
 
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
@@ -11,6 +14,8 @@ export default function Home() {
   const [prevResponse, setPrevResponse] = useState<Property[] | null>(null);
   const [searchCount, setSearchCount] = useState(0);
   const [hasSearched, setHasSearched] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); // Initialize state for errorMessage
+
 
   useEffect(() => {
     if (response !== prevResponse) {
@@ -23,6 +28,8 @@ export default function Home() {
     setResponse([]);
     setSearchCount(prevCount => prevCount + 1);
     setHasSearched(true);
+    setErrorMessage(''); // Clear previous error messages
+
 
     const messageToAI = message + "%"
     console.log('Message to AI:', messageToAI);
@@ -32,7 +39,9 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: messageToAI, combinedFilter }),
       });
-
+      if (res.status === 401) {
+        throw new Error('You are unauthorized to access, please ');
+      }
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
 
@@ -53,6 +62,8 @@ export default function Home() {
       }
     } catch (error: any) {
       console.error('Error processing the response:', error.message);
+      setErrorMessage(error.message); // Set error message to display to the user
+
       setResponse([]);
     } finally {
       setIsLoading(false);
@@ -71,12 +82,20 @@ export default function Home() {
     setResponse(sorted);
   };
 
+
   return (
     <div>
+
       <nav className='navbar'>
         <NavbarSearch onSearch={handleSearch} onClientSort={handleClientSort} />
       </nav>
 
+      {errorMessage && (
+        <div className="text-center text-red-500 pt-20">
+          {errorMessage}
+          <SignInButton />
+        </div>
+      )}
       <div key={searchCount} className="w-full card-container">
         {isLoading ? (
           [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
@@ -91,7 +110,7 @@ export default function Home() {
               }}
             />
           ))
-        ) : hasSearched && (
+        ) : !errorMessage && hasSearched && (
           <p className="text-center pt-32">No results found. Please try different search criteria.</p>
         )}
       </div>
@@ -102,4 +121,4 @@ export default function Home() {
       )}
     </div>
   );
-}
+}  

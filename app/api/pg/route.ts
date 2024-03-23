@@ -1,6 +1,8 @@
 import { type NextRequest } from 'next/server';
 import { Pool } from 'pg';
 import type { NextApiResponse } from 'next';
+import { auth } from '@clerk/nextjs';
+
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
@@ -10,7 +12,11 @@ const pool = new Pool({
 });
 
 export async function GET(request: NextRequest, res: NextApiResponse) {
+  const {userId} = auth();
 
+  if(!userId){
+    return new Response("Unauthorized", { status: 401 });
+  }
   const searchParams = request.nextUrl.searchParams;
   const location = searchParams.get('location');
   const transaction_type = searchParams.get('transaction_type');
