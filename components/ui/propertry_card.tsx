@@ -10,7 +10,7 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/ui/tabs"
-import { Undo2, ZoomIn, SquareParking, Fence, Heater, WashingMachine, Armchair, TreePine, ArrowUpDown, RockingChair } from "lucide-react"
+import { Undo2, ZoomIn, SquareParking, Fence, Heater, WashingMachine, Armchair, TreePine, ArrowUpDown, RockingChair, Hash } from "lucide-react"
 
 const featureMappings = [
     { key: 'parking', name: 'Parking', Icon: SquareParking },
@@ -95,23 +95,25 @@ export default function PropertyCard({
                                     }).format(property.price)}
                                     {property.transaction_type === 2 ? <small className="text-sm"> / mes</small> : ''}
                                 </p>
-
-                                <div className="flex justify-between items-center mt-2">
-
-                                    <p className="flex items-center mb-1 gap-1">
-                                        <BuildingIcon className="text-gray-500" />
-                                        <span className="text-sm text-gray-500">
-                                            {property.real_state === 1 ? "Baron & Cabot" : property.real_state === 2 ? "Deloitte" : property.real_state === 3 ? "Blackrock" : "Particular"}
-                                        </span>
-                                    </p>
-                                    <p className="text-sm text-gray-500 text-right  ">Ref: {property.reference_number}</p>
-                                </div>
-                                <p className="flex items-center gap-1">
-                                    <MapIcon className="text-gray-500" />
+                                <p className="flex items-center gap-1 mt-2 mb-1">
+                                    <MapIcon className="text-gray-500 h-4 w-4" />
                                     <span className="text-sm text-gray-500">
                                         {property.parish === 1 ? "Andorra la Vella" : property.parish === 2 ? "Canillo" : property.parish === 3 ? "Encamp" : property.parish === 4 ? "La Massana" : property.parish === 5 ? "Ordino" : property.parish === 6 ? "Sant Julià" : property.parish === 7 ? "Escaldes-Engordany" : ""}
                                     </span>
                                 </p>
+
+                                <div className="flex justify-between items-center">
+
+                                    <p className="flex items-center mb-1 gap-1">
+                                        <BuildingIcon className="text-gray-500 h-4 w-4" />
+                                        <span className="text-sm text-gray-500">
+                                            {property.real_state === 1 ? "Baron & Cabot" : property.real_state === 2 ? "Deloitte" : property.real_state === 3 ? "Blackrock" : "Particular"}
+                                        </span>
+                                    </p>
+                                    <p className="flex justify-between items-center text-sm text-gray-500 text-right gap-1 ">
+                                        <Hash className="text-gray-500 h-4 w-4" />
+                                        Ref: {property.reference_number}</p>
+                                </div>
                                 <div className="flex justify-center pt-2">
                                     <TabsList>
                                         <TabsTrigger value="more_info"><ZoomIn className="text-gray-500 hover:text-orange-500 w-8 h-8" /></TabsTrigger>
@@ -138,7 +140,7 @@ export default function PropertyCard({
                                     )}
                                 </div>
                             </CardContent>
-                            <CardFooter className="flex justify-center pt-1">
+                            <CardFooter className="flex justify-center pt-2">
                                 <TabsList className="grid w-[200px]">
                                     <TabsTrigger value="general"><Undo2 className="text-gray-500 hover:text-orange-500 w-8 h-8" /></TabsTrigger>
                                 </TabsList>
