@@ -42,7 +42,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ClerkProviderWrapper>
-            <div className="fixed z-50 pl-40 pt-5">
+            <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
               <Logo />
             </div>
             <div className="fixed top-0 right-10 p-4 flex gap-2 z-50 items-center">
