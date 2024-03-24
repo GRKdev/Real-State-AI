@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuRad
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 import { ExtraOptionsCheckbox } from '@/components/ui/extra-options';
+import { Microphone } from './button-microphone';
 
 interface NavbarSearchProps {
     onSearch: (message: string, filter: string) => void;
@@ -47,10 +48,16 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
             onClientSort(value);
         }
     };
-
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        triggerSearch(message);
+    };
 
+    const handleVoiceSearch = (voiceMessage: string) => {
+        triggerSearch(voiceMessage); // Directly use the voice message for search
+    };
+
+    const triggerSearch = (searchMessage: string) => {
         let extraFilters = '';
         if (showTerrace) extraFilters += '&terrace=1';
         if (showParking) extraFilters += '&parking=1';
@@ -62,19 +69,19 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         if (showFurnished) extraFilters += '&furnished=1';
 
         const combinedFilter = `${filter}${extraFilters}`;
-
-        onSearch(message, combinedFilter);
-        setMessage('');
+        onSearch(searchMessage, combinedFilter); // Use either typed message or voice message
+        setMessage(''); // Consider if you need to reset the message in the case of voice search
     };
-
     return (
         <div className="flex gap-5 w-full justify-center">
+
+            <Microphone onVoiceSubmit={handleVoiceSearch} />
             <form onSubmit={handleSubmit} className="flex gap-5 w-1/2 input-background">
                 <Input
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Search properties with AI..."
+                    placeholder="Search properties with AI here or Hold the MIC and speak, release to stop."
                     className="input-class"
                     maxLength={125}
                 />
@@ -102,6 +109,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                     </DropdownMenuContent>
                 </DropdownMenu>
             </form>
+
             <aside className="fixed left-40 h-full pt-32 options">
                 <h3 className="mt-4 mb-2">Extra Options:</h3>
                 <ExtraOptionsCheckbox options={extraOptions} />

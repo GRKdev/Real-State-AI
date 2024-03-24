@@ -285,3 +285,23 @@ width: 100%;
   margin: auto; /* Centers the alert in the flex container if it's smaller than the container */
   padding: 1rem; /* Optional: Adds some space inside the alert container */
 }
+
+/* .button-microphone {
+  border: none;
+  background-color: transparent;
+  width: 2.5rem;
+  height: 2.5rem; 
+  padding: 0.5rem; 
+  border-radius: 9999px; 
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.button-microphone:hover {
+  background-color: var(--primary);
+  color: #1F2937; 
+}
+
+.button-microphone:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.5); 
+} */

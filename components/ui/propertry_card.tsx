@@ -1,4 +1,3 @@
-// property_card.tsx
 import { CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { PropertyCardProps } from '@/types/property';
@@ -30,7 +29,6 @@ export default function PropertyCard({
     style = {}
 }: PropertyCardProps) {
     return (
-        // Apply the className and style to the top-level div
         <div className={`card-container ${className}`} style={style}>
             <div className="w-full">
                 <Tabs defaultValue="general">
@@ -90,7 +88,7 @@ export default function PropertyCard({
                                     {new Intl.NumberFormat('de-DE', {
                                         style: 'currency',
                                         currency: 'EUR',
-                                        minimumFractionDigits: 0, // This removes decimals
+                                        minimumFractionDigits: 0,
                                         maximumFractionDigits: 0,
                                     }).format(property.price)}
                                     {property.transaction_type === 2 ? <small className="text-sm"> / mes</small> : ''}
