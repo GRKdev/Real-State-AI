@@ -24,7 +24,7 @@ export async function POST(req: Request) {
   const audio = Buffer.from(base64Audio, "base64");
 
   // Define the file path for storing the temporary WAV file
-  const filePath = path.join(process.cwd(), "input.wav");
+  const filePath = path.join(process.cwd(), "/public/input.wav");
 
   try {
     // Write the audio data to a temporary WAV file synchronously
