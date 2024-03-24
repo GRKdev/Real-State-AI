@@ -15,7 +15,6 @@ const ClerkProviderWrapper: React.FC<{ children: React.ReactNode }> = ({ childre
     } else if (theme === 'dark') {
         clerkTheme = dark;
     }
-    console.log('Clerk Theme:', clerkTheme);
 
 
     return (

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import PropertyCard from '@/components/ui/propertry_card';
 import SkeletonCard from '@/components/ui/skeleton-card';
 import { Property } from '@/types/property';
-
+import ErrorMessageAlert from '@/components/ui/error-message';
 
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
@@ -37,7 +37,7 @@ export default function Home() {
         body: JSON.stringify({ message: messageToAI, combinedFilter }),
       });
       if (res.status === 401) {
-        throw new Error('You need to be logged in to use this feature. Please Log In and try again.');
+        throw new Error('You need to be logged in to use this feature. Please Sign In or Sign Up and try again.');
       }
       if (!res.ok) throw new Error(`HTTP error! Try again.`);
       const data = await res.json();
@@ -87,12 +87,8 @@ export default function Home() {
         <NavbarSearch onSearch={handleSearch} onClientSort={handleClientSort} />
       </nav>
 
-      {errorMessage && (
-        <div className="text-center pt-20 gap-2">
-          {errorMessage}
+      {errorMessage && <ErrorMessageAlert errorMessage={errorMessage} />}
 
-        </div>
-      )}
       <div key={searchCount} className="w-full card-container">
         {isLoading ? (
           [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
@@ -112,7 +108,7 @@ export default function Home() {
         )}
       </div>
       {!isLoading && response.length > 0 && (
-        <div className="w-full text-center py-4">
+        <div className="w-full text-center py-4 text-gray-500">
           <span>Total Results: {response.length}</span>
         </div>
       )}

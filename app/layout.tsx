@@ -48,8 +48,7 @@ export default function RootLayout({
             <div className="fixed top-0 right-10 p-4 flex gap-2 z-50 items-center">
               {!userId && <div className="hover:text-orange-500"><SignInButton /></div>}
 
-              <UserButton />
-              <HomeRedirect />
+              <UserButton afterSignOutUrl="/" />
               <ModeToggle />
 
 
