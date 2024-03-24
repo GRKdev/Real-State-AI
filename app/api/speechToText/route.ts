@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import OpenAI from "openai";
 import { auth } from '@clerk/nextjs';
+import path from 'path';
+
 
 
 const openai = new OpenAI({
@@ -22,7 +24,7 @@ export async function POST(req: Request) {
   const audio = Buffer.from(base64Audio, "base64");
 
   // Define the file path for storing the temporary WAV file
-  const filePath = "tmp/input.wav";
+  const filePath = path.join(process.cwd(), "/tmp/input.wav");
 
   try {
     // Write the audio data to a temporary WAV file synchronously
