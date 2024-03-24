@@ -53,8 +53,9 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         triggerSearch(message);
     };
 
-    const handleVoiceSearch = (voiceMessage: string) => {
-        triggerSearch(voiceMessage); // Directly use the voice message for search
+    const handleVoiceSearch = (message: string) => {
+        triggerSearch(message); // Directly use the voice message for search
+        console.log('Voice Message:', message);
     };
 
     const triggerSearch = (searchMessage: string) => {

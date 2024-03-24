@@ -22,11 +22,11 @@ const Microphone: React.FC<MicrophoneProps> = ({ onVoiceSubmit }) => {
     };
 
     useEffect(() => {
-        if (!isRecordingRef.current && text) {
+        if (text) {
             onVoiceSubmit(text);
-            resetText(); // Assuming your hook provides a way to reset the text
+            resetText(); // Reset after submitting
         }
-    }, [text, onVoiceSubmit, resetText]);
+    }, [text, onVoiceSubmit]);
     return (
         <div className="flex flex-col justify-center items-center">
             <Button

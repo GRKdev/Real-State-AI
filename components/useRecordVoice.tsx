@@ -44,7 +44,8 @@ export const useRecordVoice = () => {
         }
     };
     const resetText = () => {
-        setText(""); // Reset the text
+        setText("");
+        chunks.current = []; // Clear the recorded chunks after processing
     };
     const initialMediaRecorder = (stream: MediaStream) => {
         const mediaRecorder = new MediaRecorder(stream);
