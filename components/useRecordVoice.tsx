@@ -49,10 +49,10 @@ export const useRecordVoice = () => {
     const initialMediaRecorder = (stream: MediaStream) => {
         const mediaRecorder = new MediaRecorder(stream);
 
-        mediaRecorder.onstart = () => {
-            createMediaStream(stream)
-            chunks.current = [];
-        };
+        // mediaRecorder.onstart = () => {
+        //     createMediaStream(stream)
+        //     chunks.current = [];
+        // };
 
         mediaRecorder.ondataavailable = (ev) => {
             chunks.current.push(ev.data);
