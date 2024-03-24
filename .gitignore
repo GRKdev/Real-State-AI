@@ -38,5 +38,3 @@ next-env.d.ts
 # Docker
 Dockerfile
 docker-compose.yml
-
-tmp/
