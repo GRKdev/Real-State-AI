@@ -34,9 +34,10 @@ const Microphone: React.FC<MicrophoneProps> = ({ onVoiceSubmit }) => {
                 onMouseUp={handleStopRecording}
                 onTouchStart={handleStartRecording}
                 onTouchEnd={handleStopRecording}
-                variant="outline"
+                variant="destructive"
+                className="hover:bg-orange-500 active:bg-red-500"
             >
-                <Mic />
+                <Mic className='h-8 w-8' />
             </Button>
         </div>
     );

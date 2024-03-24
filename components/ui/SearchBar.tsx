@@ -74,18 +74,19 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         setMessage(''); // Consider if you need to reset the message in the case of voice search
     };
     return (
-        <div className="flex gap-5 w-full justify-center">
-
-            <Microphone onVoiceSubmit={handleVoiceSearch} />
-            <form onSubmit={handleSubmit} className="flex gap-5 w-1/2 input-background">
-                <Input
-                    type="text"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Search properties with AI here or Hold the MIC and speak, release to stop."
-                    className="input-class"
-                    maxLength={125}
-                />
+        <div className="flex justify-center">
+            <div className="flex gap-5 w-5/6 justify-center items-center">
+                <form onSubmit={handleSubmit} className="flex gap-5 w-1/2 input-background">
+                    <Input
+                        type="text"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Search properties with AI here or Hold the MIC and speak, release to stop."
+                        className="input-class"
+                        maxLength={125}
+                    />
+                </form>
+                <Microphone onVoiceSubmit={handleVoiceSearch} />
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline">
@@ -109,7 +110,8 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         </DropdownMenuRadioGroup>
                     </DropdownMenuContent>
                 </DropdownMenu>
-            </form>
+            </div>
+
 
             <aside className="fixed left-40 h-full pt-32 options">
                 <h3 className="mt-4 mb-2">Extra Options:</h3>
