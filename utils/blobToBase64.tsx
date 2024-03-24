@@ -1,4 +1,3 @@
-//callback - where we want to get result
 const blobToBase64 = (blob: Blob, callback: { (base64data: any): Promise<void>; (arg0: any): void; }) => {
     const reader = new FileReader();
     reader.onload = function () {

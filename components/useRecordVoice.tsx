@@ -4,11 +4,11 @@ import { blobToBase64 } from "@/utils/blobToBase64";
 import { createMediaStream } from "@/utils/createMediaStream";
 
 export const useRecordVoice = () => {
-    const [text, setText] = useState("");
-    const [mediaRecorder, setMediaRecorder] = useState(null);
-    const [recording, setRecording] = useState(false);
-    const isRecording = useRef(false);
-    const chunks = useRef([]);
+    const [text, setText] = useState<string>("");
+    const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
+    const [recording, setRecording] = useState<boolean>(false);
+    const isRecording = useRef<boolean>(false);
+    const chunks = useRef<BlobPart[]>([]);
 
     const startRecording = () => {
         if (mediaRecorder) {
@@ -26,7 +26,7 @@ export const useRecordVoice = () => {
         }
     };
 
-    const getText = async (base64data) => {
+    const getText = async (base64data: any) => {
         try {
             const response = await fetch("/api/speechToText", {
                 method: "POST",
@@ -46,7 +46,7 @@ export const useRecordVoice = () => {
     const resetText = () => {
         setText(""); // Reset the text
     };
-    const initialMediaRecorder = (stream) => {
+    const initialMediaRecorder = (stream: MediaStream) => {
         const mediaRecorder = new MediaRecorder(stream);
 
         mediaRecorder.onstart = () => {
