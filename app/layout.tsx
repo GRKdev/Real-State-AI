@@ -45,7 +45,7 @@ export default function RootLayout({
             <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
               <Logo />
             </div>
-            <div className="fixed top-0 right-10 p-4 flex gap-2 z-50 items-center">
+            <div className="fixed top-0 right-0 p-4 flex gap-2 z-50 items-center">
               {!userId && <div className="hover:text-orange-500"><SignInButton /></div>}
 
               <UserButton afterSignOutUrl="/" />

@@ -89,7 +89,7 @@
   border-color: #F97315;
   outline: 1px solid #F97315;
 }
-
+@media (min-width: 1024px) {
 .navbar {
   position: fixed;
 width: 100%; 
@@ -99,6 +99,27 @@ width: 100%;
   backdrop-filter: blur(10px); 
   z-index: 25;
  }
+}
+@media (min-width: 640px) {
+  .navbar {
+    position: fixed;
+  width: 100%; 
+    top: 0; 
+    padding-top: 1rem; 
+    backdrop-filter: blur(10px); 
+    z-index: 25;
+   }
+  }
+  @media (max-width: 639px) {
+  .navbar {
+      position: fixed;
+    width: 100%; 
+      top: 0; 
+      padding-top: 1rem; 
+      backdrop-filter: blur(10px); 
+      z-index: 25;
+     }
+    }
 
 
 @keyframes slideAndFade {
