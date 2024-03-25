@@ -49,7 +49,9 @@ export default function RootLayout({
               {!userId && <div className="hover:text-orange-500"><SignInButton /></div>}
 
               <UserButton afterSignOutUrl="/" />
-              <ModeToggle />
+              <div className="hidden lg:block">
+                <ModeToggle />
+              </div>
 
 
             </div>

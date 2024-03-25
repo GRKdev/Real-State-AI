@@ -54,8 +54,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     };
 
     const handleVoiceSearch = (message: string) => {
-        triggerSearch(message); // Directly use the voice message for search
-        console.log('Voice Message:', message);
+        triggerSearch(message);
     };
 
     const triggerSearch = (searchMessage: string) => {
@@ -70,8 +69,8 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         if (showFurnished) extraFilters += '&furnished=1';
 
         const combinedFilter = `${filter}${extraFilters}`;
-        onSearch(searchMessage, combinedFilter); // Use either typed message or voice message
-        setMessage(''); // Consider if you need to reset the message in the case of voice search
+        onSearch(searchMessage, combinedFilter);
+        setMessage('');
     };
     return (
         <div className="flex justify-center">
@@ -87,29 +86,31 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                     />
                 </form>
                 <Microphone onVoiceSubmit={handleVoiceSearch} />
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="outline">
-                            {filterLabel !== 'Filters' && (
-                                isAscending ? <TrendingUp className="mr-2 h-4 w-4" /> : <TrendingDown className="mr-2 h-4 w-4" />
-                            )}
-                            {filterLabel}
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent side="bottom">
-                        <DropdownMenuRadioGroup value={filter}>
-                            <DropdownMenuRadioItem value="" onClick={() => updateFilter('', 'Filters', true)}>No Filter</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', 'Price', true)}>Price Asc.</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', 'Price', false)}>Price Desc.</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', 'Bedroom', true)}>Bedroom Asc.</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', 'Bedroom', false)}>Bedroom Desc.</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', 'Bathroom', true)}>Bathroom Asc.</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', 'Bathroom', false)}>Bathroom Desc.</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', 'Square m.', true)}>Square Asc.</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', 'Square m.', false)}>Square Desc.</DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <div className='hidden lg:block'>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline">
+                                {filterLabel !== 'Filters' && (
+                                    isAscending ? <TrendingUp className="mr-2 h-4 w-4" /> : <TrendingDown className="mr-2 h-4 w-4" />
+                                )}
+                                {filterLabel}
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent side="bottom">
+                            <DropdownMenuRadioGroup value={filter}>
+                                <DropdownMenuRadioItem value="" onClick={() => updateFilter('', 'Filters', true)}>No Filter</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', 'Price', true)}>Price Asc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', 'Price', false)}>Price Desc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', 'Bedroom', true)}>Bedroom Asc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', 'Bedroom', false)}>Bedroom Desc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', 'Bathroom', true)}>Bathroom Asc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', 'Bathroom', false)}>Bathroom Desc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', 'Square m.', true)}>Square Asc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', 'Square m.', false)}>Square Desc.</DropdownMenuRadioItem>
+                            </DropdownMenuRadioGroup>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
             </div>
 
 
