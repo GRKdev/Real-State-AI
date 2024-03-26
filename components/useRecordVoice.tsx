@@ -10,21 +10,23 @@ export const useRecordVoice = () => {
     const isRecording = useRef<boolean>(false);
     const chunks = useRef<BlobPart[]>([]);
 
-    const startRecording = () => {
-        if (mediaRecorder) {
+    const start = () => {
+        if (mediaRecorder && mediaRecorder.state === 'inactive') {
             isRecording.current = true;
             mediaRecorder.start();
             setRecording(true);
         }
     };
 
-    const stopRecording = () => {
-        if (mediaRecorder) {
+
+    const stop = () => {
+        if (mediaRecorder && (mediaRecorder.state === 'recording' || mediaRecorder.state === 'paused')) {
+            mediaRecorder.stop(); // This will change the state to 'inactive'
             isRecording.current = false;
-            mediaRecorder.stop();
             setRecording(false);
         }
     };
+
 
     const getText = async (base64data: any) => {
         try {
@@ -75,5 +77,5 @@ export const useRecordVoice = () => {
         }
     }, []);
 
-    return { recording, startRecording, stopRecording, text, resetText };
+    return { recording, start, stop, text, resetText };
 };

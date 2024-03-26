@@ -7,28 +7,31 @@ interface MicrophoneProps {
 }
 
 const Microphone: React.FC<MicrophoneProps> = ({ onVoiceSubmit }) => {
-    const { startRecording, stopRecording, text, resetText } = useRecordVoice();
+    const { start, stop, text, resetText } = useRecordVoice();
     const [isRecording, setIsRecording] = useState(false);
-    const recordingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const recordingTimeoutRef = useRef<number | null>(null);
 
     const toggleRecording = () => {
-        if (!isRecording) {
-            startRecording();
-            setIsRecording(true);
-            // Set a fallback to stop recording after 20 seconds if the user does not manually stop it
-            recordingTimeoutRef.current = setTimeout(() => {
-                if (isRecording) {
-                    toggleRecording();
+        setIsRecording(current => {
+            if (!current) {
+                start();
+                if (recordingTimeoutRef.current !== null) {
+                    clearTimeout(recordingTimeoutRef.current);
                 }
-            }, 20000); // 20 seconds
-        } else {
-            if (recordingTimeoutRef.current) {
-                clearTimeout(recordingTimeoutRef.current);
-                recordingTimeoutRef.current = null;
+                recordingTimeoutRef.current = window.setTimeout(() => {
+                    stop();
+                    setIsRecording(false);
+                }, 15000);
+                return true;
+            } else {
+                stop();
+                if (recordingTimeoutRef.current !== null) {
+                    clearTimeout(recordingTimeoutRef.current);
+                    recordingTimeoutRef.current = null;
+                }
+                return false;
             }
-            stopRecording();
-            setIsRecording(false);
-        }
+        });
     };
 
     useEffect(() => {
@@ -38,14 +41,14 @@ const Microphone: React.FC<MicrophoneProps> = ({ onVoiceSubmit }) => {
         }
     }, [text, onVoiceSubmit]);
 
-    // Cleanup on component unmount
     useEffect(() => {
         return () => {
-            if (recordingTimeoutRef.current) {
+            if (recordingTimeoutRef.current !== null) {
                 clearTimeout(recordingTimeoutRef.current);
             }
         };
     }, []);
+
 
     return (
         <div className="flex flex-col justify-center items-center">
