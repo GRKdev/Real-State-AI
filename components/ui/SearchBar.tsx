@@ -80,7 +80,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Search properties with AI here or Hold the MIC and speak, release to stop."
+                        placeholder="Search properties or press the mic to speak, click again to stop recording."
                         className="input-class"
                         maxLength={125}
                     />
