@@ -51,7 +51,7 @@ const Microphone: React.FC<MicrophoneProps> = ({ onVoiceSubmit }) => {
 
 
     return (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center pl-2">
             <Button
                 onClick={toggleRecording}
                 variant="outline"

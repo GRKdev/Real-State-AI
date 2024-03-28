@@ -74,8 +74,8 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     };
     return (
         <div className="flex justify-center">
-            <div className="flex gap-5 w-5/6 justify-center items-center">
-                <form onSubmit={handleSubmit} className="flex gap-5 w-1/2 input-background">
+            <div className="flex gap-2 w-5/6 justify-center items-center">
+                <form onSubmit={handleSubmit} className="w-1/2 input-background">
                     <Input
                         type="text"
                         value={message}
