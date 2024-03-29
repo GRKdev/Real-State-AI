@@ -3,7 +3,7 @@ import { useUser } from '@clerk/nextjs';
 const WelcomeMessage: React.FC = () => {
     const { isSignedIn, user } = useUser();
 
-    let welcomeMessage = "Welcome to this demo, don't forget to sign up to use it.";
+    let welcomeMessage = "Welcome to this demo, don\'t forget to sign up to use it.";
     if (isSignedIn && user) {
         welcomeMessage = `Welcome ${user.firstName}! Enjoy this demo.`;
     }
