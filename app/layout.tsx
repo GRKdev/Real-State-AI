@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/ui/toggle-theme";
-import HomeRedirect from "@/components/ui/home_redirect";
 import Logo from "@/components/ui/logo";
 import { Analytics } from "@vercel/analytics/react"
 import {
@@ -12,6 +11,7 @@ import {
 } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
 import ClerkProviderWrapper from "@/components/ClerkProviderWrapper";
+import { Button } from "@/components/ui/button";
 
 
 
@@ -45,21 +45,26 @@ export default function RootLayout({
             <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
               <Logo />
             </div>
-            <div className="fixed top-0 right-0 p-4 flex gap-2 z-50 items-center">
-              {!userId && <div className="hover:text-orange-500"><SignInButton /></div>}
 
-              <UserButton afterSignOutUrl="/" />
+            <div className="fixed top-0 right-0 p-4 flex gap-3 z-50 items-center">
+              {!userId &&
+                <Button variant="outline" className="hover:text-orange-500">
+                  <SignInButton />
+                </Button>
+              }
+              {userId && (
+                <UserButton afterSignOutUrl="/" />
+              )}
               <div className="hidden lg:block">
                 <ModeToggle />
               </div>
-
-
             </div>
 
             <main className="overflow-y-auto h-screen w-full pt-28 pb-32">
               {children}
               <Analytics />
             </main>
+
           </ClerkProviderWrapper>
         </ThemeProvider>
 

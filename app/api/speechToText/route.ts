@@ -1,5 +1,4 @@
 import fetch from "node-fetch"; 
-import FormData from "form-data"; 
 import { auth } from '@clerk/nextjs';
 
 export async function POST(req: Request) {
@@ -12,11 +11,12 @@ export async function POST(req: Request) {
   const body = await req.json();
   const base64Audio = body.audio;
   const audioBuffer = Buffer.from(base64Audio, "base64");
+  const blob = new Blob([audioBuffer], { type: 'audio/wav' });
 
   const formData = new FormData();
   formData.append("model", "whisper-1");
   formData.append("language", "ca");
-  formData.append("file", audioBuffer, "input.wav");
+  formData.append("file", blob, "input.wav");
 
   try {
     const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {

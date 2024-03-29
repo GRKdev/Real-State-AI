@@ -32,6 +32,7 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
   const heating = searchParams.get('heating');
   const electrodometics = searchParams.get('electrodometics');
   const furnished = searchParams.get('furnished');
+  const referenceNumber = searchParams.get('reference_number');
 
 
   const transactionTypes = transaction_type ? Array.from(new Set(transaction_type.split(','))) : [];
@@ -93,6 +94,11 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
     conditions.push(`(${propertyConditions})`);
   }
 
+if (referenceNumber) {
+    conditions.push(`reference_number = $${params.length + 1}`);
+    params.push(referenceNumber);
+  }
+
   if (minPrice) {
     conditions.push(`price >= $${params.length + 1}`);
     params.push(minPrice);
@@ -128,6 +134,13 @@ export async function GET(request: NextRequest, res: NextApiResponse) {
   if (orderby) {
     const [orderByColumn, orderByDirection] = orderby.split('|');
     sqlQuery += ` ORDER BY ${orderByColumn} ${orderByDirection.toUpperCase()}`;
+  }
+
+  if (conditions.length === 0 && extraConditions.length === 0) {
+    return new Response(JSON.stringify([]), {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    });
   }
 
 console.log('SQL:', sqlQuery);

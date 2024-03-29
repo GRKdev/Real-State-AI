@@ -21,7 +21,8 @@ export async function POST(req: Request): Promise<Response> {
     try {
       const response = await openai.completions.create({
         // model: 'ft:babbage-002:iand:api-pisos-v10:93t6VkWe',
-        model: 'ft:babbage-002:iand:api-pisos-11:95KgWQZD',
+        // model: 'ft:babbage-002:iand:api-pisos-11:95KgWQZD',
+        model: 'ft:babbage-002:iand:pisos-12:982SkU3q',
         prompt: message,
         max_tokens: 50,
         temperature: 0,
