@@ -12,11 +12,17 @@ export async function POST(req: Request) {
   const base64Audio = body.audio;
   const audioBuffer = Buffer.from(base64Audio, "base64");
   const blob = new Blob([audioBuffer], { type: 'audio/wav' });
+  const language = body.language;
+  const supportedLanguages = ['en', 'es', 'ca', 'fr'];
+  if (!supportedLanguages.includes(language)) {
+    return new Response("Unsupported language", { status: 400 });
+  }
 
   const formData = new FormData();
   formData.append("model", "whisper-1");
-  formData.append("language", "ca");
+  formData.append("language", language);
   formData.append("file", blob, "input.wav");
+  console.log("Language for whisper-1:", language);
 
   try {
     const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {

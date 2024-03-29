@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { blobToBase64 } from "@/utils/blobToBase64";
-import { createMediaStream } from "@/utils/createMediaStream";
+import { useLocale } from '@/contexts/localeContext';
 
 export const useRecordVoice = () => {
     const [text, setText] = useState<string>("");
@@ -9,6 +9,8 @@ export const useRecordVoice = () => {
     const [recording, setRecording] = useState<boolean>(false);
     const isRecording = useRef<boolean>(false);
     const chunks = useRef<BlobPart[]>([]);
+    const { locale } = useLocale();
+
 
     const start = () => {
         if (mediaRecorder && mediaRecorder.state === 'inactive') {
@@ -21,22 +23,24 @@ export const useRecordVoice = () => {
 
     const stop = () => {
         if (mediaRecorder && (mediaRecorder.state === 'recording' || mediaRecorder.state === 'paused')) {
-            mediaRecorder.stop(); // This will change the state to 'inactive'
+            mediaRecorder.stop();
             isRecording.current = false;
             setRecording(false);
         }
     };
 
+    const speechToText_endpont = locale + '/api/speechToText';
 
     const getText = async (base64data: any) => {
         try {
-            const response = await fetch("/api/speechToText", {
+            const response = await fetch(speechToText_endpont, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     audio: base64data,
+                    language: locale,
                 }),
             }).then((res) => res.json());
             const { text } = response;
@@ -47,15 +51,10 @@ export const useRecordVoice = () => {
     };
     const resetText = () => {
         setText("");
-        chunks.current = []; // Clear the recorded chunks after processing
+        chunks.current = [];
     };
     const initialMediaRecorder = (stream: MediaStream) => {
         const mediaRecorder = new MediaRecorder(stream);
-
-        // mediaRecorder.onstart = () => {
-        //     createMediaStream(stream)
-        //     chunks.current = [];
-        // };
 
         mediaRecorder.ondataavailable = (ev) => {
             chunks.current.push(ev.data);

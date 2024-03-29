@@ -6,6 +6,7 @@ import SkeletonCard from '@/components/ui/skeleton-card';
 import { Property } from '@/types/property';
 import ErrorMessageAlert from '@/components/ui/error-message';
 import WelcomeMessage from '@/components/ui/welcome-message';
+import { useLocale } from '@/contexts/localeContext';
 
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
@@ -14,6 +15,8 @@ export default function Home() {
   const [searchCount, setSearchCount] = useState(0);
   const [hasSearched, setHasSearched] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const { locale } = useLocale();
+
 
   useEffect(() => {
     if (response !== prevResponse) {
@@ -31,8 +34,11 @@ export default function Home() {
 
     const messageToAI = message + "%"
     console.log('Message to AI:', messageToAI);
+    const api_endpoint = `/${locale}/api/AI`;
+    const pg_endpoint = `/${locale}/api/pg`;
+
     try {
-      const res = await fetch('/api/AI', {
+      const res = await fetch(api_endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: messageToAI, combinedFilter }),
@@ -47,7 +53,7 @@ export default function Home() {
         const [order, ...extras] = combinedFilter.split('&');
 
         const finalResponseText = data.text + (extras.length ? `&${extras.join('&')}` : '') + (order ? `&order=${order}` : '');
-        const apiEndpoint = `/api/pg?${finalResponseText}`;
+        const apiEndpoint = `${pg_endpoint}?${finalResponseText}`;
         console.log('API Endpoint:', apiEndpoint);
         const propertiesResponse = await fetch(apiEndpoint);
         if (!propertiesResponse.ok) throw new Error(`HTTP error! status: ${propertiesResponse.status}`);
