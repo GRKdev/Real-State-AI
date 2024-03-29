@@ -46,9 +46,9 @@ export default function RootLayout({
               <Logo />
             </div>
 
-            <div className="fixed top-0 right-0 p-4 flex gap-3 z-50 items-center">
+            <div className="fixed top-0 right-0 p-4 flex gap-1 z-50 items-center">
               {!userId &&
-                <Button variant="outline" className="hover:text-orange-500">
+                <Button variant="outline">
                   <SignInButton />
                 </Button>
               }
