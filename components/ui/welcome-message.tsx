@@ -21,7 +21,7 @@ const WelcomeMessage: React.FC = () => {
                 <li>Multilingual Support: Catering to a diverse audience with support for Catalan, Spanish, English, and French.</li>
                 <li>Advanced Search Filters: Users can refine their search with various filters and extra options to find their ideal property.</li>
                 <li>AI-Powered Queries: Leverages a fine-tuned OpenAI model to interpret search inputs and generate precise API queries.</li>
-                <li>Voice Search: Utilizes OpenAI's Whisper API to process voice commands for search queries.</li>
+                <li>Voice Search: Utilizes {"OpenAI's"} Whisper API to process voice commands for search queries.</li>
                 <li>Real-Time Updates: Dynamically updates search results, providing immediate access to the latest properties.</li>
             </ul>
             <h3>Why a Fine-Tuned Model?</h3>
@@ -36,10 +36,10 @@ const WelcomeMessage: React.FC = () => {
             <h3>Technologies</h3>
             <ul>
                 <li><a href="https://nextjs.org/" target="_blank">Next.js</a>: A React framework that enables functionality such as server-side rendering and generating static websites. Used for building the frontend interface, providing a dynamic and responsive user experience.</li>
-                <li><a href="https://platform.openai.com/docs/overview" target="_blank">OpenAI's GPT (babbage-002)</a>: A language model fine-tuned for this application to understand and process real estate queries efficiently.</li>
-                <li><a href="https://openai.com/research/whisper" target="_blank">OpenAI's Whisper</a>: A Speech-to-Text API that allows users to input search queries via voice commands.</li>
+                <li><a href="https://platform.openai.com/docs/overview" target="_blank">{"OpenAI's"} GPT (babbage-002)</a>: A language model fine-tuned for this application to understand and process real estate queries efficiently.</li>
+                <li><a href="https://openai.com/research/whisper" target="_blank">{"OpenAI's"} Whisper</a>: A Speech-to-Text API that allows users to input search queries via voice commands.</li>
                 <li><a href="https://vercel.com/docs/storage/vercel-postgres" target="_blank">Vercel PostgreSQL</a>: My choice for a highly scalable and managed database solution, ensuring robust and secure data management.</li>
-                <li><a href="https://vercel.com/" target="_blank">Deployment on Vercel Servers</a>: For seamless hosting and superior performance, our platform is deployed on Vercel's cutting-edge infrastructure.</li>
+                <li><a href="https://vercel.com/" target="_blank">Deployment on Vercel Servers</a>: For seamless hosting and superior performance, our platform is deployed on {"Vercel's"} cutting-edge infrastructure.</li>
                 <li><a href="https://clerk.com/" target="_blank">Clerk</a>: A user authentication service that provides secure and customizable login functionality for our Real Estate Search Engine.</li>
             </ul>
         </div>
