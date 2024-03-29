@@ -5,6 +5,7 @@ import PropertyCard from '@/components/ui/propertry_card';
 import SkeletonCard from '@/components/ui/skeleton-card';
 import { Property } from '@/types/property';
 import ErrorMessageAlert from '@/components/ui/error-message';
+import WelcomeMessage from '@/components/ui/welcome-message';
 
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
@@ -88,6 +89,10 @@ export default function Home() {
       </nav>
 
       {errorMessage && <ErrorMessageAlert errorMessage={errorMessage} />}
+
+      {!hasSearched && !isLoading && !errorMessage && (
+        <WelcomeMessage />
+      )}
 
       <div key={searchCount} className="w-full card-container">
         {isLoading ? (

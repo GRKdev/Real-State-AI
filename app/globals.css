@@ -317,8 +317,90 @@ width: 100%;
 }
 
 .alert-container {
-  max-width: 96rem; /* Example: Sets maximum width */
-  margin: auto; /* Centers the alert in the flex container if it's smaller than the container */
-  padding: 1rem; /* Optional: Adds some space inside the alert container */
+  max-width: 96rem; 
+  margin: auto; 
+  padding: 1rem; 
 }
 
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  width: 50%; 
+  margin: 0 auto; 
+}
+
+.welcome-message h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #F97315;
+}
+
+.welcome-message h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #F97315;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.welcome-message p, .welcome-message ul, .welcome-message li {
+  font-size: 1rem;
+  text-align: left;
+  margin-top: 0.4em;
+}
+
+.welcome-message a {
+  color: #F97315;
+  text-decoration: none;
+}
+
+.welcome-message a:hover {
+  text-decoration: underline;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1023px) {
+  .welcome-message {
+    width: 75%; 
+  }
+
+  .welcome-message h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.8rem; 
+  }
+
+  .welcome-message h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .welcome-message p, .welcome-message ul, .welcome-message li {
+    font-size: 0.9rem;
+    margin-top: 0.4em;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 639px) {
+  .welcome-message {
+    width: 90%; 
+  }
+
+  .welcome-message h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem; 
+  }
+
+  .welcome-message h3 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .welcome-message p, .welcome-message ul, .welcome-message li {
+    font-size: 0.85rem;
+    margin-top: 0.3em;
+  }
+}
