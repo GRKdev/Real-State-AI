@@ -10,13 +10,9 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import { Undo2, ZoomIn, SquareParking, Fence, Heater, WashingMachine, Armchair, TreePine, ArrowUpDown, RockingChair, Hash } from "lucide-react"
-import { getDictionary } from '@/dictionaries'
 import { useLocale } from '@/contexts/localeContext';
-import { Dictionary } from '@/types/dictionary';
-import { useEffect, useState } from "react";
-
-
-
+import { useExtraOptionsDictionary } from "@/hooks/useExtraOptionsDictionary";
+import { usePropertyCardDictionary } from "@/hooks/usePropertyCardDictionary";
 
 export default function PropertyCard({
     property,
@@ -24,60 +20,19 @@ export default function PropertyCard({
     style = {}
 }: PropertyCardProps) {
     const { locale } = useLocale();
-    const [dict, setDict] = useState<Dictionary>({
-        navbar: { searchbar: '' },
-        extra_options: {
-            title: '',
-            bedrooms: '',
-            bathrooms: '',
-            parking: '',
-            balcony: '',
-            garden: '',
-            elevator: '',
-            heating: '',
-            electrod: '',
-            furnished: '',
-            terrace: '',
-        },
-        property_card: {
-            month: '',
-            room: '',
-            rooms: '',
-            bathroom: '',
-            bathrooms: '',
-        },
-        filters: {
-            title_filter: '',
-            no_filters: '',
-            price: '',
-            bedroom: '',
-            bathroom: '',
-            square: '',
-        }
+    const extraOptionsDict = useExtraOptionsDictionary();
+    const propertyCardDict = usePropertyCardDictionary();
 
-    });
-    useEffect(() => {
-        const fetchDictionary = async () => {
-            try {
-                const dictionary = await getDictionary(locale);
-                setDict(dictionary);
-            } catch (error) {
-                console.error("Failed to load dictionary:", error);
-            }
-        };
-
-        fetchDictionary();
-    }, [locale]);
 
     const featureMappings = [
-        { key: 'parking', name: dict.extra_options.parking, Icon: SquareParking },
-        { key: 'heating', name: dict.extra_options.heating, Icon: Heater },
-        { key: 'furnished', name: dict.extra_options.furnished, Icon: Armchair },
-        { key: 'electrodometics', name: dict.extra_options.electrod, Icon: WashingMachine },
-        { key: 'balcony', name: dict.extra_options.balcony, Icon: Fence },
-        { key: 'terrace', name: dict.extra_options.terrace, Icon: RockingChair },
-        { key: 'garden', name: dict.extra_options.garden, Icon: TreePine },
-        { key: 'elevator', name: dict.extra_options.elevator, Icon: ArrowUpDown },
+        { key: 'parking', name: extraOptionsDict.parking, Icon: SquareParking },
+        { key: 'heating', name: extraOptionsDict.heating, Icon: Heater },
+        { key: 'furnished', name: extraOptionsDict.furnished, Icon: Armchair },
+        { key: 'electrodometics', name: extraOptionsDict.electrod, Icon: WashingMachine },
+        { key: 'balcony', name: extraOptionsDict.balcony, Icon: Fence },
+        { key: 'terrace', name: extraOptionsDict.terrace, Icon: RockingChair },
+        { key: 'garden', name: extraOptionsDict.garden, Icon: TreePine },
+        { key: 'elevator', name: extraOptionsDict.elevator, Icon: ArrowUpDown },
     ];
     const titleLocaleMap: { [key: string]: keyof Property } = {
         en: 'title_en',
@@ -108,15 +63,10 @@ export default function PropertyCard({
 
                                         <MyImage
                                             alt={property.title_cat}
-                                            className="w-full h-56 object-cover image"
+                                            className="image image-style"
                                             width={350}
                                             height={200}
                                             src={property.photo}
-                                            style={{
-                                                aspectRatio: "350/200",
-                                                objectFit: "cover",
-                                                transition: "transform 0.3s ease",
-                                            }}
                                             loading="lazy"
                                             fallbackSrc="/logo2.webp"
                                         />
@@ -133,7 +83,7 @@ export default function PropertyCard({
                                         <div className="flex items-center space-x-1">
                                             <BedIcon className="text-orange-500" />
                                             <span className="text-sm">
-                                                {property.bedrooms} {property.bedrooms === 1 ? dict.property_card.room : dict.property_card.rooms}
+                                                {property.bedrooms} {property.bedrooms === 1 ? propertyCardDict.room : propertyCardDict.rooms}
                                             </span>
                                         </div>
                                     )}
@@ -141,7 +91,7 @@ export default function PropertyCard({
                                         <div className="flex items-center space-x-1">
                                             <BathIcon className="text-orange-500" />
                                             <span className="text-sm">
-                                                {property.bathrooms} {property.bathrooms === 1 ? dict.property_card.bathroom : dict.property_card.bathrooms}
+                                                {property.bathrooms} {property.bathrooms === 1 ? propertyCardDict.bathroom : propertyCardDict.bathrooms}
                                             </span>
                                         </div>
                                     )}
@@ -161,7 +111,7 @@ export default function PropertyCard({
                                         minimumFractionDigits: 0,
                                         maximumFractionDigits: 0,
                                     }).format(property.price)}
-                                    {property.transaction_type === 2 ? <small className="text-sm"> / {dict.property_card.month}</small> : ''}
+                                    {property.transaction_type === 2 ? <small className="text-sm"> / {propertyCardDict.month}</small> : ''}
                                 </p>
                                 <p className="flex items-center gap-1 mt-2 mb-1">
                                     <MapIcon className="text-gray-500 h-4 w-4" />

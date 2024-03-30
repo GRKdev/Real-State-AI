@@ -1,7 +1,4 @@
 export type Dictionary = {
-    navbar: {
-        searchbar: string;
-    };
     extra_options: {
         title: string;
         bedrooms: string;
@@ -30,9 +27,35 @@ export type Dictionary = {
         bedroom: string;
         bathroom: string;
         square: string;
+        searchbar: string;
     };
+    welcomeMessage: {
+    welcomeUser: {
+        welcome: string;
+        message: string;
+        welcome_no_user: string;
+      };
+      overview: {
+        title: string;
+        description: string;
+      };
+      features: {
+        title: string;
+        items: string[]; 
+      };
+      fine_tuned: {
+        title: string;
+        description: string;
+        items: string[];
+      };
+      technology: {
+        title: string;
+        items: string[]; 
+      };
+    };
+    
 }
 
-export type DictionaryProps = {
+  export type DictionaryProps = {
     dictionary: Dictionary;
 };

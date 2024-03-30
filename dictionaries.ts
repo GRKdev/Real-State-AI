@@ -1,4 +1,3 @@
-// Assuming you have the Dictionary interface defined somewhere
 import { Dictionary } from '@/types/dictionary'; // Adjust path as necessary
 
 // Typing the dictionaries object to ensure each key returns a Promise<Dictionary>

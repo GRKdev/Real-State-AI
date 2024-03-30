@@ -7,9 +7,8 @@ import { TrendingUp, TrendingDown, ArrowDown } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 import { ExtraOptionsCheckbox } from '@/components/ui/extra-options';
 import { Microphone } from './button-microphone';
-import { getDictionary } from '@/dictionaries'
-import { useLocale } from '@/contexts/localeContext';
-import { Dictionary } from '@/types/dictionary';
+import { useExtraOptionsDictionary } from "@/hooks/useExtraOptionsDictionary";
+import { useFiltersDictionary } from '@/hooks/useFiltersDictionary';
 
 
 interface NavbarSearchProps {
@@ -32,60 +31,19 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     const [showElectrodometics, setShowElectrodometics] = useState<Checked>(false)
     const [showFurnished, setShowFurnished] = useState<Checked>(false)
 
-    const { locale } = useLocale();
-    const [dict, setDict] = useState<Dictionary>({
-        navbar: { searchbar: '' },
-        extra_options: {
-            title: '',
-            bedrooms: '',
-            bathrooms: '',
-            parking: '',
-            balcony: '',
-            garden: '',
-            elevator: '',
-            heating: '',
-            electrod: '',
-            furnished: '',
-            terrace: '',
-        },
-        filters: {
-            title_filter: '',
-            no_filters: '',
-            price: '',
-            bedroom: '',
-            bathroom: '',
-            square: '',
-        },
-        property_card: {
-            month: '',
-            room: '',
-            rooms: '',
-            bathroom: '',
-            bathrooms: '',
-        },
-    });
-    useEffect(() => {
-        const fetchDictionary = async () => {
-            try {
-                const dictionary = await getDictionary(locale);
-                setDict(dictionary);
-            } catch (error) {
-                console.error("Failed to load dictionary:", error);
-            }
-        };
+    const extraOptionsDict = useExtraOptionsDictionary();
+    const filtersDict = useFiltersDictionary();
 
-        fetchDictionary();
-    }, [locale]);
 
     const extraOptions = [
-        { id: "showTerrace", label: dict.extra_options.terrace || "Terrace", state: showTerrace, setState: setShowTerrace },
-        { id: "showParking", label: dict.extra_options.parking || "Parking", state: showParking, setState: setShowParking },
-        { id: "showBalcony", label: dict.extra_options.balcony || "Balcony", state: showBalcony, setState: setShowBalcony },
-        { id: "showGarden", label: dict.extra_options.garden || "Garden", state: showGarden, setState: setShowGarden },
-        { id: "showElevator", label: dict.extra_options.elevator || "Elevator", state: showElevator, setState: setShowElevator },
-        { id: "showHeating", label: dict.extra_options.heating || "Heating", state: showHeating, setState: setShowHeating },
-        { id: "showElectrodometics", label: dict.extra_options.electrod || "Electrod.", state: showElectrodometics, setState: setShowElectrodometics },
-        { id: "showFurnished", label: dict.extra_options.furnished || "Furnished", state: showFurnished, setState: setShowFurnished },
+        { id: "showTerrace", label: extraOptionsDict.terrace, state: showTerrace, setState: setShowTerrace },
+        { id: "showParking", label: extraOptionsDict.parking || "Parking", state: showParking, setState: setShowParking },
+        { id: "showBalcony", label: extraOptionsDict.balcony || "Balcony", state: showBalcony, setState: setShowBalcony },
+        { id: "showGarden", label: extraOptionsDict.garden || "Garden", state: showGarden, setState: setShowGarden },
+        { id: "showElevator", label: extraOptionsDict.elevator || "Elevator", state: showElevator, setState: setShowElevator },
+        { id: "showHeating", label: extraOptionsDict.heating || "Heating", state: showHeating, setState: setShowHeating },
+        { id: "showElectrodometics", label: extraOptionsDict.electrod || "Electrod.", state: showElectrodometics, setState: setShowElectrodometics },
+        { id: "showFurnished", label: extraOptionsDict.furnished || "Furnished", state: showFurnished, setState: setShowFurnished },
     ];
 
     const updateFilter = (value: string, label: string, ascending: boolean) => {
@@ -120,8 +78,13 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         onSearch(searchMessage, combinedFilter);
         setMessage('');
     };
-    const [filterLabel, setFilterLabel] = useState(dict.filters.title_filter);
-
+    const [filterLabel, setFilterLabel] = useState(filtersDict.title_filter);
+    useEffect(() => {
+        if (filtersDict) {
+            setFilterLabel(filtersDict.title_filter);
+            setFilter("");
+        }
+    }, [filtersDict]);
     return (
         <div className="flex justify-center">
             <div className="flex gap-2 w-5/6 justify-center items-center">
@@ -131,7 +94,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder={dict.navbar.searchbar}
+                        placeholder={filtersDict.searchbar}
                         className="input-class"
                         maxLength={125}
                     />
@@ -141,7 +104,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline">
-                                {filterLabel !== dict.filters.title_filter && (
+                                {filterLabel !== filtersDict.title_filter && (
                                     isAscending ? <TrendingUp className="mr-2 h-4 w-4" /> : <TrendingDown className="mr-2 h-4 w-4" />
                                 )}
                                 {filterLabel}
@@ -149,15 +112,15 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         </DropdownMenuTrigger>
                         <DropdownMenuContent side="bottom">
                             <DropdownMenuRadioGroup value={filter}>
-                                <DropdownMenuRadioItem value="" onClick={() => updateFilter('', dict.filters.title_filter, true)}>{dict.filters.no_filters}</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', dict.filters.price, true)}>{dict.filters.price} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', dict.filters.price, false)}>{dict.filters.price} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', dict.filters.bedroom, true)}>{dict.filters.bedroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', dict.filters.bedroom, false)}>{dict.filters.bedroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', dict.filters.bathroom, true)}>{dict.filters.bathroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', dict.filters.bathroom, false)}>{dict.filters.bathroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', dict.filters.square, true)}>{dict.filters.square} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', dict.filters.square, false)}>{dict.filters.square} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="" onClick={() => updateFilter("", filtersDict.title_filter, true)}>{filtersDict.no_filters}</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', filtersDict.price, true)}>{filtersDict.price} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', filtersDict.price, false)}>{filtersDict.price} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', filtersDict.bedroom, true)}>{filtersDict.bedroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', filtersDict.bedroom, false)}>{filtersDict.bedroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', filtersDict.bathroom, true)}>{filtersDict.bathroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', filtersDict.bathroom, false)}>{filtersDict.bathroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', filtersDict.square, true)}>{filtersDict.square} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', filtersDict.square, false)}>{filtersDict.square} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
                             </DropdownMenuRadioGroup>
                         </DropdownMenuContent>
                     </DropdownMenu>
@@ -166,7 +129,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
 
             <aside className="fixed left-40 h-full pt-32 options hidden lg:block">
-                <h3 className="mt-4 mb-2">{dict.extra_options.title}:</h3>
+                <h3 className="mt-4 mb-2">{extraOptionsDict.title}:</h3>
                 <ExtraOptionsCheckbox options={extraOptions} />
             </aside>
         </div>

@@ -12,7 +12,7 @@ const MyImage = ({ src, fallbackSrc, ...props }) => {
         src={hasError ? fallbackSrc : src}
         alt="Generic Image"
         onError={() => !hasError && setHasError(true)}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
         objectFit="cover"
         {...props}
       />
