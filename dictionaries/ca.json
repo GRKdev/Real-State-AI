@@ -1,0 +1,25 @@
+{
+    "navbar": {
+      "searchbar" : "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació."
+    },
+    "extra_options": {
+        "title": "Opcions addicionals",
+        "bedrooms": "Habitacions",
+        "bathrooms": "Banys",
+        "parking": "Parking",
+        "balcony": "Balcó",
+        "garden": "Jardí",
+        "elevator": "Ascensor",
+        "heating": "Calefacció",
+        "electrod": "Electrod.",
+        "furnished": "Moblat",
+        "terrace": "Terraça"
+    },
+    "property_card": {
+      "room": "habitació",
+      "rooms": "habitacions",
+      "bathroom": "bany",
+      "bathrooms": "banys",
+      "month": "mes"
+    }
+}

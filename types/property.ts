@@ -1,11 +1,13 @@
 export type Property = {
     reference_number: string;
     title_cat: string;
-    title_es: string;
+    title_esp: string;
     title_en: string;
+    title_fr: string;
     description_en: string;
-    description_es: string;
+    description_esp: string;
     description_cat: string;
+    description_fr: string;
     photo: string;
     square_meters: number;
     bedrooms: number;

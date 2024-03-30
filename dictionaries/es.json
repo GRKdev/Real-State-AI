@@ -1,0 +1,26 @@
+{
+    "navbar": {
+      "searchbar" : "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación."
+    },
+    "extra_options": {
+        "title": "Opciones adicionales",
+        "bedrooms": "Habitaciones",
+        "bathrooms": "Baños",
+        "parking": "Parking",
+        "balcony": "Balcón",
+        "garden": "Jardín",
+        "elevator": "Ascensor",
+        "heating": "Calefacción",
+        "electrod": "Electrod.",
+        "furnished": "Amueblado",
+        "terrace": "Terraza"
+      
+    },
+    "property_card": {
+      "room": "habitación",
+      "rooms": "habitaciones",
+      "bathroom": "baño",
+      "bathrooms": "baños",
+      "month": "mes"
+    }
+}

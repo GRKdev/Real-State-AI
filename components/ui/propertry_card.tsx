@@ -1,6 +1,6 @@
 import { CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { PropertyCardProps } from '@/types/property';
+import { PropertyCardProps, Property } from '@/types/property';
 import { JSX, SVGProps } from "react";
 import MyImage from "@/components/fallback_img";
 import {
@@ -10,24 +10,84 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import { Undo2, ZoomIn, SquareParking, Fence, Heater, WashingMachine, Armchair, TreePine, ArrowUpDown, RockingChair, Hash } from "lucide-react"
+import { getDictionary } from '@/dictionaries'
+import { useLocale } from '@/contexts/localeContext';
+import { Dictionary } from '@/types/dictionary';
+import { useEffect, useState } from "react";
 
-const featureMappings = [
-    { key: 'parking', name: 'Parking', Icon: SquareParking },
-    { key: 'heating', name: 'Heating', Icon: Heater },
-    { key: 'furnished', name: 'Furnished', Icon: Armchair },
-    { key: 'electrodometics', name: 'Electro.', Icon: WashingMachine },
-    { key: 'balcony', name: 'Balcony', Icon: Fence },
-    { key: 'terrace', name: 'Terrace', Icon: RockingChair },
-    { key: 'garden', name: 'Garden', Icon: TreePine },
-    { key: 'elevator', name: 'Elevator', Icon: ArrowUpDown },
-];
+
+
 
 export default function PropertyCard({
-
     property,
     className = '',
     style = {}
 }: PropertyCardProps) {
+    const { locale } = useLocale();
+    const [dict, setDict] = useState<Dictionary>({
+        navbar: { searchbar: '' },
+        extra_options: {
+            title: '',
+            bedrooms: '',
+            bathrooms: '',
+            parking: '',
+            balcony: '',
+            garden: '',
+            elevator: '',
+            heating: '',
+            electrod: '',
+            furnished: '',
+            terrace: '',
+        },
+        property_card: {
+            month: '',
+            room: '',
+            rooms: '',
+            bathroom: '',
+            bathrooms: '',
+        }
+
+    });
+    useEffect(() => {
+        const fetchDictionary = async () => {
+            try {
+                const dictionary = await getDictionary(locale);
+                setDict(dictionary);
+            } catch (error) {
+                console.error("Failed to load dictionary:", error);
+            }
+        };
+
+        fetchDictionary();
+    }, [locale]);
+
+    const featureMappings = [
+        { key: 'parking', name: dict.extra_options.parking, Icon: SquareParking },
+        { key: 'heating', name: dict.extra_options.heating, Icon: Heater },
+        { key: 'furnished', name: dict.extra_options.furnished, Icon: Armchair },
+        { key: 'electrodometics', name: dict.extra_options.electrod, Icon: WashingMachine },
+        { key: 'balcony', name: dict.extra_options.balcony, Icon: Fence },
+        { key: 'terrace', name: dict.extra_options.terrace, Icon: RockingChair },
+        { key: 'garden', name: dict.extra_options.garden, Icon: TreePine },
+        { key: 'elevator', name: dict.extra_options.elevator, Icon: ArrowUpDown },
+    ];
+    const titleLocaleMap: { [key: string]: keyof Property } = {
+        en: 'title_en',
+        ca: 'title_cat',
+        es: 'title_esp',
+        fr: 'title_fr'
+    };
+    const descriptionLocaleMap: { [key: string]: keyof Property } = {
+        en: 'description_en',
+        ca: 'description_cat',
+        es: 'description_esp',
+        fr: 'description_fr'
+    };
+    const titleKey = titleLocaleMap[locale];
+    const displayTitle = property[titleKey] ? property[titleKey] : property.title_en;
+    const descriptionKey = descriptionLocaleMap[locale];
+    const displayDescription = property[descriptionKey] ? property[descriptionKey] : property.description_en;
+
     return (
         <div className={`card-container ${className}`} style={style}>
             <div className="w-full">
@@ -36,7 +96,7 @@ export default function PropertyCard({
                         <div className="card">
                             <CardHeader>
                                 <div className="image-container">
-                                    <a href={`/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
+                                    <a href={`${locale}/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
 
                                         <MyImage
                                             alt={property.title_cat}
@@ -65,7 +125,7 @@ export default function PropertyCard({
                                         <div className="flex items-center space-x-1">
                                             <BedIcon className="text-orange-500" />
                                             <span className="text-sm">
-                                                {property.bedrooms} {property.bedrooms === 1 ? 'room' : 'rooms'}
+                                                {property.bedrooms} {property.bedrooms === 1 ? dict.property_card.room : dict.property_card.rooms}
                                             </span>
                                         </div>
                                     )}
@@ -73,7 +133,7 @@ export default function PropertyCard({
                                         <div className="flex items-center space-x-1">
                                             <BathIcon className="text-orange-500" />
                                             <span className="text-sm">
-                                                {property.bathrooms} {property.bathrooms === 1 ? 'bathroom' : 'bathrooms'}
+                                                {property.bathrooms} {property.bathrooms === 1 ? dict.property_card.bathroom : dict.property_card.bathrooms}
                                             </span>
                                         </div>
                                     )}
@@ -81,8 +141,10 @@ export default function PropertyCard({
 
                                 <Separator className="mb-2" />
 
-                                <a href={`/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
-                                    <h3 className="text-lg font-semibold title-container hover:text-orange-500">{property.title_en}</h3>
+                                <a href={`${locale}/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
+                                    <h3 className="text-lg font-semibold title-container hover:text-orange-500">
+                                        {displayTitle}
+                                    </h3>
                                 </a>
                                 <p className="text-lg font-bold text-orange-500 text-center items-start">
                                     {new Intl.NumberFormat('de-DE', {
@@ -91,7 +153,7 @@ export default function PropertyCard({
                                         minimumFractionDigits: 0,
                                         maximumFractionDigits: 0,
                                     }).format(property.price)}
-                                    {property.transaction_type === 2 ? <small className="text-sm"> / mes</small> : ''}
+                                    {property.transaction_type === 2 ? <small className="text-sm"> / {dict.property_card.month}</small> : ''}
                                 </p>
                                 <p className="flex items-center gap-1 mt-2 mb-1">
                                     <MapIcon className="text-gray-500 h-4 w-4" />
@@ -128,7 +190,7 @@ export default function PropertyCard({
                         <div className="card">
                             <CardContent>
                                 <h2 className="text-sm description-container items-start mt-5 text-pretty">
-                                    {property.description_en}
+                                    {displayDescription}
                                 </h2>
                                 <div className="grid grid-cols-2 mt-5 h-28 m-10 gap-2">
                                     {featureMappings.map(({ key, name, Icon }) =>

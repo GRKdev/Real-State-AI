@@ -1,5 +1,5 @@
-'use client'
-import { useState, FormEvent } from 'react';
+"use client"
+import { useState, FormEvent, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu";
@@ -7,6 +7,10 @@ import { TrendingUp, TrendingDown } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 import { ExtraOptionsCheckbox } from '@/components/ui/extra-options';
 import { Microphone } from './button-microphone';
+import { getDictionary } from '@/dictionaries'
+import { useLocale } from '@/contexts/localeContext';
+import { Dictionary } from '@/types/dictionary';
+
 
 interface NavbarSearchProps {
     onSearch: (message: string, filter: string) => void;
@@ -29,15 +33,52 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     const [showElectrodometics, setShowElectrodometics] = useState<Checked>(false)
     const [showFurnished, setShowFurnished] = useState<Checked>(false)
 
+    const { locale } = useLocale();
+    const [dict, setDict] = useState<Dictionary>({
+        navbar: { searchbar: '' },
+        extra_options: {
+            title: '',
+            bedrooms: '',
+            bathrooms: '',
+            parking: '',
+            balcony: '',
+            garden: '',
+            elevator: '',
+            heating: '',
+            electrod: '',
+            furnished: '',
+            terrace: '',
+        },
+        property_card: {
+            month: '',
+            room: '',
+            rooms: '',
+            bathroom: '',
+            bathrooms: '',
+        }
+    });
+    useEffect(() => {
+        const fetchDictionary = async () => {
+            try {
+                const dictionary = await getDictionary(locale);
+                setDict(dictionary);
+            } catch (error) {
+                console.error("Failed to load dictionary:", error);
+            }
+        };
+
+        fetchDictionary();
+    }, [locale]);
+
     const extraOptions = [
-        { id: "showTerrace", label: "Terrace", state: showTerrace, setState: setShowTerrace },
-        { id: "showParking", label: "Parking", state: showParking, setState: setShowParking },
-        { id: "showBalcony", label: "Balcony", state: showBalcony, setState: setShowBalcony },
-        { id: "showGarden", label: "Garden", state: showGarden, setState: setShowGarden },
-        { id: "showElevator", label: "Elevator", state: showElevator, setState: setShowElevator },
-        { id: "showHeating", label: "Heating", state: showHeating, setState: setShowHeating },
-        { id: "showElectrodometics", label: "Electrod.", state: showElectrodometics, setState: setShowElectrodometics },
-        { id: "showFurnished", label: "Furnished", state: showFurnished, setState: setShowFurnished },
+        { id: "showTerrace", label: dict.extra_options.terrace || "Terrace", state: showTerrace, setState: setShowTerrace },
+        { id: "showParking", label: dict.extra_options.parking || "Parking", state: showParking, setState: setShowParking },
+        { id: "showBalcony", label: dict.extra_options.balcony || "Balcony", state: showBalcony, setState: setShowBalcony },
+        { id: "showGarden", label: dict.extra_options.garden || "Garden", state: showGarden, setState: setShowGarden },
+        { id: "showElevator", label: dict.extra_options.elevator || "Elevator", state: showElevator, setState: setShowElevator },
+        { id: "showHeating", label: dict.extra_options.heating || "Heating", state: showHeating, setState: setShowHeating },
+        { id: "showElectrodometics", label: dict.extra_options.electrod || "Electrod.", state: showElectrodometics, setState: setShowElectrodometics },
+        { id: "showFurnished", label: dict.extra_options.furnished || "Furnished", state: showFurnished, setState: setShowFurnished },
     ];
 
     const updateFilter = (value: string, label: string, ascending: boolean) => {
@@ -75,12 +116,13 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     return (
         <div className="flex justify-center">
             <div className="flex gap-2 w-5/6 justify-center items-center">
+
                 <form onSubmit={handleSubmit} className="w-1/2 input-background">
                     <Input
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Search properties or press the mic to speak, click again to stop recording."
+                        placeholder={dict.navbar.searchbar}
                         className="input-class"
                         maxLength={125}
                     />
@@ -115,7 +157,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
 
             <aside className="fixed left-40 h-full pt-32 options hidden lg:block">
-                <h3 className="mt-4 mb-2">Extra Options:</h3>
+                <h3 className="mt-4 mb-2">{dict.extra_options.title}:</h3>
                 <ExtraOptionsCheckbox options={extraOptions} />
             </aside>
         </div>

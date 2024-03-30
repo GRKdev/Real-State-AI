@@ -1,0 +1,26 @@
+{
+    "navbar": {
+      "searchbar": "Search properties or press the mic to speak, click again to stop recording."
+    },
+    "extra_options": {
+        "title": "Extra Options",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "parking": "Parking",
+        "balcony": "Balcony",
+        "garden": "Garden",
+        "elevator": "Elevator",
+        "heating": "Heating",
+        "electrod": "Electrod.",
+        "furnished": "Furnished",
+        "terrace": "Terrace"
+      
+    },
+    "property_card": {
+      "room": "room",
+      "rooms": "rooms",
+      "bathroom": "bath",
+      "bathrooms": "baths",
+      "month": "month"
+    }
+  }
