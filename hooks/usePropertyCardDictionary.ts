@@ -11,6 +11,9 @@ export const usePropertyCardDictionary = () => {
         rooms: '',
         bathroom: '',
         bathrooms: '',
+        total_results: '',
+        last_question: '',
+        no_results: '',
     });
   
     useEffect(() => {
