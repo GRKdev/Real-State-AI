@@ -21,5 +21,13 @@
       "bathroom": "couler",
       "bathrooms": "coulers",
       "month": "mois"
+    },
+    "filters": {
+      "title_filter": "Filtres",
+      "no_filters": "Pas de filtres",
+      "price": "Prix",
+      "bedroom": "Chambre",
+      "bathroom": "Salle de bain",
+      "square": "Carré"
     }
 }

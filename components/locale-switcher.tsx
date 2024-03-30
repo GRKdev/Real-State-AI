@@ -32,7 +32,7 @@ export default function LocaleSwitcher() {
 
     const handleLocaleChange = (locale: Locale) => {
         setLocale(locale);
-        // router.push(redirectedPathName(locale));
+        router.push(redirectedPathName(locale));
     };
 
     return (

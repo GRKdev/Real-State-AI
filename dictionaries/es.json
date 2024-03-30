@@ -22,5 +22,13 @@
       "bathroom": "baño",
       "bathrooms": "baños",
       "month": "mes"
+    },
+    "filters": {
+      "title_filter": "Filtros",
+      "no_filters": "Sin filtros",
+      "price": "Precio",
+      "bedroom": "Habitaciones",
+      "bathroom": "Baños",
+      "square": "Superficie"
     }
 }

@@ -3,7 +3,7 @@ import { useState, FormEvent, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu";
-import { TrendingUp, TrendingDown } from 'lucide-react';
+import { TrendingUp, TrendingDown, ArrowDown } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 import { ExtraOptionsCheckbox } from '@/components/ui/extra-options';
 import { Microphone } from './button-microphone';
@@ -21,7 +21,6 @@ type Checked = DropdownMenuCheckboxItemProps["checked"]
 export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSort }) => {
     const [message, setMessage] = useState('');
     const [filter, setFilter] = useState('');
-    const [filterLabel, setFilterLabel] = useState('Filters');
     const [isAscending, setIsAscending] = useState(true);
 
     const [showTerrace, setShowTerrace] = useState<Checked>(false)
@@ -49,13 +48,21 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
             furnished: '',
             terrace: '',
         },
+        filters: {
+            title_filter: '',
+            no_filters: '',
+            price: '',
+            bedroom: '',
+            bathroom: '',
+            square: '',
+        },
         property_card: {
             month: '',
             room: '',
             rooms: '',
             bathroom: '',
             bathrooms: '',
-        }
+        },
     });
     useEffect(() => {
         const fetchDictionary = async () => {
@@ -113,6 +120,8 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         onSearch(searchMessage, combinedFilter);
         setMessage('');
     };
+    const [filterLabel, setFilterLabel] = useState(dict.filters.title_filter);
+
     return (
         <div className="flex justify-center">
             <div className="flex gap-2 w-5/6 justify-center items-center">
@@ -132,7 +141,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline">
-                                {filterLabel !== 'Filters' && (
+                                {filterLabel !== dict.filters.title_filter && (
                                     isAscending ? <TrendingUp className="mr-2 h-4 w-4" /> : <TrendingDown className="mr-2 h-4 w-4" />
                                 )}
                                 {filterLabel}
@@ -140,15 +149,15 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         </DropdownMenuTrigger>
                         <DropdownMenuContent side="bottom">
                             <DropdownMenuRadioGroup value={filter}>
-                                <DropdownMenuRadioItem value="" onClick={() => updateFilter('', 'Filters', true)}>No Filter</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', 'Price', true)}>Price Asc.</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', 'Price', false)}>Price Desc.</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', 'Bedroom', true)}>Bedroom Asc.</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', 'Bedroom', false)}>Bedroom Desc.</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', 'Bathroom', true)}>Bathroom Asc.</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', 'Bathroom', false)}>Bathroom Desc.</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', 'Square m.', true)}>Square Asc.</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', 'Square m.', false)}>Square Desc.</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="" onClick={() => updateFilter('', dict.filters.title_filter, true)}>{dict.filters.no_filters}</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', dict.filters.price, true)}>{dict.filters.price} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', dict.filters.price, false)}>{dict.filters.price} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', dict.filters.bedroom, true)}>{dict.filters.bedroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', dict.filters.bedroom, false)}>{dict.filters.bedroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', dict.filters.bathroom, true)}>{dict.filters.bathroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', dict.filters.bathroom, false)}>{dict.filters.bathroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', dict.filters.square, true)}>{dict.filters.square} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', dict.filters.square, false)}>{dict.filters.square} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
                             </DropdownMenuRadioGroup>
                         </DropdownMenuContent>
                     </DropdownMenu>

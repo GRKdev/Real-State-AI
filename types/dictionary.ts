@@ -22,7 +22,15 @@ export type Dictionary = {
         rooms: string;
         bathroom: string;
         bathrooms: string;
-    }
+    },
+    filters: {
+        title_filter: string;
+        no_filters: string;
+        price: string;
+        bedroom: string;
+        bathroom: string;
+        square: string;
+    };
 }
 
 export type DictionaryProps = {

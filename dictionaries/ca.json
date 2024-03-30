@@ -21,5 +21,14 @@
       "bathroom": "bany",
       "bathrooms": "banys",
       "month": "mes"
+    },
+    "filters": {
+      "title_filter": "Filtres",
+      "no_filters": "Sense filtres",
+      "price": "Preu",
+      "bedroom": "Habitacions",
+      "bathroom": "Banys",
+      "square": "Metres q."
     }
 }
+

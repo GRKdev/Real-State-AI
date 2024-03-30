@@ -45,6 +45,14 @@ export default function PropertyCard({
             rooms: '',
             bathroom: '',
             bathrooms: '',
+        },
+        filters: {
+            title_filter: '',
+            no_filters: '',
+            price: '',
+            bedroom: '',
+            bathroom: '',
+            square: '',
         }
 
     });
