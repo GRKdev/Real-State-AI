@@ -17,7 +17,10 @@
       "rooms": "rooms",
       "bathroom": "bath",
       "bathrooms": "baths",
-      "month": "month"
+      "month": "month",
+      "total_results": "Total results: ",
+      "last_question": "Last question: ",
+      "no_results": "No results found. Please try different search criteria."
     },
     "filters": {
       "title_filter": "Filters",

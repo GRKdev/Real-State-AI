@@ -7,6 +7,7 @@ import { Property } from '@/types/property';
 import ErrorMessageAlert from '@/components/ui/error-message';
 import WelcomeMessage from '@/components/ui/welcome-message';
 import { useLocale } from '@/contexts/localeContext';
+import { usePropertyCardDictionary } from "@/hooks/usePropertyCardDictionary";
 
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
@@ -16,6 +17,8 @@ export default function Home() {
   const [hasSearched, setHasSearched] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const { locale } = useLocale();
+  const propertyCardDict = usePropertyCardDictionary();
+  const [lastSearchMessage, setLastSearchMessage] = useState('');
 
 
   useEffect(() => {
@@ -30,6 +33,7 @@ export default function Home() {
     setSearchCount(prevCount => prevCount + 1);
     setHasSearched(true);
     setErrorMessage('');
+    setLastSearchMessage(message);
 
 
     const messageToAI = message + "%"
@@ -115,12 +119,17 @@ export default function Home() {
             />
           ))
         ) : !errorMessage && hasSearched && (
-          <p className="text-center pt-32">No results found. Please try different search criteria.</p>
+          <div className="w-full text-center py-4">
+            <p className="text-center pt-32 pb-5">{propertyCardDict.no_results}</p>
+            <p>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
+          </div>
+
         )}
       </div>
       {!isLoading && response.length > 0 && (
         <div className="w-full text-center py-4 text-gray-500">
-          <span>Total Results: {response.length}</span>
+          <p>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
+          <p>{propertyCardDict.total_results}<strong>{response.length}</strong></p>
         </div>
       )}
     </div>

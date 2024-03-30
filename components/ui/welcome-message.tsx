@@ -11,7 +11,7 @@ const WelcomeMessage: React.FC = () => {
     }
 
     return (
-        <div className="welcome-message ">
+        <div className="welcome-message">
             <p className="italic">
                 <strong>{welcomeMessage}</strong>
             </p>

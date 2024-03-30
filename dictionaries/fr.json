@@ -17,7 +17,10 @@
       "rooms": "chambres",
       "bathroom": "couler",
       "bathrooms": "coulers",
-      "month": "mois"
+      "month": "mois",
+      "total_results": "Résultats totaux : ",
+      "last_question": "Dernière question : ",
+      "no_results": "Aucun résultat trouvé. Veuillez essayer différents critères de recherche."
     },
     "filters": {
       "title_filter": "Filtres",

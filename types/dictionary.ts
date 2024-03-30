@@ -19,6 +19,9 @@ export type Dictionary = {
         rooms: string;
         bathroom: string;
         bathrooms: string;
+        total_results: string;
+        last_question: string;
+        no_results: string;
     },
     filters: {
         title_filter: string;

@@ -17,7 +17,11 @@
       "rooms": "habitacions",
       "bathroom": "bany",
       "bathrooms": "banys",
-      "month": "mes"
+      "month": "mes",
+      "total_results": "Resultats totals: ",
+      "last_question": "Última pregunta: ",
+      "no_results": "No s'han trobat resultats. Proveu amb altres criteris de cerca."
+
     },
     "filters": {
       "title_filter": "Filtres",
