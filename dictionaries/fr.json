@@ -1,7 +1,4 @@
 {
-    "navbar": {
-      "searchbar" : "Chercher des propriétés ou appuyez sur le microphone pour parler, appuyez à nouveau pour arrêter l'enregistrement."
-    },
     "extra_options": {
         "title": "Options supplémentaires",
         "bedrooms": "Chambres",
@@ -28,6 +25,50 @@
       "price": "Prix",
       "bedroom": "Chambre",
       "bathroom": "Salle de bain",
-      "square": "Carré"
-    }
+      "square": "Carré",
+      "searchbar" : "Chercher des propriétés ou appuyez sur le microphone pour parler, appuyez à nouveau pour arrêter l'enregistrement."
+    },
+    "welcomeMessage": {
+      "welcomeUser": {
+        "welcome": "Bienvenue",
+        "message": "! Profitez de cette démo.",
+        "welcome_no_user": "Bienvenue à cette démo, n'oubliez pas de vous inscrire pour l'utiliser."
+
+      },
+      "overview": {
+        "title": "Démonstration Générale",
+        "description": "Notre Moteur de Recherche Immobilière est une plateforme de pointe conçue spécifiquement pour le marché immobilier andorran. Utilisant un modèle affiné d'OpenAI (babbage-002), le moteur de recherche offre une précision et une vitesse sans précédent. Cette approche innovante assure que les utilisateurs reçoivent les résultats les plus pertinents rapidement et efficacement, plus que l'utilisation d'agents SQL traditionnels et moins cher que la génération directe de SQL à partir d'un grand modèle de langage (LLM)."
+      },
+      "features": {
+        "title": "Fonctionnalités",
+        "items": [
+          "Support Multilingue : S'adressant à un public diversifié avec un support pour le catalan, l'espagnol, l'anglais et le français.",
+          "Filtres de Recherche Avancés : Les utilisateurs peuvent affiner leur recherche avec divers filtres et options supplémentaires pour trouver leur propriété idéale.",
+          "Requêtes Alimentées par IA : Tire parti d'un modèle OpenAI affiné pour interpréter les entrées de recherche et générer des requêtes d'API précises.",
+          "Recherche Vocale : Utilise l'API Whisper d'OpenAI pour traiter les commandes vocales pour les requêtes de recherche.",
+          "Mises à Jour en Temps Réel : Met à jour dynamiquement les résultats de recherche, offrant un accès immédiat aux dernières propriétés."
+        ]
+      },
+      "technology": {
+        "title": "Technologie",
+        "items": [
+          "Next.js : Un framework React qui permet des fonctionnalités telles que le rendu côté serveur et la génération de sites Web statiques. Utilisé pour construire l'interface utilisateur frontale, offrant une expérience utilisateur dynamique et réactive.",
+          "GPT d'OpenAI (babbage-002) : Un modèle de langage affiné pour cette application afin de comprendre et de traiter efficacement les requêtes immobilières.",
+          "Whisper d'OpenAI : Une API de Reconnaissance Vocale qui permet aux utilisateurs d'entrer des requêtes de recherche via des commandes vocales.",
+          "PostgreSQL de Vercel : Mon choix pour une solution de base de données hautement évolutive et gérée, assurant une gestion des données robuste et sécurisée.",
+          "Déploiement sur les Serveurs de Vercel : Pour un hébergement sans souci et des performances supérieures, notre plateforme est déployée sur l'infrastructure de pointe de Vercel.",
+          "Clerk : Un service d'authentification des utilisateurs qui fournit une fonctionnalité de connexion sécurisée et personnalisable pour notre Moteur de Recherche Immobilière."
+        ]
+      },
+      "fine_tuned": {
+        "title": "Pourquoi un Modèle Ajusté?",
+        "description": "Choisir un modèle ajusté par rapport aux agents SQL traditionnels ou à la génération directe de SQL à partir d'un grand modèle de langage (LLM) présente plusieurs avantages :",
+        "items": [
+          "Précision : Nous pouvons former avec un ensemble de données spécifique et nous aurons moins d'Erreurs et d'Hallucinations.",
+          "Vitesse : Bien que l'ajustement nécessite un effort initial significatif, le modèle résultant fournit des réponses plus rapides en générant directement des requêtes d'API.",
+          "Importance des Données : La qualité des paramètres de l'API dépend grandement des données sous-jacentes. L'ajustement permet au modèle de tirer parti de jeux de données spécifiques pour améliorer la performance."
+        ]
+      }
+      
+  }    
 }

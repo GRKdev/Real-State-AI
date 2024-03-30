@@ -1,7 +1,4 @@
 {
-    "navbar": {
-      "searchbar" : "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación."
-    },
     "extra_options": {
         "title": "Opciones adicionales",
         "bedrooms": "Habitaciones",
@@ -27,8 +24,51 @@
       "title_filter": "Filtros",
       "no_filters": "Sin filtros",
       "price": "Precio",
-      "bedroom": "Habitaciones",
+      "bedroom": "Habitación",
       "bathroom": "Baños",
-      "square": "Superficie"
-    }
+      "square": "Superficie",
+      "searchbar" : "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación."
+    },
+    "welcomeMessage": {
+        "welcomeUser": {
+          "welcome": "Bienvenido",
+          "message": "! Disfruta de esta demostración.",
+          "welcome_no_user": "Bienvenido a esta demostración, no olvides registrarte para usarla."
+        },
+        "overview": {
+          "title": "Demostración General",
+          "description": "Nuestro Motor de Búsqueda Inmobiliaria es una plataforma de vanguardia diseñada específicamente para el mercado inmobiliario andorrano. Utilizando un modelo afinado de OpenAI (babbage-002), el motor de búsqueda ofrece una precisión y velocidad sin precedentes. Este enfoque innovador asegura que los usuarios reciban los resultados más relevantes de manera rápida y eficiente, más que usando agentes SQL tradicionales y más barato que generando SQL directamente desde un modelo de lenguaje grande (LLM)."
+        },
+        "features": {
+          "title": "Características",
+          "items": [
+            "Soporte Multilingüe: Atendiendo a una audiencia diversa con soporte para catalán, español, inglés y francés.",
+            "Filtros de Búsqueda Avanzados: Los usuarios pueden refinar su búsqueda con varios filtros y opciones extra para encontrar su propiedad ideal.",
+            "Consultas Potenciadas por IA: Aprovecha un modelo de OpenAI afinado para interpretar entradas de búsqueda y generar consultas de API precisas.",
+            "Búsqueda por Voz: Utiliza la API Whisper de OpenAI para procesar comandos de voz para consultas de búsqueda.",
+            "Actualizaciones en Tiempo Real: Actualiza dinámicamente los resultados de búsqueda, proporcionando acceso inmediato a las últimas propiedades."
+          ]
+        },
+        "technology": {
+          "title": "Tecnología",
+          "items": [
+            "Next.js: Un marco de React que permite funcionalidades como la renderización del lado del servidor y la generación de sitios web estáticos. Utilizado para construir la interfaz frontal, proporcionando una experiencia de usuario dinámica y receptiva.",
+            "GPT de OpenAI (babbage-002): Un modelo de lenguaje afinado para esta aplicación para entender y procesar consultas inmobiliarias de manera eficiente.",
+            "Whisper de OpenAI: Una API de Texto-a-Voz que permite a los usuarios introducir consultas de búsqueda mediante comandos de voz.",
+            "PostgreSQL de Vercel: Mi elección para una solución de base de datos altamente escalable y gestionada, asegurando una gestión de datos robusta y segura.",
+            "Despliegue en Servidores de Vercel: Para un alojamiento sin problemas y un rendimiento superior, nuestra plataforma está desplegada en la infraestructura de vanguardia de Vercel.",
+            "Clerk: Un servicio de autenticación de usuarios que proporciona una funcionalidad de inicio de sesión segura y personalizable para nuestro Motor de Búsqueda Inmobiliaria."
+          ]
+        },
+        "fine_tuned": {
+          "title": "¿Por qué un Modelo Afinado?",
+          "description": "Elegir un modelo afinado sobre agentes SQL tradicionales o generar directamente SQL desde un gran modelo de lenguaje (LLM) presenta varias ventajas:",
+          "items": [
+            "Precisión: Podemos entrenar con un conjunto de datos específico y tendremos menos Errores y Alucinaciones.",
+            "Velocidad: Aunque el afinado requiere un esfuerzo inicial significativo, el modelo resultante proporciona respuestas más rápidas generando directamente consultas de API.",
+            "Importancia de los Datos: La calidad de los parámetros de la API depende en gran medida de los datos subyacentes. El afinado permite que el modelo aproveche conjuntos de datos específicos para mejorar el rendimiento."
+          ]
+        }     
+        
+      }
 }

@@ -1,7 +1,4 @@
 {
-    "navbar": {
-      "searchbar": "Search properties or press the mic to speak, click again to stop recording."
-    },
     "extra_options": {
         "title": "Extra Options",
         "bedrooms": "Bedrooms",
@@ -14,7 +11,6 @@
         "electrod": "Electrod.",
         "furnished": "Furnished",
         "terrace": "Terrace"
-      
     },
     "property_card": {
       "room": "room",
@@ -29,6 +25,50 @@
       "price": "Price",
       "bedroom": "Bedroom",
       "bathroom": "Bathroom",
+      "searchbar": "Search properties or press the mic to speak, click again to stop recording.",
       "square": "Square m."
+    },
+    "welcomeMessage": {
+      "welcomeUser": {
+        "welcome": "Welcome",
+        "message": "! Enjoy this demo.",
+        "welcome_no_user": "Welcome to this demo, don't forget to sign up to use it."
+      },
+      "overview": {
+        "title": "Overview Demo",
+        "description": "Our Real Estate Search Engine is a cutting-edge platform designed specifically for the Andorran property market. Utilizing a fine-tuned model from OpenAI (babbage-002), the search engine offers unprecedented precision and speed. This innovative approach ensures that users receive the most relevant results quickly and efficiently, more than using traditional SQL agents and cheaper than directly generating SQL from a large language model (LLM)."
+      },
+      "features": {
+        "title": "Features",
+        "items": [
+          "Multilingual Support: Catering to a diverse audience with support for Catalan, Spanish, English, and French.",
+          "Advanced Search Filters: Users can refine their search with various filters and extra options to find their ideal property.",
+          "AI-Powered Queries: Leverages a fine-tuned OpenAI model to interpret search inputs and generate precise API queries.",
+          "Voice Search: Utilizes OpenAI's Whisper API to process voice commands for search queries.",
+          "Real-Time Updates: Dynamically updates search results, providing immediate access to the latest properties."
+        ]
+      },
+      "technology": {
+        "title": "Technology",
+        "items": [
+          "Next.js: A React framework that enables functionality such as server-side rendering and generating static websites. Used for building the frontend interface, providing a dynamic and responsive user experience.",
+          "OpenAI's GPT (babbage-002): A language model fine-tuned for this application to understand and process real estate queries efficiently.",
+          "OpenAI's Whisper: A Speech-to-Text API that allows users to input search queries via voice commands.",
+          "Vercel PostgreSQL: My choice for a highly scalable and managed database solution, ensuring robust and secure data management.",
+          "Deployment on Vercel Servers: For seamless hosting and superior performance, our platform is deployed on Vercel's cutting-edge infrastructure.",
+          "Clerk: A user authentication service that provides secure and customizable login functionality for our Real Estate Search Engine."
+        ]
+      },
+      "fine_tuned": {
+        "title": "Why a Fine-Tuned Model?",
+        "description": "Choosing a fine-tuned model over traditional SQL agents or directly generating SQL from a large language model (LLM) presents several advantages:",
+        "items": [
+          "Precision: We can train with a specific dataset and we will have fewer Errors and Hallucinations.",
+          "Speed: Although fine-tuning requires significant initial effort, the resulting model provides faster responses by directly generating API queries.",
+          "Data Importance: The quality of the parameters API heavily depends on the underlying data. Fine-tuning allows the model to leverage specific datasets for improved performance."
+        ]
+      }
+      
     }
   }
+  

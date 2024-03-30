@@ -1,7 +1,4 @@
 {
-    "navbar": {
-      "searchbar" : "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació."
-    },
     "extra_options": {
         "title": "Opcions addicionals",
         "bedrooms": "Habitacions",
@@ -26,9 +23,52 @@
       "title_filter": "Filtres",
       "no_filters": "Sense filtres",
       "price": "Preu",
-      "bedroom": "Habitacions",
+      "bedroom": "Habitació",
       "bathroom": "Banys",
-      "square": "Metres q."
-    }
+      "square": "Metres q.",
+      "searchbar" : "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació."
+    },
+    "welcomeMessage": {
+        "welcomeUser": {
+          "welcome": "Benvingut",
+          "message": "! Gaudeix d'aquesta demostració.",
+          "welcome_no_user": "Benvigut a aquesta demostració, no oblideu registrar-vos per utilitzar-la."
+        },
+        "overview": {
+          "title": "Demostració General",
+          "description": "El nostre Motor de Cerca Immobiliària és una plataforma d'avantguarda dissenyada específicament per al mercat immobiliari andorrà. Utilitzant un model afinat d'OpenAI (babbage-002), el motor de cerca ofereix una precisió i velocitat sense precedents. Aquest enfocament innovador assegura que els usuaris reben els resultats més rellevants de manera ràpida i eficient, més que utilitzant agents SQL tradicionals i més barat que generant SQL directament des d'un model de llenguatge gran (LLM)."
+        },
+        "features": {
+          "title": "Característiques",
+          "items": [
+            "Suport Multilingüe: Atendre a un públic divers amb suport per al català, espanyol, anglès i francès.",
+            "Filtres de Cerca Avançats: Els usuaris poden refinar la seva cerca amb diversos filtres i opcions extra per trobar la seva propietat ideal.",
+            "Consultes Potenciades per IA: Aprofita un model d'OpenAI afinat per interpretar entrades de cerca i generar consultes d'API precises.",
+            "Cerca per Veu: Utilitza l'API Whisper d'OpenAI per processar comandes de veu per a consultes de cerca.",
+            "Actualitzacions en Temps Real: Actualitza dinàmicament els resultats de la cerca, proporcionant accés immediat a les últimes propietats."
+          ]
+        },
+        "technology": {
+          "title": "Tecnologia",
+          "items": [
+            "Next.js: Un marc de React que permet funcionalitats com la renderització del costat del servidor i la generació de llocs web estàtics. Utilitzat per construir la interfície d'usuari frontal, proporcionant una experiència d'usuari dinàmica i sensible.",
+            "GPT d'OpenAI (babbage-002): Un model de llenguatge afinat per aquesta aplicació per entendre i processar consultes immobiliàries de manera eficient.",
+            "Whisper d'OpenAI: Una API de Text-a-Veu que permet als usuaris introduir consultes de cerca mitjançant comandes de veu.",
+            "PostgreSQL de Vercel: La meva elecció per a una solució de base de dades gestionada i altament escalable, assegurant una gestió de dades robusta i segura.",
+            "Desplegament en Servidors de Vercel: Per a un allotjament sense problemes i un rendiment superior, la nostra plataforma està desplegada en la infraestructura d'avantguarda de Vercel.",
+            "Clerk: Un servei d'autenticació d'usuaris que proporciona una funcionalitat d'inici de sessió segura i personalitzable per al nostre Motor de Cerca Immobiliària."
+          ]
+        },
+        "fine_tuned": {
+          "title": "Per què un Model Afinat?",
+          "description": "Escollir un model afinat en lloc d'agents SQL tradicionals o generar directament SQL des d'un gran model de llenguatge (LLM) presenta diversos avantatges:",
+          "items": [
+            "Precisió: Podem entrenar amb un conjunt de dades específic i tindrem menys Errors i Al·lucinacions.",
+            "Velocitat: Encara que l'afinament requereix un esforç inicial significatiu, el model resultant proporciona respostes més ràpides generant directament consultes d'API.",
+            "Importància de les Dades: La qualitat dels paràmetres de l'API depèn molt de les dades subjacents. L'afinament permet al model aprofitar conjunts de dades específics per millorar el rendiment."
+          ]
+        }
+        
+      }
 }
 
