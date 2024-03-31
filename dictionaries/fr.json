@@ -23,7 +23,8 @@
       "no_results": "Aucun résultat trouvé. Veuillez essayer différents critères de recherche.",
       "previous": "Précédent",
       "next": "Suivant",
-      "more_pages": "Plus de pages"
+      "more_pages": "Plus de pages",
+      "error_login": "Tu dois être connecté pour utiliser cette fonctionnalité. Veuillez vous connecter ou vous inscrire et réessayer."
     },
     "filters": {
       "title_filter": "Filtres",

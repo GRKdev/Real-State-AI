@@ -24,7 +24,8 @@
       "no_results": "No se han encontrado resultados. Por favor, prueba con diferentes criterios de búsqueda.",
       "previous": "Anterior",
       "next": "Siguiente",
-      "more_pages": "Más páginas"
+      "more_pages": "Más páginas",
+      "error_login": "Necesitas estar registrado para usar esta función. Por favor, inicia sesión o regístrate e inténtalo de nuevo."
 
     },
     "filters": {

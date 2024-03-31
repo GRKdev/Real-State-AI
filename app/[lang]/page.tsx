@@ -58,7 +58,7 @@ export default function Home() {
         body: JSON.stringify({ message: messageToAI, combinedFilter }),
       });
       if (res.status === 401) {
-        throw new Error('You need to be logged in to use this feature. Please Sign In or Sign Up and try again.');
+        throw new Error(propertyCardDict.error_login);
       }
       if (!res.ok) throw new Error(`HTTP error! Try again.`);
       const data = await res.json();
@@ -138,7 +138,7 @@ export default function Home() {
         )}
       </div>
       {!isLoading && response.length > 0 && (
-        <div className="w-full text-center py-4 text-gray-500">
+        <div className="w-full text-center pt-5 text-gray-500">
           {response.length > 6 && (
             <PaginationSection
               totalPosts={response.length}

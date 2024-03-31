@@ -17,6 +17,7 @@ export const usePropertyCardDictionary = () => {
         previous: '',
         next: '',
         more_pages: '',
+        error_login: '',
     });
   
     useEffect(() => {

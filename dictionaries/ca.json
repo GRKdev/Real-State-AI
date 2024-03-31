@@ -23,7 +23,8 @@
       "no_results": "No s'han trobat resultats. Proveu amb altres criteris de cerca.",
       "previous": "Anterior",
       "next": "Següent",
-      "more_pages": "Més pàgines"
+      "more_pages": "Més pàgines",
+      "error_login": "Necessites estar registrat per utilitzar aquesta funcionalitat. Si us plau, inicia sessió o registra't i torna-ho a provar."
 
     },
     "filters": {
