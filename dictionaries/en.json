@@ -20,7 +20,10 @@
       "month": "month",
       "total_results": "Total results: ",
       "last_question": "Last question: ",
-      "no_results": "No results found. Please try different search criteria."
+      "no_results": "No results found. Please try different search criteria.",
+      "previous": "Previous",
+      "next": "Next",
+      "more_pages": "More pages"
     },
     "filters": {
       "title_filter": "Filters",

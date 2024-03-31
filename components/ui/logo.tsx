@@ -1,6 +1,6 @@
-const Logo = () => {
+const Logo = ({ lang }: { lang: string }) => {
 	return (
-		<a href="/">
+		<a href={`/${lang}`}>
 			<svg version="1.1" id="Capa_1" className="transition-fill" xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 125.4 109.4" width="125" height="125" fill="currentColor">
 				<path d="M122.4,53.9c-16.6,0-33.3,0-50-0.1c-0.1,0-0.1,0-0.2,0c-0.6,0-1.1,0.5-1.1,1.1V57c0,0.6,0.5,1.1,1.1,1.1h10.1

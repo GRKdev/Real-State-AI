@@ -21,7 +21,10 @@
       "month": "mes",
       "total_results": "Resultados totales: ",
       "last_question": "Última pregunta: ",
-      "no_results": "No se han encontrado resultados. Por favor, prueba con diferentes criterios de búsqueda."
+      "no_results": "No se han encontrado resultados. Por favor, prueba con diferentes criterios de búsqueda.",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "more_pages": "Más páginas"
 
     },
     "filters": {

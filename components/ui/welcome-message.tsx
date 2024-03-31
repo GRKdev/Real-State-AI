@@ -7,7 +7,7 @@ const WelcomeMessage: React.FC = () => {
 
     let welcomeMessage = welcomeMessageDict.welcomeUser.welcome_no_user;
     if (isSignedIn && user) {
-        welcomeMessage = `${welcomeMessageDict.welcomeUser.welcome} ${user.firstName || ''}! ${welcomeMessageDict.welcomeUser.message}`;
+        welcomeMessage = `${welcomeMessageDict.welcomeUser.welcome} ${user.firstName || ''}${welcomeMessageDict.welcomeUser.message}`;
     }
 
     return (

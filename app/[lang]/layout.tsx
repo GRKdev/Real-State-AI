@@ -52,7 +52,7 @@ export default function RootLayout({
           <ClerkProviderWrapper>
             <LocaleProvider initialLocale={params.lang}>
               <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
-                <Logo />
+                <Logo lang={params.lang} />
               </div>
               <div className="fixed flex top-0 left-0 p-4 pl-10 z-50">
                 <div className="hidden lg:block">

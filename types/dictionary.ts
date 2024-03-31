@@ -22,6 +22,9 @@ export type Dictionary = {
         total_results: string;
         last_question: string;
         no_results: string;
+        previous: string;
+        next: string;
+        more_pages: string;
     },
     filters: {
         title_filter: string;

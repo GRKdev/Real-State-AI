@@ -20,7 +20,10 @@
       "month": "mes",
       "total_results": "Resultats totals: ",
       "last_question": "Última pregunta: ",
-      "no_results": "No s'han trobat resultats. Proveu amb altres criteris de cerca."
+      "no_results": "No s'han trobat resultats. Proveu amb altres criteris de cerca.",
+      "previous": "Anterior",
+      "next": "Següent",
+      "more_pages": "Més pàgines"
 
     },
     "filters": {

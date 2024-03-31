@@ -8,6 +8,7 @@ import ErrorMessageAlert from '@/components/ui/error-message';
 import WelcomeMessage from '@/components/ui/welcome-message';
 import { useLocale } from '@/contexts/localeContext';
 import { usePropertyCardDictionary } from "@/hooks/usePropertyCardDictionary";
+import PaginationSection from '@/components/ui/pagination-component';
 
 export default function Home() {
   const [response, setResponse] = useState<Property[]>([]);
@@ -20,6 +21,15 @@ export default function Home() {
   const propertyCardDict = usePropertyCardDictionary();
   const [lastSearchMessage, setLastSearchMessage] = useState('');
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(6);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentData = response.slice(firstPostIndex, lastPostIndex);
+
+  useEffect(() => {
+    setSearchCount(searchCount + 1);
+  }, [response]);
 
   useEffect(() => {
     if (response !== prevResponse) {
@@ -34,7 +44,7 @@ export default function Home() {
     setHasSearched(true);
     setErrorMessage('');
     setLastSearchMessage(message);
-
+    setCurrentPage(1);
 
     const messageToAI = message + "%"
     console.log('Message to AI:', messageToAI);
@@ -107,8 +117,8 @@ export default function Home() {
       <div key={searchCount} className="w-full card-container">
         {isLoading ? (
           [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
-        ) : response.length > 0 ? (
-          response.map((property, index) => (
+        ) : currentData.length > 0 ? (
+          currentData.map((property, index) => (
             <PropertyCard
               key={property.reference_number}
               property={property}
@@ -122,13 +132,20 @@ export default function Home() {
           <div className="w-full text-center py-4">
             <p className="text-center pt-32 pb-5">{propertyCardDict.no_results}</p>
             <p>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
+
           </div>
 
         )}
       </div>
       {!isLoading && response.length > 0 && (
         <div className="w-full text-center py-4 text-gray-500">
-          <p>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
+          <PaginationSection
+            totalPosts={response.length}
+            postsPerPage={postsPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+          <p className='pt-5'>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
           <p>{propertyCardDict.total_results}<strong>{response.length}</strong></p>
         </div>
       )}

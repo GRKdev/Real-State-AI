@@ -14,6 +14,9 @@ export const usePropertyCardDictionary = () => {
         total_results: '',
         last_question: '',
         no_results: '',
+        previous: '',
+        next: '',
+        more_pages: '',
     });
   
     useEffect(() => {

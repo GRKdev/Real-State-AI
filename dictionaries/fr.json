@@ -20,7 +20,10 @@
       "month": "mois",
       "total_results": "Résultats totaux : ",
       "last_question": "Dernière question : ",
-      "no_results": "Aucun résultat trouvé. Veuillez essayer différents critères de recherche."
+      "no_results": "Aucun résultat trouvé. Veuillez essayer différents critères de recherche.",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "more_pages": "Plus de pages"
     },
     "filters": {
       "title_filter": "Filtres",
