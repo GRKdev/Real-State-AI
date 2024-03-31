@@ -139,16 +139,19 @@ export default function Home() {
       </div>
       {!isLoading && response.length > 0 && (
         <div className="w-full text-center py-4 text-gray-500">
-          <PaginationSection
-            totalPosts={response.length}
-            postsPerPage={postsPerPage}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+          {response.length > 6 && (
+            <PaginationSection
+              totalPosts={response.length}
+              postsPerPage={postsPerPage}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
           <p className='pt-5'>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
           <p>{propertyCardDict.total_results}<strong>{response.length}</strong></p>
         </div>
       )}
+
     </div>
   );
 }  
