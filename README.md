@@ -35,6 +35,7 @@ Expamle of a traning data:
 - **OpenAI's Whisper API**: A voice recognition API that allows users to input search queries using voice commands.
 - **Vercel PostgreSQL**: My choice for a highly scalable and managed database solution, ensuring robust and secure data management.
 - **Deployment on Vercel Servers**: For seamless hosting and superior performance, our platform is deployed on Vercel's cutting-edge infrastructure.
+- **Clerk**: A user authentication service that provides secure and customizable login functionality for our Real Estate Search Engine.
 
 ## Demo
 
