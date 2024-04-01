@@ -11,7 +11,7 @@ const pool = new Pool({
   },
 });
 
-export async function GET(request: NextRequest, res: NextApiResponse) {
+export async function GET(request: NextRequest) {
   const {userId} = auth();
 
   if(!userId){

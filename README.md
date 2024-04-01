@@ -10,6 +10,7 @@ Our Real Estate Search Engine is a cutting-edge platform designed specifically f
 - **Advanced Search Filters**: Users can refine their search with various filters and extra options to find their ideal property.
 - **AI-Powered Queries**: Leverages a fine-tuned OpenAI model to interpret search inputs and generate precise API queries.
 - **Real-Time Updates**: Dynamically updates search results, providing immediate access to the latest properties.
+- **Voise Search**: Utilizes OpenAI's Whisper API to process voice commands for search queries.
 
 ## Why a Fine-Tuned Model?
 
@@ -31,6 +32,7 @@ Expamle of a traning data:
 
 - **Next.js**: A React framework that enables functionality such as server-side rendering and generating static websites. Used for building the frontend interface, providing a dynamic and responsive user experience.
 - **OpenAI's GPT (Babbage-02)**: A language model fine-tuned for this application to understand and process real estate queries efficiently.
+- **OpenAI's Whisper API**: A voice recognition API that allows users to input search queries using voice commands.
 - **Vercel PostgreSQL**: My choice for a highly scalable and managed database solution, ensuring robust and secure data management.
 - **Deployment on Vercel Servers**: For seamless hosting and superior performance, our platform is deployed on Vercel's cutting-edge infrastructure.
 
