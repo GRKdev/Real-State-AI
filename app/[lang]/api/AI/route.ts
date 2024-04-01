@@ -6,6 +6,7 @@ const openai = new OpenAI({
   baseURL: "https://oai.hconeai.com/v1",
   defaultHeaders: {
     "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
+    "Helicone-Property-Session": "real-state",
   },
 });
 interface ApiResponse {
