@@ -150,11 +150,11 @@ export default function PropertyCard({
                                 <h2 className="text-sm description-container items-start mt-5 text-pretty">
                                     {displayDescription}
                                 </h2>
-                                <div className="grid grid-cols-2 mt-5 h-28 m-10 gap-2">
+                                <div className="grid grid-cols-2 mt-5 h-32 m-6 gap-2">
                                     {featureMappings.map(({ key, name, Icon }) =>
                                         property[key as keyof typeof property] ? (
                                             <div key={key} className="flex items-center mb-2">
-                                                <Icon className="text-orange-500 mr-1 w-6 h-6" /> <span>{name}</span>
+                                                <Icon className="text-orange-500 mr-1 w-5 h-5" /> <span>{name}</span>
                                             </div>
                                         ) : null
                                     )}
