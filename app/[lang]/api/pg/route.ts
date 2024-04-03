@@ -1,6 +1,5 @@
 import { type NextRequest } from 'next/server';
 import { Pool } from 'pg';
-import type { NextApiResponse } from 'next';
 import { auth } from '@clerk/nextjs';
 
 

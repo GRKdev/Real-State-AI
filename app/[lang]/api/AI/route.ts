@@ -1,24 +1,31 @@
 import OpenAI from 'openai';
-import { auth } from '@clerk/nextjs';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-  baseURL: "https://oai.hconeai.com/v1",
-  defaultHeaders: {
-    "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
-    "Helicone-Property-Session": "real-state",
-  },
-});
-interface ApiResponse {
-  text: string;
-}
-const modelKey = process.env.OPENAI_FT_MODEL as string;
+import { auth, currentUser  } from '@clerk/nextjs';
 
 export async function POST(req: Request): Promise<Response> {
-  const {userId} = auth();
-  if(!userId){
+  const { userId } = auth();
+  const user = await currentUser();
+  const user_email = user?.emailAddresses[0]?.emailAddress || '';
+
+  if (!userId) {
     return new Response("Unauthorized", { status: 401 });
   }
+
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+    baseURL: "https://oai.hconeai.com/v1",
+    defaultHeaders: {
+      "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
+      "Helicone-Property-Session": "real-state",
+      "Helicone-User-Id": user_email
+    },
+  });
+
+  interface ApiResponse {
+    text: string;
+  }
+
+  const modelKey = process.env.OPENAI_FT_MODEL as string;
+
   if (req.method === 'POST') {
     const { message } = await req.json();
     console.log('message:', message);
@@ -32,7 +39,6 @@ export async function POST(req: Request): Promise<Response> {
         stop: ['%'],
       });
 
-      // Return a JSON response with the text completion
       const apiResponse: ApiResponse = { text: response.choices[0].text };
       console.log('API response:', apiResponse);
   
@@ -43,14 +49,12 @@ export async function POST(req: Request): Promise<Response> {
 
     } catch (error) {
       console.error('Error calling OpenAI:', error);
-      // Return a server error response
       return new Response(JSON.stringify({ error: 'Failed to fetch response from OpenAI' }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
     }
   } else {
-    // Method Not Allowed for non-POST requests
     return new Response(null, { status: 405 });
   }
 }
