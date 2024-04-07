@@ -28,7 +28,10 @@
     --card-bg: 255, 255, 255;
     --description-bg: #F8F8F7;
     --input-bg: white;
-
+    --icon-fill-dark: #ffffff;
+    --icon-fill: var(--icon-stroke-light);
+    --backgroundcontent: white;
+    --conversation-card-widht: 450px;
   }
 
   .dark {
@@ -55,7 +58,9 @@
     --card-bg: 25, 25, 25; 
     --description-bg: #121212;
     --input-bg: #191919;
-
+    --icon-fill: var(--icon-fill-dark);
+    --backgroundcontent: rgba(8, 8, 10, 1);
+    --conversation-card-widht: 450px;
   }
 }
 @layer base {
@@ -73,6 +78,21 @@
   }
 
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 .input-class {
   display: block;
   width: 100%;
@@ -409,4 +429,21 @@ width: 100%;
     font-size: 0.85rem;
     margin-top: 0.3em;
   }
+
+}
+
+#logo-icon path {
+  fill: var(--icon-fill);
+}
+
+#logo-icon:hover path {
+  fill: #F97315;
+}
+
+.footer {
+  margin-top: auto;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

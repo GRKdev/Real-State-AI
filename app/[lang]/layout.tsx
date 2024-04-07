@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import LocaleSwitcher from "@/components/locale-switcher";
 import { i18n, type Locale } from '@/i18n-config';
 import { LocaleProvider } from "@/contexts/localeContext";
+import Footer from "@/components/ui/Footer";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -76,11 +77,13 @@ export default function RootLayout({
                 </div>
 
               </div>
-
-              <main className="overflow-y-auto h-screen w-full pt-28 pb-32">
-                {children}
-                <Analytics />
-              </main>
+              <div className="flex flex-col fex-l1 overflow-y-auto min-h-screen pt-28">
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+              <Analytics />
             </LocaleProvider>
 
           </ClerkProviderWrapper>
