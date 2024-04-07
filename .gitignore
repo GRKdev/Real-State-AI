@@ -38,3 +38,5 @@ next-env.d.ts
 # Docker
 Dockerfile
 docker-compose.yml
+
+cat_dict.tsx

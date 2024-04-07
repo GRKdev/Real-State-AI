@@ -19,7 +19,7 @@ const ClerkProviderWrapper: React.FC<ClerkProviderWrapperProps> = ({ children, l
         'es': esES,
         'en': enUS,
         'fr': frFR,
-        'ca': esCA,
+        'ca': esES,
     };
 
     const locale = langMap[lang as keyof typeof langMap];
