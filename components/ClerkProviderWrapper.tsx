@@ -4,7 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { useTheme } from 'next-themes';
 import { dark, neobrutalism } from '@clerk/themes';
 import { frFR, esES, enUS } from "@clerk/localizations";
-import { esCA } from "@/utils/cat_dict";
+// import { esCA } from "@/cat_dict";
 
 interface ClerkProviderWrapperProps {
     children: React.ReactNode;
