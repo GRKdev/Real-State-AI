@@ -46,6 +46,22 @@ export default function PropertyCard({
         es: 'description_esp',
         fr: 'description_fr'
     };
+    const parishLMapping = {
+        1: "Andorra la Vella",
+        2: "Canillo",
+        3: "Encamp",
+        4: "La Massana",
+        5: "Ordino",
+        6: "Sant Julià",
+        7: "Escaldes-Engordany"
+    };
+    const realStateMapping = {
+        1: "Baron & Cabot",
+        2: "Deloitte",
+        3: "Blackrock",
+        4: "Particular"
+    };
+
     const titleKey = titleLocaleMap[locale];
     const displayTitle = property[titleKey] ? property[titleKey] : property.title_en;
     const descriptionKey = descriptionLocaleMap[locale];
@@ -116,7 +132,7 @@ export default function PropertyCard({
                                 <p className="flex items-center gap-1 mt-2 mb-1">
                                     <MapIcon className="text-gray-500 h-4 w-4" />
                                     <span className="text-sm text-gray-500">
-                                        {property.parish === 1 ? "Andorra la Vella" : property.parish === 2 ? "Canillo" : property.parish === 3 ? "Encamp" : property.parish === 4 ? "La Massana" : property.parish === 5 ? "Ordino" : property.parish === 6 ? "Sant Julià" : property.parish === 7 ? "Escaldes-Engordany" : ""}
+                                        {parishLMapping[property.parish as keyof typeof parishLMapping]}
                                     </span>
                                 </p>
 
@@ -125,7 +141,7 @@ export default function PropertyCard({
                                     <p className="flex items-center mb-1 gap-1">
                                         <BuildingIcon className="text-gray-500 h-4 w-4" />
                                         <span className="text-sm text-gray-500">
-                                            {property.real_state === 1 ? "Baron & Cabot" : property.real_state === 2 ? "Deloitte" : property.real_state === 3 ? "Blackrock" : "Particular"}
+                                            {realStateMapping[property.real_state as keyof typeof realStateMapping]}
                                         </span>
                                     </p>
                                     <p className="flex justify-between items-center text-sm text-gray-500 text-right gap-1 ">

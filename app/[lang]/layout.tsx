@@ -49,7 +49,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ClerkProviderWrapper>
+          <ClerkProviderWrapper lang={params.lang}>
             <LocaleProvider initialLocale={params.lang}>
               <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
                 <Logo lang={params.lang} />

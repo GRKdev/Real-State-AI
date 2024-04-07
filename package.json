@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/localizations": "^1.28.2",
     "@clerk/nextjs": "^4.29.9",
     "@clerk/themes": "^1.7.10",
     "@formatjs/intl-localematcher": "^0.5.4",
