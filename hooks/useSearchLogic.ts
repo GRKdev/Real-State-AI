@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Property } from '@/types/property';
 
 const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (page: number) => void) => {

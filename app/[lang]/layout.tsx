@@ -40,6 +40,8 @@ export default function RootLayout({
 
 }>) {
   const { userId } = auth();
+  const locale = params.lang;
+  const afterSignOutUrl = `/${locale}`;
 
   return (
     <html lang={params.lang}>
@@ -55,10 +57,7 @@ export default function RootLayout({
               <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
                 <Logo lang={params.lang} />
               </div>
-              <div className="fixed flex top-0 left-0 p-4 pl-10 z-50">
-                <div className="hidden lg:block">
-                </div>
-              </div>
+
               <div className="fixed flex top-0 right-0 p-4 z-50 items-center">
                 {!userId &&
                   <Button variant="outline">
@@ -67,7 +66,7 @@ export default function RootLayout({
                 }
                 <div className="mr-4">
                   {userId && (
-                    <UserButton afterSignOutUrl="/" />
+                    <UserButton afterSignOutUrl={afterSignOutUrl} />
                   )}
                 </div>
 
