@@ -36,7 +36,7 @@ const PropertyCardsContainer: React.FC<PropertyCardsContainerProps> = ({
             ))
         ) : !errorMessage && hasSearched && (
             <div className="w-full text-center py-4">
-                <p className="text-center pt-32 pb-5">{propertyCardDict.no_results}</p>
+                <p className="text-center pt-32 pb-20">{propertyCardDict.no_results}</p>
                 <p>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
             </div>
         )}

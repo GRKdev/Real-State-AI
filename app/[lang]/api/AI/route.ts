@@ -4,11 +4,11 @@ import { auth, currentUser  } from '@clerk/nextjs';
 export async function POST(req: Request): Promise<Response> {
   const { userId } = auth();
   const user = await currentUser();
-  const user_email = user?.emailAddresses[0]?.emailAddress || '';
+  const user_email = user?.emailAddresses[0]?.emailAddress || 'anonymous';
 
-  if (!userId) {
-    return new Response("Unauthorized", { status: 401 });
-  }
+  // if (!userId) {
+  //   return new Response("Unauthorized", { status: 401 });
+  // }
 
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
