@@ -34,7 +34,8 @@
       "bedroom": "Habitació",
       "bathroom": "Banys",
       "square": "Metres q.",
-      "searchbar" : "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació."
+      "searchbar" : "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació.",
+      "microphone": "Registrat per utilitzar aquesta funcionalitat."
     },
     "welcomeMessage": {
         "welcomeUser": {

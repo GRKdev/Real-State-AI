@@ -447,3 +447,29 @@ width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 5px); /* Position below the button, adding space between button and tooltip */
+  left: 50%;
+  margin-left: -30px; /* Center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+  background-color: var(--description-bg);
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

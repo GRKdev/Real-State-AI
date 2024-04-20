@@ -13,6 +13,7 @@ export const useFiltersDictionary = () => {
     bathroom: '',
     square: '',
     searchbar: '',
+    microphone: '',
 });
 
   useEffect(() => {

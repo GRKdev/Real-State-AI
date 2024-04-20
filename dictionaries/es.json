@@ -35,7 +35,9 @@
       "bedroom": "Habitación",
       "bathroom": "Baños",
       "square": "Superficie",
-      "searchbar" : "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación."
+      "searchbar" : "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación.",
+      "microphone": "Registrate para usar esta función."
+
     },
     "welcomeMessage": {
         "welcomeUser": {

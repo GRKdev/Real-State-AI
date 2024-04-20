@@ -33,7 +33,9 @@
       "bedroom": "Chambre",
       "bathroom": "Salle de bain",
       "square": "Carré",
-      "searchbar" : "Chercher des propriétés ou appuyez sur le microphone pour parler, appuyez à nouveau pour arrêter l'enregistrement."
+      "searchbar" : "Chercher des propriétés ou appuyez sur le microphone pour parler, appuyez à nouveau pour arrêter l'enregistrement.",
+      "microphone": "Connectez-vous pour utiliser cette fonctionnalité."
+
     },
     "welcomeMessage": {
       "welcomeUser": {

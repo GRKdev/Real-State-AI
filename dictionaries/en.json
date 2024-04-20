@@ -33,7 +33,9 @@
       "bedroom": "Bedroom",
       "bathroom": "Bathroom",
       "searchbar": "Search properties or press the mic to speak, click again to stop recording.",
-      "square": "Square m."
+      "square": "Square m.",
+      "microphone": "Sign-in to use this feature."
+
     },
     "welcomeMessage": {
       "welcomeUser": {

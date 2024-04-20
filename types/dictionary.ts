@@ -35,6 +35,7 @@ export type Dictionary = {
         bathroom: string;
         square: string;
         searchbar: string;
+        microphone: string;
     };
     welcomeMessage: {
     welcomeUser: {
