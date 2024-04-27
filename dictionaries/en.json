@@ -27,6 +27,7 @@
       "error_login": "You need to be logged in to use this feature. Please Sign In or Sign Up and try again."
     },
     "filters": {
+      "sign_in": "Sign In",
       "title_filter": "Filters",
       "no_filters": "No filter",
       "price": "Price",

@@ -2,21 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/ui/toggle-theme";
-import Logo from "@/components/ui/logo";
 import { Analytics } from "@vercel/analytics/react"
-import {
-  SignInButton,
-  UserButton,
-  SignedIn,
-  SignedOut,
-} from "@clerk/nextjs";
 import ClerkProviderWrapper from "@/components/ClerkProviderWrapper";
-import { Button } from "@/components/ui/button";
-import LocaleSwitcher from "@/components/locale-switcher";
 import { i18n, type Locale } from '@/i18n-config';
 import { LocaleProvider } from "@/contexts/localeContext";
 import Footer from "@/components/ui/Footer";
+import Navbar from "@/components/ui/navbar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -40,8 +31,6 @@ export default function RootLayout({
   params: { lang: Locale };
 
 }>) {
-  const locale = params.lang;
-  const afterSignOutUrl = `/${locale}`;
 
   return (
     <html lang={params.lang}>
@@ -54,29 +43,7 @@ export default function RootLayout({
         >
           <ClerkProviderWrapper lang={params.lang}>
             <LocaleProvider initialLocale={params.lang}>
-              <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
-                <Logo lang={params.lang} />
-              </div>
-
-              <div className="fixed flex top-0 right-0 p-4 z-50 items-center">
-                <SignedOut>
-                  <Button variant="outline">
-                    <SignInButton />
-                  </Button>
-                </SignedOut>
-
-                <div className="mr-4">
-                  <SignedIn>
-                    <UserButton afterSignOutUrl={afterSignOutUrl} />
-                  </SignedIn>
-                </div>
-
-                <div className="hidden lg:block">
-                  <LocaleSwitcher />
-                  <ModeToggle />
-                </div>
-
-              </div>
+              <Navbar lang={params.lang} />
               <div className="flex flex-col fex-l1 overflow-y-auto min-h-screen pt-28">
                 <main className="flex-grow">
                   {children}
@@ -90,6 +57,6 @@ export default function RootLayout({
         </ThemeProvider>
 
       </body>
-    </html>
+    </html >
   );
 }

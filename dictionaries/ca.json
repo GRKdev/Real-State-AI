@@ -28,6 +28,7 @@
 
     },
     "filters": {
+      "sign_in": "Inicia sessió",
       "title_filter": "Filtres",
       "no_filters": "Sense filtres",
       "price": "Preu",

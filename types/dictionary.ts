@@ -28,6 +28,7 @@ export type Dictionary = {
         error_login: string;
     },
     filters: {
+        sign_in: string;
         title_filter: string;
         no_filters: string;
         price: string;

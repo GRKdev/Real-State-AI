@@ -6,6 +6,7 @@ import { Dictionary } from '@/types/dictionary';
 export const useFiltersDictionary = () => {
   const { locale } = useLocale();
   const [filtersDict, setFiltersDict] = useState<Dictionary['filters']>({
+    sign_in: '',
     title_filter: '',
     no_filters: '',
     price: '',

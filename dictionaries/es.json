@@ -29,6 +29,8 @@
 
     },
     "filters": {
+      "sign_in": "Inicia sesión",
+
       "title_filter": "Filtros",
       "no_filters": "Sin filtros",
       "price": "Precio",
