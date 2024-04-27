@@ -467,6 +467,7 @@ width: 100%;
   opacity: 0;
   transition: opacity 0.3s;
   background-color: var(--description-bg);
+  font-size: 0.9rem;
 }
 
 .tooltip-container:hover .tooltip-text {

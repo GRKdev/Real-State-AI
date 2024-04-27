@@ -8,8 +8,9 @@ import { Analytics } from "@vercel/analytics/react"
 import {
   SignInButton,
   UserButton,
+  SignedIn,
+  SignedOut,
 } from "@clerk/nextjs";
-import { auth } from '@clerk/nextjs';
 import ClerkProviderWrapper from "@/components/ClerkProviderWrapper";
 import { Button } from "@/components/ui/button";
 import LocaleSwitcher from "@/components/locale-switcher";
@@ -39,7 +40,6 @@ export default function RootLayout({
   params: { lang: Locale };
 
 }>) {
-  const { userId } = auth();
   const locale = params.lang;
   const afterSignOutUrl = `/${locale}`;
 
@@ -59,15 +59,16 @@ export default function RootLayout({
               </div>
 
               <div className="fixed flex top-0 right-0 p-4 z-50 items-center">
-                {!userId &&
+                <SignedOut>
                   <Button variant="outline">
                     <SignInButton />
                   </Button>
-                }
+                </SignedOut>
+
                 <div className="mr-4">
-                  {userId && (
+                  <SignedIn>
                     <UserButton afterSignOutUrl={afterSignOutUrl} />
-                  )}
+                  </SignedIn>
                 </div>
 
                 <div className="hidden lg:block">
