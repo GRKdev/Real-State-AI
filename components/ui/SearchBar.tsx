@@ -56,9 +56,12 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     };
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        triggerSearch(message);
+        if (message.trim() !== '') {
+            triggerSearch(message);
+        } else {
+            // Handle empty message error (e.g., show a message to the user)
+        }
     };
-
     const handleVoiceSearch = (message: string) => {
         triggerSearch(message);
     };
@@ -95,7 +98,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder={filtersDict.searchbar}
-                        className="input-class"
+                        className={`input-class ${message.trim() === '' ? 'input-error' : ''}`}
                         maxLength={125}
                     />
                 </form>
