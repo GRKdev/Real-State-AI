@@ -25,6 +25,13 @@ const WelcomeMessage: React.FC = () => {
                     <li key={index}>{item}</li>
                 ))}
             </ul>
+            <h3>{welcomeMessageDict.examples.title}</h3>
+
+            <ul>
+                {welcomeMessageDict.examples.items.map((item, index) => (
+                    <li key={index} style={{ fontStyle: 'italic' }}>{item}</li>
+                ))}
+            </ul>
             <h3>{welcomeMessageDict.fine_tuned.title}</h3>
             <p>
                 {welcomeMessageDict.fine_tuned.description}
@@ -40,6 +47,7 @@ const WelcomeMessage: React.FC = () => {
                     <li key={index}>{item}</li>
                 ))}
             </ul>
+
         </div>
     );
 };

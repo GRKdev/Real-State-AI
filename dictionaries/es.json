@@ -80,7 +80,18 @@
             "Velocidad: Aunque el afinado requiere un esfuerzo inicial significativo, el modelo resultante proporciona respuestas más rápidas generando directamente consultas de API.",
             "Importancia de los Datos: La calidad de los parámetros de la API depende en gran medida de los datos subyacentes. El afinado permite que el modelo aproveche conjuntos de datos específicos para mejorar el rendimiento."
           ]
-        }     
-        
+        },     
+        "examples": {
+          "title": "Ejemplos de Consultas",
+          "description": "A continuación, se presentan algunos ejemplos de consultas que puedes probar en nuestro Motor de Búsqueda Inmobiliaria:",
+          "items": [
+            "Quiero alquilar un piso por menos de 1000€ --> Muestra pisos (piso, estudio, loft, ático) de alquiler por menos de 1000€",
+            "Comprar casa en Encamp o Escaldes-Engordany --> Muestra casas (casa, casa adosada, chalet) en venta en Encamp o Escaldes-Engordany",
+            "Apartamentos en Andorra la Vella --> Muestra apartamentos (piso, estudio, loft, ático) en venta o alquiler en Andorra la Vella",
+            "Quiero alquilar un parking por debajo de 100 euros --> Muestra parkings de alquiler por menos de 100€",
+            "Ático para alquilar por más de 1200 € --> Muestra áticos de alquiler por más de 1200€"
+          ]
+          
+        }        
       }
 }

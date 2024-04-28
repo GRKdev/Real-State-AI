@@ -78,7 +78,19 @@
           "Vitesse : Bien que l'ajustement nécessite un effort initial significatif, le modèle résultant fournit des réponses plus rapides en générant directement des requêtes d'API.",
           "Importance des Données : La qualité des paramètres de l'API dépend grandement des données sous-jacentes. L'ajustement permet au modèle de tirer parti de jeux de données spécifiques pour améliorer la performance."
         ]
-      }
+      },
+      "examples": {
+        "title": "Exemples de Recherche",
+        "description": "Voici quelques exemples de requêtes que vous pouvez essayer pour voir le moteur de recherche en action:",
+        "items": [
+          "Je veux louer un appartement pour moins de 1000€ --> Afficher des appartements (appartement, studio, loft, attique) à louer pour moins de 1000€",
+          "Acheter une maison à Encamp ou Escaldes-Engordany --> Afficher des maisons (maison, maison mitoyenne, chalet) à vendre à Encamp ou Escaldes-Engordany",
+          "Appartements à Andorre-la-Vieille --> Afficher des appartements (appartement, plat, studio, loft, attique) en vente ou en location à Andorre-la-Vieille",
+          "Je veux louer un parking pour moins de 100 euros --> Afficher des parkings à louer pour moins de 100€",
+          "Penthouse à louer pour plus de 1200 € --> Afficher des penthouses à louer pour plus de 1200€"
+        ]
+        
+      }      
       
   }    
 }

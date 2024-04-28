@@ -61,6 +61,11 @@ export type Dictionary = {
         title: string;
         items: string[]; 
       };
+      examples: {
+        title: string;
+        description: string;
+        items: string[]; 
+      };
     };
     
 }

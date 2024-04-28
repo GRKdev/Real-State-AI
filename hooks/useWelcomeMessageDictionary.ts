@@ -28,6 +28,11 @@ export const useWelcomeMessageDictionary = () => {
             title: '',
             items: [], 
         },
+        examples: {
+            title: '',
+            description: '',
+            items: [], 
+        },
     });
   
     useEffect(() => {

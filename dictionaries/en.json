@@ -77,7 +77,19 @@
           "Speed: Although fine-tuning requires significant initial effort, the resulting model provides faster responses by directly generating API queries.",
           "Data Importance: The quality of the parameters API heavily depends on the underlying data. Fine-tuning allows the model to leverage specific datasets for improved performance."
         ]
-      }
+      },
+      "examples": {
+        "title": "Examples of Queries",
+        "description": "Next, we provide some examples of queries that the Real Estate Search Engine can process:",
+        "items": [
+          "I want to rent an apartment for less than 1000€ --> Show apartments (apartment, studio, loft, attic) for rent for less than 1000€",
+          "Buy a house in Encamp or Escaldes-Engordany --> Show houses (house, townhouse, chalet) for sale in Encamp or Escaldes-Engordany",
+          "Apartments in Andorra la Vella --> Show apartments (apartment, studio, loft, attic) for sale or rent in Andorra la Vella",
+          "I want to rent a parking for under 100 euros --> Show parking spots for rent for less than 100€",
+          "Penthouse to rent for more than 1200 € --> Show penthouses for rent for more than 1200€"
+        ]
+        
+      }      
       
     }
   }

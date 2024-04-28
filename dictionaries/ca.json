@@ -77,8 +77,18 @@
             "Velocitat: Encara que l'afinament requereix un esforç inicial significatiu, el model resultant proporciona respostes més ràpides generant directament consultes d'API.",
             "Importància de les Dades: La qualitat dels paràmetres de l'API depèn molt de les dades subjacents. L'afinament permet al model aprofitar conjunts de dades específics per millorar el rendiment."
           ]
+        },
+        "examples": {
+          "title": "Exemples de Cerca",
+          "description": "A continuació, es mostren alguns exemples de consultes que podeu provar amb el nostre Motor de Cerca Immobiliària:",
+          "items": [
+            "Vull llogar un pis per menys de 1000€ --> Mostra pisos (pis, estudi, loft, àtic) de lloguer per menys de 1000€",
+            "Comprar casa en Encamp o Escaldes-Engordany --> Mostra cases (casa, casa adossada, xalet) en venda a Encamp o Escaldes-Engordany",
+            "Apartaments en Andorra la Vella --> Mostra apartaments (apartament, pis, estudi, loft, àtic) en venda o lloguer a Andorra la Vella",
+            "Vull llogar un parking per sota 100 euros --> Mostra parkings de lloguer per menys de 100€",
+            "Àtic per llogar per més de 1200 € --> Mostra àtics de lloguer per més de 1200€"
+          ]
         }
-        
       }
 }
 
