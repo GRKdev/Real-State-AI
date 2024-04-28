@@ -109,36 +109,50 @@ main {
   border-color: #F97315;
   outline: 1px solid #F97315;
 }
-@media (min-width: 1024px) {
-.navbar {
-  position: fixed;
-width: 100%; 
-  top: 0; 
-  padding: 1rem; 
-  padding-top: 2.5rem; 
-  backdrop-filter: blur(10px); 
-  z-index: 25;
- }
-}
 @media (min-width: 640px) {
   .navbar {
     position: fixed;
-  width: 100%; 
+    width: 100%; 
     top: 0; 
     padding-top: 1rem; 
-    backdrop-filter: blur(10px); 
     z-index: 25;
    }
+
+   .middle-container {
+    position: fixed;
+    top: 0; /* Place it 50% from the top of the viewport */
+    left: 50%;
+    width: 94%; 
+    height: 17%;
+    transform: translate(-50%, -50%);
+    z-index: 24; 
+    /* background-color: var(--input-bg);
+    border-radius: 5px;
+    border: 1px solid #ddd; */
+    backdrop-filter: blur(10px);
+
   }
+}
+  
   @media (max-width: 639px) {
   .navbar {
       position: fixed;
     width: 100%; 
       top: 0; 
       padding-top: 1rem; 
-      backdrop-filter: blur(10px); 
       z-index: 25;
      }
+     .middle-container {
+      position: fixed;
+      top: 0; /* Place it 50% from the top of the viewport */
+      left: 50%;
+      width: 93%; 
+      height: 15%;
+      transform: translate(-50%, -50%);
+      z-index: 24; 
+      backdrop-filter: blur(10px);
+  
+    }
     }
 
 

@@ -39,7 +39,8 @@ export default function Home() {
       <nav className='navbar'>
         <NavbarSearch onSearch={handleSearch} onClientSort={handleClientSort} />
       </nav>
-
+      <div className="middle-container">
+      </div>
       {errorMessage && <ErrorMessageAlert errorMessage={errorMessage} />}
 
       {!hasSearched && !isLoading && !errorMessage && (
@@ -67,7 +68,6 @@ export default function Home() {
           propertyCardDict={propertyCardDict}
         />
       )}
-
     </div>
   );
 }  
