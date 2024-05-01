@@ -86,7 +86,9 @@
           "Buy a house in Encamp or Escaldes-Engordany --> Show houses (house, terraced house, chalet) for sale in Encamp or Escaldes-Engordany",
           "Apartments in Andorra la Vella --> Show apartments (apartment, studio, loft, penthouse) for sale or rent in Andorra la Vella",
           "I want to rent a parking for under 100 euros --> Show parking spots for rent for less than 100€",
-          "Apartment to rent between 750 and 1500€ --> Show apartments for rent with a price between 750 and 1500€"
+          "Apartment to rent between 750 and 1500€ --> Show apartments for rent with a price between 750 and 1500€",
+          "3 bedroom apartment --> Show apartments with 3 bedrooms for sale or rent"
+          
         ]
         
       }      

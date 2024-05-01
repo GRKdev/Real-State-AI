@@ -89,7 +89,8 @@
             "Comprar casa en Encamp o Escaldes-Engordany --> Muestra casas (casa, casa adosada, chalet) en venta en Encamp o Escaldes-Engordany",
             "Apartamentos en Andorra la Vella --> Muestra apartamentos (piso, estudio, loft, ático) en venta o alquiler en Andorra la Vella",
             "Quiero alquilar un parking por debajo de 100 euros --> Muestra parkings de alquiler por menos de 100€",
-            "Apartamento para alquilar entre 750 y 1500€ --> Muestra apartamentos de alquiler con un precio entre 750 y 1500€"
+            "Piso para alquilar entre 750 y 1500€ --> Muestra apartamentos de alquiler con un precio entre 750 y 1500€",
+            "Apartamento de 3 habticiones --> Muestra apartamentos (piso, estudio, loft, ático) de 3 habitaciones"
           ]
           
         }        

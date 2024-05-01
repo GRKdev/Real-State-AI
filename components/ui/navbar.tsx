@@ -16,7 +16,7 @@ export default function Navbar({ lang }: NavbarProps) {
             </div>
             <div className="fixed flex top-0 right-0 p-4 z-50 items-center">
                 <Button_Signin />
-                <div className="hidden lg:block">
+                <div className="hidden lg:block pr-5">
                     <LocaleSwitcher />
                     <ModeToggle />
                 </div>
