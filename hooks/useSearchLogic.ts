@@ -18,8 +18,7 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
       setLastSearchMessage(message);
       setCurrentPage(1);
 
-    const messageToAI = message + "%"
-    console.log('Message to AI:', messageToAI);
+    const messageToAI = message
     const api_endpoint = `/${locale}/api/AI`;
     const pg_endpoint = `/${locale}/api/pg`;
 

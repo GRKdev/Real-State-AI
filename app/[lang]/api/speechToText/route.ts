@@ -2,11 +2,11 @@ import fetch from "node-fetch";
 import { auth } from '@clerk/nextjs';
 
 export async function POST(req: Request) {
-  const { userId } = auth();
+  // const { userId } = auth();
 
-  if (!userId) {
-    return new Response("Unauthorized", { status: 401 });
-  }
+  // if (!userId) {
+  //   return new Response("Unauthorized", { status: 401 });
+  // }
 
   const body = await req.json();
   const base64Audio = body.audio;
