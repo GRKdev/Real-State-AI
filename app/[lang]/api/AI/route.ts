@@ -28,7 +28,7 @@ export async function POST(req: Request): Promise<Response> {
     console.log('Original message:', message);
 
     try {
-      const correctedMessage = await correctText(openai, message);
+      const { correctedMessage, cost: total_cost_gpt35 } = await correctText(openai, message);
       const correct_message = correctedMessage + '%';
       console.log('Corrected message:', correct_message);
 
@@ -41,6 +41,18 @@ export async function POST(req: Request): Promise<Response> {
       });
 
       let apiResponse: ApiResponse = { text: response.choices[0].text };
+
+      let total_cost_ft = 0;
+
+      if (response.usage) {
+        const apiPromptCost = response.usage.prompt_tokens || 0;
+        const apiResponseCost = response.usage.completion_tokens || 0;
+        total_cost_ft = (apiPromptCost / 1000000) * 1.6 + (apiResponseCost / 1000000) * 1.6;
+      }
+
+      const total_cost = total_cost_ft + total_cost_gpt35;
+
+            console.log('Total cost for 1M queries: ' + total_cost * 1000000 + ' €');
       console.log('API response:', apiResponse);
 
       // Validate and correct the parameters
@@ -63,22 +75,32 @@ export async function POST(req: Request): Promise<Response> {
   }
 }
 
-async function correctText(openai: OpenAI, message: string): Promise<string> {
+async function correctText(openai: OpenAI, message: string): Promise<{ correctedMessage: string, cost: number }> {
   try {
-    const contenMessage = `You are an assistant who correct messages from users that find properties in a real state web. Correct the following text for any grammatical or typographical errors, the text could be in English, Spanish, Catalan, or French, translated into English when corrected.\nIMPORTANT NOTE: Glossary u need to use: Terraced house, Chalet, Apartment, Studio, Loft, Penthouse(Dont use Attic use Penthouse instaed), land, duplex, hotel, office, commercial, indrustrial, land, parking, storage, building.`;
+    const contenMessage = `You are an assistant who correct messages from users that find properties in a real state web. Correct the following text for any grammatical or typographical errors, the text could be in English, Spanish, Catalan, or French, translated into English when corrected.\nIMPORTANT NOTE: Glossary u need to use: Terraced house, Chalet, Apartment, Studio, Loft, Penthouse(Dont use Attic use Penthouse instaed), land, duplex, hotel, office, commercial, indrustrial, land, parking, storage, building.\nIf the message isnt related to finding properties, return onle a char. "%"`;
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo-0125',
       messages: [{ role: "system", content: contenMessage }, { role: "user", content: message }],
-      max_tokens: 100,
+      max_tokens: 50,
       temperature: 0,
     });
 
     if (completion.choices[0] && completion.choices[0].message && completion.choices[0].message.content) {
-      return completion.choices[0].message.content.trim();
+      let total_cost_gpt35 = 0;
+      if (completion.usage) {
+        const apiPromptCost = completion.usage.prompt_tokens || 0;
+        const apiResponseCost = completion.usage.completion_tokens || 0;
+        total_cost_gpt35 = (apiPromptCost / 1000000) * 0.5 + (apiResponseCost / 1000000) * 1.5;
+      }
+
+      return {
+        correctedMessage: completion.choices[0].message.content.trim(),
+        cost: total_cost_gpt35
+      };
     } else {
       throw new Error('No content received from OpenAI completion');
     }
-    
+
   } catch (error) {
     console.error('Error correcting text:', error);
     throw new Error('Failed to correct text');

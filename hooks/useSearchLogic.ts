@@ -39,12 +39,10 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
 
         const finalResponseText = data.text + (extras.length ? `&${extras.join('&')}` : '') + (order ? `&order=${order}` : '');
         const apiEndpoint = `${pg_endpoint}?${finalResponseText}`;
-        console.log('API Endpoint:', apiEndpoint);
         const propertiesResponse = await fetch(apiEndpoint);
         if (!propertiesResponse.ok) throw new Error(`HTTP error! status: ${propertiesResponse.status}`);
 
         const propertiesData: Property[] = await propertiesResponse.json();
-        console.log('API Response:', propertiesData);
         setResponse(propertiesData);
       } else {
         setResponse([]);
