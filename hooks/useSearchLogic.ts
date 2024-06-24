@@ -19,7 +19,7 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
       setCurrentPage(1);
 
     const messageToAI = message
-    const api_endpoint = `/${locale}/api/AI`;
+    const api_endpoint = `/${locale}/api/ai`;
     const pg_endpoint = `/${locale}/api/pg`;
 
     try {

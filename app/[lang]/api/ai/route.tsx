@@ -16,11 +16,6 @@ export async function POST(req: Request): Promise<Response> {
         },
     });
 
-    interface ApiResponse {
-        text: string;
-    }
-
-
     if (req.method === 'POST') {
         const { message } = await req.json();
         console.log('Original message:', message);
@@ -160,10 +155,9 @@ P: location=7&property_type=1`;
             };
             const apiPromptCost = completion?.usage?.prompt_tokens || 0;
             const apiResponseCost = completion?.usage?.completion_tokens || 0;
-            const total_cost = (apiPromptCost / 1000000) * 0.5 + (apiResponseCost / 1000000) * 1.5
-            const total_cost_1m = total_cost * 1000000
+            const total_cost = ((apiPromptCost) * 0.5 + (apiResponseCost) * 1.5)
 
-            console.log('Total cost for 1M queries: ' + total_cost_1m + ' €');
+            console.log('Total cost for 1M queries: ' + total_cost + ' €');
             console.log('API response:', apiResponse);
 
             // Validate and correct the parameters
