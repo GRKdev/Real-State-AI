@@ -25,8 +25,9 @@
       "previous": "Anterior",
       "next": "Siguiente",
       "more_pages": "Más páginas",
-      "error_login": "Necesitas estar registrado para usar esta función. Por favor, inicia sesión o regístrate e inténtalo de nuevo."
-
+      "error_login": "Necesitas estar registrado para usar esta función. Por favor, inicia sesión o regístrate e inténtalo de nuevo.",
+      "total_cost": "Coste total de la respuesta"
+      
     },
     "filters": {
       "sign_in": "Inicia sesión",
@@ -49,7 +50,7 @@
         },
         "overview": {
           "title": "Demostración General",
-          "description": "Nuestro Motor de Búsqueda Inmobiliaria es una plataforma de vanguardia diseñada específicamente para el mercado inmobiliario andorrano. Utilizando un modelo afinado de OpenAI (babbage-002), el motor de búsqueda ofrece una precisión y velocidad sin precedentes. Este enfoque innovador asegura que los usuarios reciban los resultados más relevantes de manera rápida y eficiente, más que usando agentes SQL tradicionales y más barato que generando SQL directamente desde un modelo de lenguaje grande (LLM)."
+          "description": "Esto es una demostración de un motor de búsqueda para el mercado inmobiliario andorrano. Utilizando un modelo afinado de OpenAI (babbage-002), el motor de búsqueda ofrece una precisión y velocidad sin precedentes. Este enfoque innovador asegura que los usuarios reciban los resultados más relevantes de manera rápida y eficiente, más que usando agentes SQL tradicionales y más barato que generando SQL directamente desde un modelo de lenguaje grande (LLM)."
         },
         "features": {
           "title": "Características",
@@ -78,7 +79,8 @@
           "items": [
             "Precisión: Podemos entrenar con un conjunto de datos específico y tendremos menos Errores y Alucinaciones.",
             "Velocidad: Aunque el afinado requiere un esfuerzo inicial significativo, el modelo resultante proporciona respuestas más rápidas generando directamente consultas de API.",
-            "Importancia de los Datos: La calidad de los parámetros de la API depende en gran medida de los datos subyacentes. El afinado permite que el modelo aproveche conjuntos de datos específicos para mejorar el rendimiento."
+            "Importancia de los Datos: La calidad de los parámetros de la API depende en gran medida de los datos subyacentes. El afinado permite que el modelo aproveche conjuntos de datos específicos para mejorar el rendimiento.",
+            "Coste: Aunque inicialmente lleva más trabajo, a la larga, con el modelo afinado es más barato. Ejemplo: 1 millón de respuestas con el modelo afinado costaría unos 100-140 $ de media, mientras que usando directamente un modelo del tipo GPT-3.5 haciendo uso del system prompt costaría entre 450-550 $."
           ]
         },     
         "examples": {

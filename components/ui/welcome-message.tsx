@@ -19,17 +19,17 @@ const WelcomeMessage: React.FC = () => {
             <p>
                 {welcomeMessageDict.overview.description}
             </p>
-            <h3>{welcomeMessageDict.features.title}</h3>
-            <ul>
-                {welcomeMessageDict.features.items.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>
             <h3>{welcomeMessageDict.examples.title}</h3>
 
             <ul>
                 {welcomeMessageDict.examples.items.map((item, index) => (
                     <li key={index} style={{ fontStyle: 'italic' }}>{item}</li>
+                ))}
+            </ul>
+            <h3>{welcomeMessageDict.features.title}</h3>
+            <ul>
+                {welcomeMessageDict.features.items.map((item, index) => (
+                    <li key={index}>{item}</li>
                 ))}
             </ul>
             <h3>{welcomeMessageDict.fine_tuned.title}</h3>

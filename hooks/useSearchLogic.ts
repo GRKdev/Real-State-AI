@@ -8,6 +8,7 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
     const [errorMessage, setErrorMessage] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
     const [lastSearchMessage, setLastSearchMessage] = useState('');
+    const [totalCost, setTotalCost] = useState<number>(0);
   
     const handleSearch = async (message: string, combinedFilter: string) => {
       setIsLoading(true);
@@ -19,7 +20,7 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
       setCurrentPage(1);
 
     const messageToAI = message
-    const api_endpoint = `/${locale}/api/ai`;
+    const api_endpoint = `/${locale}/api/ai-ft`;
     const pg_endpoint = `/${locale}/api/pg`;
 
     try {
@@ -35,8 +36,9 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
       const data = await res.json();
 
       if (data.text) {
+        setTotalCost(data.total_cost);
+        console.log('Total cost for 1M queries: ' + data.total_cost + ' €');
         const [order, ...extras] = combinedFilter.split('&');
-
         const finalResponseText = data.text + (extras.length ? `&${extras.join('&')}` : '') + (order ? `&order=${order}` : '');
         const apiEndpoint = `${pg_endpoint}?${finalResponseText}`;
         const propertiesResponse = await fetch(apiEndpoint);
@@ -68,7 +70,7 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
     setResponse(sorted);
   };
 
-  return { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, searchCount, handleClientSort};
+  return { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, searchCount, handleClientSort, totalCost};
 };
 
 export default useSearchLogic;

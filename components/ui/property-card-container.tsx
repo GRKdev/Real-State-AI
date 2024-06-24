@@ -11,6 +11,7 @@ interface PropertyCardsContainerProps {
     propertyCardDict: any;
     lastSearchMessage: string;
     prevResponse: Property[] | null;
+    totalCost: number;
 }
 
 const PropertyCardsContainer: React.FC<PropertyCardsContainerProps> = ({
@@ -21,6 +22,7 @@ const PropertyCardsContainer: React.FC<PropertyCardsContainerProps> = ({
     propertyCardDict,
     lastSearchMessage,
     prevResponse,
+    totalCost,
 }) => (
     <div className="w-full card-container">
         {isLoading ? (
@@ -36,8 +38,10 @@ const PropertyCardsContainer: React.FC<PropertyCardsContainerProps> = ({
             ))
         ) : !errorMessage && hasSearched && (
             <div className="w-full text-center py-4">
-                <p className="text-center pt-32 pb-20">{propertyCardDict.no_results}</p>
+                <p className="text-center pt-32 pb-20 text-lg">{propertyCardDict.no_results}</p>
                 <p>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
+                <p>{propertyCardDict.total_cost}: <strong>{totalCost.toFixed(6)}</strong> $</p>
+
             </div>
         )}
     </div>

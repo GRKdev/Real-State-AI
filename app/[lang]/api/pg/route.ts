@@ -133,25 +133,28 @@ function getPropertyTypeCondition(value: string, offset: number) {
   return { condition: `(${condition})`, values: propertyTypes.map(pt => pt.replace('default', '')) };
 }
 
+const operatorMap = {
+  maxPrice: '<=',
+  minPrice: '>=',
+  min: '>=',
+  max: '<=',
+};
+
 function getConditionAndValues(key: string, value: string, offset: number) {
-  switch (key) {
-    case 'location':
-    case 'transaction_type':
-    case 'property_type':
-      return { condition: `${key} IN (${value.split(',').map((_, index) => `$${offset + index + 1}`).join(', ')})`, values: value.split(',') };
-    case 'maxPrice':
-    case 'minPrice':
-      return { condition: `price ${key === 'maxPrice' ? '<=' : '>='} $${offset + 1}`, values: [value] };
-    case 'bedrooms':
-    case 'bathrooms':
-    case 'minBedrooms':
-    case 'maxBedrooms':
-    case 'minBathrooms':
-    case 'maxBathrooms':
-    case 'referenceNumber':
-      const operator = key.startsWith('min') ? '>=' : key.startsWith('max') ? '<=' : '=';
-      return { condition: `${key.replace('min', '').replace('max', '')} ${operator} $${offset + 1}`, values: [value] };
-    default:
-      return { condition: `${key} = $${offset + 1}`, values: [true] };
+  const inConditionKeys = ['location', 'transaction_type', 'property_type'];
+  const numericKeys = ['price', 'bedrooms', 'bathrooms', 'referenceNumber'];
+
+  if (inConditionKeys.includes(key)) {
+    const values = value.split(',');
+    const placeholders = values.map((_, index) => `$${offset + index + 1}`).join(', ');
+    return { condition: `${key} IN (${placeholders})`, values };
   }
+
+  const baseKey = key.replace(/^(min|max)/, '').toLowerCase();
+  const operator = operatorMap[key.toLowerCase() as keyof typeof operatorMap] || operatorMap[key.slice(0, 3) as keyof typeof operatorMap] || '=';
+  const actualKey = numericKeys.includes(baseKey) ? baseKey : key;
+  return { 
+    condition: `${actualKey} ${operator} $${offset + 1}`, 
+    values: [numericKeys.includes(baseKey) ? value : value === 'true']
+  };
 }

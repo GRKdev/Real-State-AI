@@ -26,6 +26,7 @@ export type Dictionary = {
         next: string;
         more_pages: string;
         error_login: string;
+        total_cost: string;
     },
     filters: {
         sign_in: string;

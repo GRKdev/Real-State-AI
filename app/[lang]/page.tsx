@@ -17,7 +17,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchCount, setSearchCount] = useState(0);
   const [prevResponse, setPrevResponse] = useState<Property[] | null>(null);
-  const { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, handleClientSort } = useSearchLogic(currentLocale, propertyCardDict, setCurrentPage);
+  const { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, handleClientSort, totalCost } = useSearchLogic(currentLocale, propertyCardDict, setCurrentPage);
   const [postsPerPage] = useState(6);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
@@ -55,6 +55,8 @@ export default function Home() {
         propertyCardDict={propertyCardDict}
         lastSearchMessage={lastSearchMessage}
         prevResponse={prevResponse}
+        totalCost={totalCost}
+
       />
 
       {!isLoading && response.length > 0 && (
@@ -66,6 +68,7 @@ export default function Home() {
           lastSearchMessage={lastSearchMessage}
           totalResults={response.length}
           propertyCardDict={propertyCardDict}
+          totalCost={totalCost}
         />
       )}
     </div>

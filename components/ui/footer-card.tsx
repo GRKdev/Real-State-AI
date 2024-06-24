@@ -10,6 +10,7 @@ interface FooterCardProps {
     lastSearchMessage: string;
     totalResults: number;
     propertyCardDict: Dictionary['property_card'];
+    totalCost: number;
 }
 
 const FooterCard: React.FC<FooterCardProps> = ({
@@ -20,6 +21,7 @@ const FooterCard: React.FC<FooterCardProps> = ({
     lastSearchMessage,
     totalResults,
     propertyCardDict,
+    totalCost,
 }) => (
     <div className="w-full text-center pt-5 text-gray-500">
         {totalPosts > postsPerPage && (
@@ -30,8 +32,9 @@ const FooterCard: React.FC<FooterCardProps> = ({
                 setCurrentPage={setCurrentPage}
             />
         )}
-        <p className='pt-5'>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
-        <p>{propertyCardDict.total_results}<strong>{totalResults}</strong></p>
+        <p className='pt-5'>{propertyCardDict.total_results}<strong>{totalResults}</strong></p>
+        <p className='pt-2'>{propertyCardDict.last_question}<strong>{lastSearchMessage}</strong></p>
+        <p>{propertyCardDict.total_cost}: <strong>{totalCost.toFixed(6)}</strong> $</p>
     </div>
 );
 

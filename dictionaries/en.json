@@ -24,7 +24,9 @@
       "previous": "Previous",
       "next": "Next",
       "more_pages": "More pages",
-      "error_login": "You need to be logged in to use this feature. Please Sign In or Sign Up and try again."
+      "error_login": "You need to be logged in to use this feature. Please Sign In or Sign Up and try again.",
+      "total_cost": "Total cost from this answer"
+
     },
     "filters": {
       "sign_in": "Sign In",
@@ -46,7 +48,7 @@
       },
       "overview": {
         "title": "Overview Demo",
-        "description": "Our Real Estate Search Engine is a cutting-edge platform designed specifically for the Andorran property market. Utilizing a fine-tuned model from OpenAI (babbage-002), the search engine offers unprecedented precision and speed. This innovative approach ensures that users receive the most relevant results quickly and efficiently, more than using traditional SQL agents and cheaper than directly generating SQL from a large language model (LLM)."
+        "description": "This is a demo of a search engine for the real estate market from Andorra. Utilizing a fine-tuned model from OpenAI (babbage-002), the search engine offers unprecedented precision and speed. This innovative approach ensures that users receive the most relevant results quickly and efficiently, more than using traditional SQL agents and cheaper than directly generating SQL from a large language model (LLM)."
       },
       "features": {
         "title": "Features",
@@ -75,7 +77,8 @@
         "items": [
           "Precision: We can train with a specific dataset and we will have fewer Errors and Hallucinations.",
           "Speed: Although fine-tuning requires significant initial effort, the resulting model provides faster responses by directly generating API queries.",
-          "Data Importance: The quality of the parameters API heavily depends on the underlying data. Fine-tuning allows the model to leverage specific datasets for improved performance."
+          "Data Importance: The quality of the parameters API heavily depends on the underlying data. Fine-tuning allows the model to leverage specific datasets for improved performance.",
+          "Cost: Although it initially takes more work, in the long run, with the fine-tuned model it is cheaper. Example: 1 million responses with the fine-tuned model would cost around $100-140 on average, while using a GPT-3.4 type model directly would cost between $450-550."
         ]
       },
       "examples": {

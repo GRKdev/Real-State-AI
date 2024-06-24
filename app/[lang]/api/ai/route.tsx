@@ -149,13 +149,14 @@ P: location=7&property_type=1`;
                 max_tokens: 50,
                 temperature: 0,
             });
-
-            let apiResponse = {
-                text: completion?.choices?.[0]?.message?.content?.trim() || 'No response content',
-            };
             const apiPromptCost = completion?.usage?.prompt_tokens || 0;
             const apiResponseCost = completion?.usage?.completion_tokens || 0;
             const total_cost = ((apiPromptCost) * 0.5 + (apiResponseCost) * 1.5)
+
+            let apiResponse = {
+                text: completion?.choices?.[0]?.message?.content?.trim() || 'No response content',
+                total_cost: total_cost / 1000000
+            };
 
             console.log('Total cost for 1M queries: ' + total_cost + ' €');
             console.log('API response:', apiResponse);

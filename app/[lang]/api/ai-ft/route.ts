@@ -2,7 +2,16 @@ import OpenAI from 'openai';
 import { auth, currentUser } from '@clerk/nextjs';
 import { validateAndCorrectParams } from '@/utils/validateParams';
 
+interface ApiResponse {
+  text: string;
+  total_cost: number;
+}
+
 export async function POST(req: Request): Promise<Response> {
+  if (req.method !== 'POST') {
+    return new Response(null, { status: 405 });
+  }
+
   const { userId } = auth();
   const user = await currentUser();
   const user_email = user?.emailAddresses[0]?.emailAddress || 'anonymous';
@@ -17,18 +26,13 @@ export async function POST(req: Request): Promise<Response> {
     },
   });
 
-  interface ApiResponse {
-    text: string;
-  }
-
   const modelKey = process.env.OPENAI_FT_MODEL as string;
 
-  if (req.method === 'POST') {
+  try {
     const { message } = await req.json();
     console.log('Original message:', message);
 
-    try {
-      const { correctedMessage, cost: total_cost_gpt35 } = await correctText(openai, message);
+    const { correctedMessage, cost: total_cost_gpt35 } = await correctText(openai, message);
 
     if (correctedMessage === '%') {
       console.log('Corrected message is "%", skipping AI call');
@@ -37,49 +41,46 @@ export async function POST(req: Request): Promise<Response> {
       });
     }
 
-      const correct_message = correctedMessage + '%';
-      console.log('Corrected message:', correct_message);
+    const correct_message = correctedMessage + '%';
+    console.log('Corrected message:', correct_message);
 
-      const response = await openai.completions.create({
-        model: modelKey,
-        prompt: correct_message,
-        max_tokens: 50,
-        temperature: 0,
-        stop: ['%'],
-      });
+    const response = await openai.completions.create({
+      model: modelKey,
+      prompt: correct_message,
+      max_tokens: 50,
+      temperature: 0,
+      stop: ['%'],
+    });
 
-      let apiResponse: ApiResponse = { text: response.choices[0].text };
-
-      let total_cost_ft = 0;
-
-      if (response.usage) {
-        const apiPromptCost = response.usage.prompt_tokens || 0;
-        const apiResponseCost = response.usage.completion_tokens || 0;
-        total_cost_ft = (apiPromptCost / 1000000) * 1.6 + (apiResponseCost / 1000000) * 1.6;
-      }
-
-      const total_cost = total_cost_ft + total_cost_gpt35;
-
-            console.log('Total cost for 1M queries: ' + total_cost * 1000000 + ' €');
-      console.log('API response:', apiResponse);
-
-      // Validate and correct the parameters
-      apiResponse.text = validateAndCorrectParams(apiResponse.text);
-      console.log('Corrected API response:', apiResponse);
-
-      return new Response(JSON.stringify(apiResponse), {
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-    } catch (error) {
-      console.error('Error calling OpenAI:', error);
-      return new Response(JSON.stringify({ error: 'Failed to fetch response from OpenAI' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
+    let total_cost_ft = 0;
+    if (response.usage) {
+      const apiPromptCost = response.usage.prompt_tokens || 0;
+      const apiResponseCost = response.usage.completion_tokens || 0;
+      total_cost_ft = (apiPromptCost + apiResponseCost) * 0.0000016;
     }
-  } else {
-    return new Response(null, { status: 405 });
+
+    const total_cost = total_cost_ft + total_cost_gpt35;
+
+    let apiResponse: ApiResponse = { 
+      text: response.choices[0].text,
+      total_cost: total_cost / 1000000
+    };
+
+    console.log('API response:', apiResponse);
+
+    apiResponse.text = validateAndCorrectParams(apiResponse.text);
+    console.log('Corrected API response:', apiResponse);
+
+    return new Response(JSON.stringify(apiResponse), {
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+  } catch (error) {
+    console.error('Error in POST function:', error);
+    return new Response(JSON.stringify({ error: 'Failed to process the request' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }
 
@@ -98,7 +99,7 @@ async function correctText(openai: OpenAI, message: string): Promise<{ corrected
       if (completion.usage) {
         const apiPromptCost = completion.usage.prompt_tokens || 0;
         const apiResponseCost = completion.usage.completion_tokens || 0;
-        total_cost_gpt35 = (apiPromptCost / 1000000) * 0.5 + (apiResponseCost / 1000000) * 1.5;
+        total_cost_gpt35 = (apiPromptCost) * 0.5 + (apiResponseCost) * 1.5;
       }
 
       return {
