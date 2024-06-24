@@ -86,7 +86,17 @@ export async function POST(req: Request): Promise<Response> {
 
 async function correctText(openai: OpenAI, message: string): Promise<{ correctedMessage: string, cost: number }> {
   try {
-    const contenMessage = `Your job is correct and translate messages from users that find properties in a real state web. Correct the following text for any grammatical or typographical errors, the text could be in English, Spanish, Catalan, or French, translated into English when after corrected.\nIMPORTANT NOTE: Glossary u need to use: Terraced house, Chalet, Apartment, Studio, Loft, Penthouse(Dont use Attic use Penthouse instaed), land, duplex, hotel, office, commercial, indrustrial, land, parking, storage, building.\nExamples: "Casa en andorra." u would translate into "House in Andorra" or "comprar piso" to "buy house". Your are not a chatbot, if the user wants to talk or ask something, you should send a char "%" instead of a correct message. U need to the the same if user ask something not related to find/buy properties.`;
+    const contenMessage = `Your task is to correct and translate messages from users searching for properties on a real estate website. Correct any grammatical or typographical errors in the text, which may be in English, Spanish, Catalan, or French. After correcting, translate the text into English.
+IMPORTANT NOTE: Use the following glossary of terms:
+Terraced house, Chalet, Apartment, Studio, Loft, Penthouse (use Penthouse instead of Attic), Land, Duplex, Hotel, Office, Commercial, Industrial, Parking, Storage, Building.
+Examples:
+
+"Casa en Andorra" should be translated to "House in Andorra"
+"Comprar piso" should be translated to "Buy apartment"
+"Lloguer" should be translated to "Rent"
+I want rent or buy as standlone words are valid.
+
+You are not a chatbot. Only if the user attempts to engage in conversation or asks questions unrelated to finding/buying properties, respond with a single "%" character instead of a corrected message.`;
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo-0125',
       messages: [{ role: "system", content: contenMessage }, { role: "user", content: message }],

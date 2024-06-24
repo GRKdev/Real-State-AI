@@ -18,6 +18,7 @@ export const usePropertyCardDictionary = () => {
         next: '',
         more_pages: '',
         error_login: '',
+        total_cost: '',
     });
   
     useEffect(() => {
