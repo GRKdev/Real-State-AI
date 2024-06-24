@@ -79,7 +79,7 @@
           "Précision : Nous pouvons former avec un ensemble de données spécifique et nous aurons moins d'Erreurs et d'Hallucinations.",
           "Vitesse : Bien que l'ajustement nécessite un effort initial significatif, le modèle résultant fournit des réponses plus rapides en générant directement des requêtes d'API.",
           "Importance des Données : La qualité des paramètres de l'API dépend grandement des données sous-jacentes. L'ajustement permet au modèle de tirer parti de jeux de données spécifiques pour améliorer la performance.",
-          "Bien que cela demande plus de travail au début, à long terme, avec le modèle affiné, cela coûte moins cher. Exemple : 1 million de réponses avec le modèle affiné coûterait en moyenne environ 100-140 $, tandis qu'utiliser directement un modèle de type GPT-3.4 coûterait entre 450-550 $."
+          "Bien que cela demande plus de travail au début, à long terme, avec le modèle affiné, cela coûte moins cher. Exemple : 1 million de réponses avec le modèle affiné coûterait en moyenne environ 120$, tandis qu'utiliser directement un modèle de type GPT-3.5 coûterait 500$."
         ]
       },
       "examples": {

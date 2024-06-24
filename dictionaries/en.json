@@ -78,7 +78,7 @@
           "Precision: We can train with a specific dataset and we will have fewer Errors and Hallucinations.",
           "Speed: Although fine-tuning requires significant initial effort, the resulting model provides faster responses by directly generating API queries.",
           "Data Importance: The quality of the parameters API heavily depends on the underlying data. Fine-tuning allows the model to leverage specific datasets for improved performance.",
-          "Cost: Although it initially takes more work, in the long run, with the fine-tuned model it is cheaper. Example: 1 million responses with the fine-tuned model would cost around $100-140 on average, while using a GPT-3.4 type model directly would cost between $450-550."
+          "Cost: Although it initially takes more work, in the long run, with the fine-tuned model it is cheaper. Example: 1 million responses with the fine-tuned model would cost around $120 on average, while using a GPT-3.5 type model directly would cost between $500."
         ]
       },
       "examples": {

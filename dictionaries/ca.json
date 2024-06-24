@@ -77,7 +77,7 @@
             "Precisió: Podem entrenar amb un conjunt de dades específic i tindrem menys Errors i Al·lucinacions.",
             "Velocitat: Encara que l'afinament requereix un esforç inicial significatiu, el model resultant proporciona respostes més ràpides generant directament consultes d'API.",
             "Importància de les Dades: La qualitat dels paràmetres de l'API depèn molt de les dades subjacents. L'afinament permet al model aprofitar conjunts de dades específics per millorar el rendiment.",
-            "Cost (x4-5 més barat): Encara que inicialment porta més treball, a la llarga, amb el model afinat és més barat. Exemple: 1 milió de respostes amb el model afinat costaria uns 120 $ de mitjana, mentre que fent servir directament un model del tipus GPT-3.4 costaria entre 500 $."
+            "Cost (x4-5 més barat): Encara que inicialment porta més treball, a la llarga, amb el model afinat és més barat. Exemple: 1 milió de respostes amb el model afinat costaria uns 120 $ de mitjana, mentre que fent servir directament un model del tipus GPT-3.5 costaria entre 500 $."
           ]
         },
         "examples": {

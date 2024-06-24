@@ -80,7 +80,7 @@
             "Precisión: Podemos entrenar con un conjunto de datos específico y tendremos menos Errores y Alucinaciones.",
             "Velocidad: Aunque el afinado requiere un esfuerzo inicial significativo, el modelo resultante proporciona respuestas más rápidas generando directamente consultas de API.",
             "Importancia de los Datos: La calidad de los parámetros de la API depende en gran medida de los datos subyacentes. El afinado permite que el modelo aproveche conjuntos de datos específicos para mejorar el rendimiento.",
-            "Coste: Aunque inicialmente lleva más trabajo, a la larga, con el modelo afinado es más barato. Ejemplo: 1 millón de respuestas con el modelo afinado costaría unos 100-140 $ de media, mientras que usando directamente un modelo del tipo GPT-3.5 haciendo uso del system prompt costaría entre 450-550 $."
+            "Coste: Aunque inicialmente lleva más trabajo, a la larga, con el modelo afinado es más barato. Ejemplo: 1 millón de respuestas con el modelo afinado costaría unos 120$ de media, mientras que usando directamente un modelo del tipo GPT-3.5 haciendo uso del system prompt costaría entre 500$."
           ]
         },     
         "examples": {
