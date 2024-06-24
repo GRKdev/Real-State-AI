@@ -46,7 +46,7 @@ export default authMiddleware({
     return i18Middleware(req);
   },
  
-  publicRoutes: ["/", "/es","/ca","/en","/fr","/:locale/property/:id","/:locale/api/ai","/:locale/api/ai_ft","/:locale/api/pg"],
+  publicRoutes: ["/", "/es","/ca","/en","/fr","/:locale/property/:id","/:locale/api/ai","/:locale/api/ai-ft","/:locale/api/pg"],
 });
  
 export const config = {
