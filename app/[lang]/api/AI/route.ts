@@ -29,6 +29,14 @@ export async function POST(req: Request): Promise<Response> {
 
     try {
       const { correctedMessage, cost: total_cost_gpt35 } = await correctText(openai, message);
+
+    if (correctedMessage === '%') {
+      console.log('Corrected message is "%", skipping AI call');
+      return new Response(JSON.stringify({ message: 'Invalid question' }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
       const correct_message = correctedMessage + '%';
       console.log('Corrected message:', correct_message);
 
@@ -77,7 +85,7 @@ export async function POST(req: Request): Promise<Response> {
 
 async function correctText(openai: OpenAI, message: string): Promise<{ correctedMessage: string, cost: number }> {
   try {
-    const contenMessage = `You are an assistant who correct messages from users that find properties in a real state web. Correct the following text for any grammatical or typographical errors, the text could be in English, Spanish, Catalan, or French, translated into English when corrected.\nIMPORTANT NOTE: Glossary u need to use: Terraced house, Chalet, Apartment, Studio, Loft, Penthouse(Dont use Attic use Penthouse instaed), land, duplex, hotel, office, commercial, indrustrial, land, parking, storage, building.\nIf the message isnt related to finding properties, return onle a char. "%"`;
+    const contenMessage = `Your job is correct and translate messages from users that find properties in a real state web. Correct the following text for any grammatical or typographical errors, the text could be in English, Spanish, Catalan, or French, translated into English when after corrected.\nIMPORTANT NOTE: Glossary u need to use: Terraced house, Chalet, Apartment, Studio, Loft, Penthouse(Dont use Attic use Penthouse instaed), land, duplex, hotel, office, commercial, indrustrial, land, parking, storage, building.\nExamples: "Casa en andorra." u would translate into "House in Andorra". Your are not a chatbot, if the user wants to talk or ask something, you should send a char "%" instead of a correct message. U need to the the same if user ask something not related to find properties.`;
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo-0125',
       messages: [{ role: "system", content: contenMessage }, { role: "user", content: message }],
