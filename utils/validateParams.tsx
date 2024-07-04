@@ -26,7 +26,7 @@ function correctParameterName(key: string): string {
     const corrections: { [key: string]: string } = {
         locationlocation: "location",
         transaction: "transaction_type",
-        // TODO: Add more corrections
+        // TODO: Add more corrections as needed
     };
 
     if (corrections[key]) {
@@ -49,7 +49,20 @@ function correctParameterName(key: string): string {
 }
 
 export function validateAndCorrectParams(paramsString: string): string {
-    const params = paramsString.split('&');
+    let cleanedText = paramsString.trim();
+
+    const hashIndex = cleanedText.indexOf('#');
+    if (hashIndex !== -1) {
+        cleanedText = cleanedText.substring(hashIndex + 1);
+    }
+
+    cleanedText = cleanedText.replace(/#/g, '');
+
+    if (cleanedText.endsWith('%')) {
+        cleanedText = cleanedText.slice(0, -1);
+    }
+
+    const params = cleanedText.split('&');
     const correctedParams: string[] = [];
 
     params.forEach(param => {
