@@ -28,6 +28,7 @@ function correctParameterName(key: string): string {
     const corrections: { [key: string]: string } = {
         locationlocation: "location",
         transaction: "transaction_type",
+        property: "property_type",
         // Add more corrections as needed
     };
 
