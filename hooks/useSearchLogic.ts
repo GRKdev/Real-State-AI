@@ -37,9 +37,9 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
 
       if (data.text) {
         setTotalCost(data.total_cost);
-        console.log('Total cost for 1M queries: ' + data.total_cost + ' €');
         const [order, ...extras] = combinedFilter.split('&');
         const finalResponseText = data.text + (extras.length ? `&${extras.join('&')}` : '') + (order ? `&order=${order}` : '');
+        console.log('Final response text:', finalResponseText);
         const apiEndpoint = `${pg_endpoint}?${finalResponseText}`;
         const propertiesResponse = await fetch(apiEndpoint);
         if (!propertiesResponse.ok) throw new Error(`HTTP error! status: ${propertiesResponse.status}`);

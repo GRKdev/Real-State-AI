@@ -143,6 +143,7 @@ const operatorMap = {
 function getConditionAndValues(key: string, value: string, offset: number) {
   const inConditionKeys = ['location', 'transaction_type', 'property_type'];
   const numericKeys = ['price', 'bedrooms', 'bathrooms', 'referenceNumber'];
+  const booleanKeys = ['terrace', 'parking', 'balcony', 'garden', 'elevator', 'heating', 'electrodometics', 'furnished'];
 
   if (inConditionKeys.includes(key)) {
     const values = value.split(',');
@@ -153,6 +154,14 @@ function getConditionAndValues(key: string, value: string, offset: number) {
   const baseKey = key.replace(/^(min|max)/, '').toLowerCase();
   const operator = operatorMap[key.toLowerCase() as keyof typeof operatorMap] || operatorMap[key.slice(0, 3) as keyof typeof operatorMap] || '=';
   const actualKey = numericKeys.includes(baseKey) ? baseKey : key;
+
+  if (booleanKeys.includes(key)) {
+    return { 
+      condition: `${actualKey} = $${offset + 1}`, 
+      values: [value === '1' || value.toLowerCase() === 'true']
+    };
+  }
+
   return { 
     condition: `${actualKey} ${operator} $${offset + 1}`, 
     values: [numericKeys.includes(baseKey) ? value : value === 'true']

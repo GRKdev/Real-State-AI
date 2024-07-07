@@ -11,7 +11,7 @@ interface NavbarProps {
 export default function Navbar({ lang }: NavbarProps) {
     return (
         <>
-            <div className="fixed z-50 pl-40 pt-5 hidden lg:block">
+            <div className="fixed z-50 pl-20 pt-5 hidden lg:block">
                 <Logo lang={lang} />
             </div>
             <div className="fixed flex top-0 right-0 p-4 z-50 items-center">

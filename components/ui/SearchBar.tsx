@@ -131,7 +131,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
             </div>
 
 
-            <aside className="fixed left-40 h-full pt-32 options hidden lg:block">
+            <aside className="fixed left-20 h-full pt-32 options hidden lg:block">
                 <h3 className="mt-4 mb-2">{extraOptionsDict.title}:</h3>
                 <ExtraOptionsCheckbox options={extraOptions} />
             </aside>
