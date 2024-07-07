@@ -22,11 +22,13 @@ const validParams: { [key: string]: RegExp } = {
     furnished: /^(1|2)$/,
 };
 
+const multiValueParams = ['transaction_type', 'property_type', 'location'];
+
 function correctParameterName(key: string): string {
     const corrections: { [key: string]: string } = {
         locationlocation: "location",
         transaction: "transaction_type",
-        // TODO: Add more corrections as needed
+        // Add more corrections as needed
     };
 
     if (corrections[key]) {
@@ -62,20 +64,50 @@ export function validateAndCorrectParams(paramsString: string): string {
         cleanedText = cleanedText.slice(0, -1);
     }
 
-    const params = cleanedText.split('&');
+    const paramGroups = cleanedText.split('&');
     const correctedParams: string[] = [];
 
-    params.forEach(param => {
-        const [key, value] = param.split('=');
+    paramGroups.forEach(group => {
+        const parts = group.split(',');
+        let currentKey = '';
+        let currentValues: string[] = [];
 
-        const correctedKey = correctParameterName(key);
+        parts.forEach(part => {
+            if (part.includes('=')) {
+                if (currentKey && currentValues.length > 0) {
+                    processKeyValuePair(currentKey, currentValues.join(','), correctedParams);
+                }
+                [currentKey, ...currentValues] = part.split('=');
+            } else {
+                currentValues.push(part);
+            }
+        });
 
-        if (validParams[correctedKey] && validParams[correctedKey].test(value)) {
-            correctedParams.push(`${correctedKey}=${value}`);
-        } else {
-            console.warn(`Invalid parameter: ${param}`);
+        if (currentKey && currentValues.length > 0) {
+            processKeyValuePair(currentKey, currentValues.join(','), correctedParams);
         }
     });
 
     return correctedParams.join('&');
+}
+
+function processKeyValuePair(key: string, value: string, correctedParams: string[]) {
+    const correctedKey = correctParameterName(key);
+
+    if (validParams[correctedKey]) {
+        if (multiValueParams.includes(correctedKey)) {
+            const validValues = value.split(',').filter(v => validParams[correctedKey].test(v));
+            if (validValues.length > 0) {
+                correctedParams.push(`${correctedKey}=${validValues.join(',')}`);
+            } else {
+                console.warn(`No valid values for parameter: ${key}=${value}`);
+            }
+        } else if (validParams[correctedKey].test(value)) {
+            correctedParams.push(`${correctedKey}=${value}`);
+        } else {
+            console.warn(`Invalid value for parameter: ${key}=${value}`);
+        }
+    } else {
+        console.warn(`Invalid parameter: ${key}`);
+    }
 }
