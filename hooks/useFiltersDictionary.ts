@@ -15,6 +15,9 @@ export const useFiltersDictionary = () => {
     square: '',
     searchbar: '',
     microphone: '',
+    choose_model: '',
+    model_finetune: '',
+    model_system: '',
 });
 
   useEffect(() => {

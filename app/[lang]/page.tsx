@@ -17,10 +17,11 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchCount, setSearchCount] = useState(0);
   const [prevResponse, setPrevResponse] = useState<Property[] | null>(null);
-  const { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, handleClientSort, totalCost } = useSearchLogic(currentLocale, propertyCardDict, setCurrentPage);
   const [postsPerPage] = useState(6);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
+  const [selectedModel, setSelectedModel] = useState('finetune');
+  const { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, handleClientSort, totalCost } = useSearchLogic(currentLocale, propertyCardDict, setCurrentPage);
   const currentData = response.slice(firstPostIndex, lastPostIndex);
 
   useEffect(() => {
@@ -33,11 +34,16 @@ export default function Home() {
     }
   }, [response]);
 
+  const handleSearchWithModel = (message: string, filter: string, model: string) => {
+    setSelectedModel(model);
+    handleSearch(message, filter, model);
+  };
+
   return (
     <div>
 
       <nav className='navbar'>
-        <NavbarSearch onSearch={handleSearch} onClientSort={handleClientSort} />
+        <NavbarSearch onSearch={handleSearchWithModel} onClientSort={handleClientSort} />
       </nav>
       <div className="middle-container">
       </div>

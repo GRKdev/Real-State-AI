@@ -10,7 +10,7 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
     const [lastSearchMessage, setLastSearchMessage] = useState('');
     const [totalCost, setTotalCost] = useState<number>(0);
   
-    const handleSearch = async (message: string, combinedFilter: string) => {
+    const handleSearch = async (message: string, combinedFilter: string, selectedModel: string) => {
       setIsLoading(true);
       setResponse([]);
       setSearchCount(prevCount => prevCount + 1);
@@ -20,10 +20,14 @@ const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (
       setCurrentPage(1);
 
     const messageToAI = message
-    const api_endpoint = `/${locale}/api/ai-ft`;
+    const api_endpoint = selectedModel === 'finetune' 
+    ? `/${locale}/api/ai-ft`  // Fine Tuned Model
+    : `/${locale}/api/ai`;    // Original Model System prompt
     const pg_endpoint = `/${locale}/api/pg`;
 
+    
     try {
+      console.log('API endpoint:', api_endpoint);
       const res = await fetch(api_endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

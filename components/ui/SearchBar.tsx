@@ -3,16 +3,23 @@ import { useState, FormEvent, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu";
-import { TrendingUp, TrendingDown, ArrowDown } from 'lucide-react';
+import { TrendingUp, TrendingDown, ArrowDown, Info } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 import { ExtraOptionsCheckbox } from '@/components/ui/extra-options';
 import { Microphone } from './button-microphone';
 import { useExtraOptionsDictionary } from "@/hooks/useExtraOptionsDictionary";
 import { useFiltersDictionary } from '@/hooks/useFiltersDictionary';
-
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip_shad"
 
 interface NavbarSearchProps {
-    onSearch: (message: string, filter: string) => void;
+    onSearch: (message: string, filter: string, model: string) => void;
     onClientSort: (sortOption: string) => void;
 }
 type Checked = DropdownMenuCheckboxItemProps["checked"]
@@ -33,7 +40,11 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
     const extraOptionsDict = useExtraOptionsDictionary();
     const filtersDict = useFiltersDictionary();
+    const [selectedModel, setSelectedModel] = useState('finetune');
 
+    const handleModelChange = (value: string) => {
+        setSelectedModel(value);
+    };
 
     const extraOptions = [
         { id: "showTerrace", label: extraOptionsDict.terrace, state: showTerrace, setState: setShowTerrace },
@@ -78,7 +89,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         if (showFurnished) extraFilters += '&furnished=1';
 
         const combinedFilter = `${filter}${extraFilters}`;
-        onSearch(searchMessage, combinedFilter);
+        onSearch(searchMessage, combinedFilter, selectedModel);
         setMessage('');
     };
     const [filterLabel, setFilterLabel] = useState(filtersDict.title_filter);
@@ -131,8 +142,35 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
             </div>
 
 
-            <aside className="fixed left-20 h-full pt-32 options hidden lg:block">
-                <h3 className="mt-4 mb-2">{extraOptionsDict.title}:</h3>
+            <aside className="fixed left-20 h-full pt-40 options hidden lg:block">
+                <h3 className="mt-4 mb-2">{filtersDict.choose_model}:</h3>
+                <RadioGroup defaultValue="finetune" onValueChange={handleModelChange}>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="finetune" id="r1" />
+                        <Label htmlFor="r1">Finetuned </Label>
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger><Info className='h-4 w-4' /></TooltipTrigger>
+                                <TooltipContent>
+                                    <p>{filtersDict.model_finetune}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="system_prompt" id="r2" />
+                        <Label htmlFor="r2">System Prompt </Label>
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger><Info className='h-4 w-4' /></TooltipTrigger>
+                                <TooltipContent>
+                                    <p>{filtersDict.model_system}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </div>
+                </RadioGroup>
+                <h3 className="mt-8 mb-2">{extraOptionsDict.title}:</h3>
                 <ExtraOptionsCheckbox options={extraOptions} />
             </aside>
         </div>

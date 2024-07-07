@@ -38,6 +38,9 @@ export type Dictionary = {
         square: string;
         searchbar: string;
         microphone: string;
+        choose_model: string;
+        model_finetune: string;
+        model_system: string;
     };
     welcomeMessage: {
     welcomeUser: {

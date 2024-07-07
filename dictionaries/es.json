@@ -39,8 +39,10 @@
       "bathroom": "Baños",
       "square": "Superficie",
       "searchbar" : "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación.",
-      "microphone": "Registrate para usar esta función."
-
+      "microphone": "Registrate para usar esta función.",
+      "choose_model": "Escoge el modelo",
+      "model_finetune": "Se utiliza un modelo entrenado para responder con parámetros API.",
+      "model_system": "Se utiliza el poder del diseño de prompts para generar los parámetros de la API."
     },
     "welcomeMessage": {
         "welcomeUser": {

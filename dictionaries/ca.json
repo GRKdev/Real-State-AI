@@ -37,7 +37,10 @@
       "bathroom": "Banys",
       "square": "Metres q.",
       "searchbar" : "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació.",
-      "microphone": "Registrat per utilitzar aquesta funcionalitat."
+      "microphone": "Registrat per utilitzar aquesta funcionalitat.",
+      "choose_model": "Escull el model",
+      "model_finetune": "Es fa servir un model entrenat per respondre amb parametres API.",
+      "model_system": "Es fa servir el poder de prompt engineering per generar els parametres de l'API."
     },
     "welcomeMessage": {
         "welcomeUser": {

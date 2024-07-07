@@ -37,9 +37,11 @@
       "bathroom": "Bathroom",
       "searchbar": "Search properties or press the mic to speak, click again to stop recording.",
       "square": "Square m.",
-      "microphone": "Sign-in to use this feature."
-
-    },
+      "microphone": "Sign-in to use this feature.",
+      "choose_model": "Choose the model",
+      "model_finetune": "A trained model is used to respond with API parameters.",
+      "model_system": "The power of prompt engineering is used to generate the API parameters."
+        },
     "welcomeMessage": {
       "welcomeUser": {
         "welcome": "Welcome",

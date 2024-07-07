@@ -37,8 +37,10 @@
       "bathroom": "Salle de bain",
       "square": "Carré",
       "searchbar" : "Chercher des propriétés ou appuyez sur le microphone pour parler, appuyez à nouveau pour arrêter l'enregistrement.",
-      "microphone": "Connectez-vous pour utiliser cette fonctionnalité."
-
+      "microphone": "Connectez-vous pour utiliser cette fonctionnalité.",
+      "choose_model": "Choisissez le modèle",
+      "model_finetune": "Un modèle entraîné est utilisé pour répondre avec des paramètres API.",
+      "model_system": "La puissance de l'ingénierie des prompts est utilisée pour générer les paramètres de l'API."
     },
     "welcomeMessage": {
       "welcomeUser": {
