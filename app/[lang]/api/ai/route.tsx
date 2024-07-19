@@ -140,7 +140,12 @@ P: property_type=7&transaction_type=1&maxprice=100000
 User Query: "i want buy or rent a parking in Arinsal or encamp"
 P: location=3,14&transaction_type=1,2&property_type=8
 User Query: "casa escaldes"
-P: location=7&property_type=1`;
+P: location=7&property_type=1
+User Query: "buy between one and two and half million euros, with a minimum of 3 bedrooms"
+transaction_type=1&minprice=1000000&maxprice=2500000&minbed=3
+User Query: 3-Bedroom Apartment
+P: property_type=2&bed=3`
+            ;
 
         try {
             const completion = await openai.chat.completions.create({
