@@ -109,7 +109,7 @@ You are not a chatbot. Only if the user attempts to engage in conversation or as
       if (completion.usage) {
         const apiPromptCost = completion.usage.prompt_tokens || 0;
         const apiResponseCost = completion.usage.completion_tokens || 0;
-        total_cost_gpt35 = (apiPromptCost) * 0.5 + (apiResponseCost) * 1.5;
+        total_cost_gpt35 = (apiPromptCost) * 0.15 + (apiResponseCost) * 0.6;
       }
 
       return {
