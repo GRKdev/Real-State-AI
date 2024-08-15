@@ -98,7 +98,7 @@ I want rent or buy as standlone words are valid.
 
 You are not a chatbot. Only if the user attempts to engage in conversation or asks questions unrelated to finding/buying properties, respond with a single "%" character instead of a corrected message.`;
     const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo-0125',
+      model: 'gpt-4o-mini',
       messages: [{ role: "system", content: contenMessage }, { role: "user", content: message }],
       max_tokens: 50,
       temperature: 0,
