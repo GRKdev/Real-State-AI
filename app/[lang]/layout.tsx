@@ -8,6 +8,7 @@ import { i18n, type Locale } from '@/i18n-config';
 import { LocaleProvider } from "@/contexts/localeContext";
 import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/navbar";
+import Script from 'next/script';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,6 +35,24 @@ export default function RootLayout({
 
   return (
     <html lang={params.lang}>
+      <head>
+        <Script
+          id="crisp-chat"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.$crisp=[];
+            window.CRISP_WEBSITE_ID="${process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID}";
+            window.$crisp.push(["config", "color:mode", ["dark"]]);
+            (function(){
+            d=document;
+            s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;
+            d.getElementsByTagName("head")[0].appendChild(s);})();`,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -55,7 +74,6 @@ export default function RootLayout({
 
           </ClerkProviderWrapper>
         </ThemeProvider>
-
       </body>
     </html >
   );
