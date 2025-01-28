@@ -29,7 +29,7 @@ rent = 2
 
 Locations:
 {
-Andorra = 1
+Andorra (or Andorra la Vella) = 1
 Canillo = 2
 Encamp = 3
 La Massana = 4
