@@ -1,9 +1,9 @@
 import { useUser } from '@clerk/nextjs';
-import { useWelcomeMessageDictionary } from '@/hooks/useWelcomeMessageDictionary';
+import { useDictionary } from '@/hooks/useDictionary';
 
 const WelcomeMessage: React.FC = () => {
     const { isSignedIn, user } = useUser();
-    const welcomeMessageDict = useWelcomeMessageDictionary();
+    const welcomeMessageDict = useDictionary('welcomeMessage');
 
     // ✅ Asegurar que `welcomeMessageDict` y sus propiedades existen antes de usarlas
     if (!welcomeMessageDict || !welcomeMessageDict.welcomeUser) {

@@ -3,7 +3,7 @@ import { useRecordVoice } from "@/components/useRecordVoice";
 import { Button } from "./button";
 import { Tooltip } from "@/components/ui/tooltip";
 import { useAuth } from '@clerk/clerk-react';
-import { useFiltersDictionary } from '@/hooks/useFiltersDictionary';
+import { useDictionary } from '@/hooks/useDictionary';
 
 
 interface MicrophoneProps {
@@ -15,7 +15,7 @@ const Microphone: React.FC<MicrophoneProps> = ({ onVoiceSubmit }) => {
     const [isRecording, setIsRecording] = useState(false);
     const recordingTimeoutRef = useRef<number | null>(null);
     const { isSignedIn } = useAuth();
-    const filtersDict = useFiltersDictionary();
+    const filtersDict = useDictionary('filters');
 
     useEffect(() => {
     }, [isSignedIn]);
@@ -63,7 +63,7 @@ const Microphone: React.FC<MicrophoneProps> = ({ onVoiceSubmit }) => {
     return (
         <div className="flex flex-col justify-center items-center pl-2">
             <div className="tooltip-container">
-                {!isSignedIn && <Tooltip message={filtersDict.microphone}>{null}</Tooltip>}
+                {!isSignedIn && <Tooltip message={filtersDict?.microphone ?? 'Sign in to use microphone'}>{null}</Tooltip>}
                 <Button
                     onClick={toggleRecording}
                     variant="outline"

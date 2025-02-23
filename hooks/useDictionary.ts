@@ -5,13 +5,13 @@ import { Dictionary } from '@/types/dictionary';
 
 export const useDictionary = <T extends keyof Dictionary>(key: T) => {
     const { locale } = useLocale();
-    const [dict, setDict] = useState<Dictionary[T]>({} as Dictionary[T]);
+    const [dict, setDict] = useState<Dictionary[T] | null>(null);
 
     useEffect(() => {
         const fetchDictionary = async () => {
             try {
                 const dictionary = await getDictionary(locale);
-                setDict(dictionary[key]);
+                setDict(dictionary[key] || null);
             } catch (error) {
                 console.error(`Failed to load dictionary for key: ${key}`, error);
             }

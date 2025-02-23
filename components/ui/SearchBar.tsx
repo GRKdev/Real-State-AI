@@ -7,8 +7,6 @@ import { TrendingUp, TrendingDown, ArrowDown, Info } from 'lucide-react';
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 import { ExtraOptionsCheckbox } from '@/components/ui/extra-options';
 import { Microphone } from './button-microphone';
-import { useExtraOptionsDictionary } from "@/hooks/useExtraOptionsDictionary";
-import { useFiltersDictionary } from '@/hooks/useFiltersDictionary';
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
@@ -17,6 +15,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip_shad"
+import { useDictionary } from '@/hooks/useDictionary';
 
 interface NavbarSearchProps {
     onSearch: (message: string, filter: string, model: string) => void;
@@ -38,8 +37,8 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     const [showElectrodometics, setShowElectrodometics] = useState<Checked>(false)
     const [showFurnished, setShowFurnished] = useState<Checked>(false)
 
-    const extraOptionsDict = useExtraOptionsDictionary();
-    const filtersDict = useFiltersDictionary();
+    const extraOptionsDict = useDictionary('extra_options');
+    const filtersDict = useDictionary('filters');
     const [selectedModel, setSelectedModel] = useState('finetune');
 
     const handleModelChange = (value: string) => {
@@ -47,14 +46,14 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
     };
 
     const extraOptions = [
-        { id: "showTerrace", label: extraOptionsDict.terrace, state: showTerrace, setState: setShowTerrace },
-        { id: "showParking", label: extraOptionsDict.parking || "Parking", state: showParking, setState: setShowParking },
-        { id: "showBalcony", label: extraOptionsDict.balcony || "Balcony", state: showBalcony, setState: setShowBalcony },
-        { id: "showGarden", label: extraOptionsDict.garden || "Garden", state: showGarden, setState: setShowGarden },
-        { id: "showElevator", label: extraOptionsDict.elevator || "Elevator", state: showElevator, setState: setShowElevator },
-        { id: "showHeating", label: extraOptionsDict.heating || "Heating", state: showHeating, setState: setShowHeating },
-        { id: "showElectrodometics", label: extraOptionsDict.electrod || "Electrod.", state: showElectrodometics, setState: setShowElectrodometics },
-        { id: "showFurnished", label: extraOptionsDict.furnished || "Furnished", state: showFurnished, setState: setShowFurnished },
+        { id: "showTerrace", label: extraOptionsDict?.terrace ?? "Terrace", state: showTerrace, setState: setShowTerrace },
+        { id: "showParking", label: extraOptionsDict?.parking ?? "Parking", state: showParking, setState: setShowParking },
+        { id: "showBalcony", label: extraOptionsDict?.balcony ?? "Balcony", state: showBalcony, setState: setShowBalcony },
+        { id: "showGarden", label: extraOptionsDict?.garden ?? "Garden", state: showGarden, setState: setShowGarden },
+        { id: "showElevator", label: extraOptionsDict?.elevator ?? "Elevator", state: showElevator, setState: setShowElevator },
+        { id: "showHeating", label: extraOptionsDict?.heating ?? "Heating", state: showHeating, setState: setShowHeating },
+        { id: "showElectrodometics", label: extraOptionsDict?.electrod ?? "Electrod.", state: showElectrodometics, setState: setShowElectrodometics },
+        { id: "showFurnished", label: extraOptionsDict?.furnished ?? "Furnished", state: showFurnished, setState: setShowFurnished },
     ];
 
     const updateFilter = (value: string, label: string, ascending: boolean) => {
@@ -92,7 +91,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
         onSearch(searchMessage, combinedFilter, selectedModel);
         setMessage('');
     };
-    const [filterLabel, setFilterLabel] = useState(filtersDict.title_filter);
+    const [filterLabel, setFilterLabel] = useState(filtersDict?.title_filter ?? "Filters");
     useEffect(() => {
         if (filtersDict) {
             setFilterLabel(filtersDict.title_filter);
@@ -108,7 +107,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder={filtersDict.searchbar}
+                        placeholder={filtersDict?.searchbar ?? "Search..."}
                         className={`input-class ${message.trim() === '' ? 'input-error' : ''}`}
                         maxLength={125}
                     />
@@ -118,7 +117,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline">
-                                {filterLabel !== filtersDict.title_filter && (
+                                {filterLabel !== (filtersDict?.title_filter ?? "Filters") && (
                                     isAscending ? <TrendingUp className="mr-2 h-4 w-4" /> : <TrendingDown className="mr-2 h-4 w-4" />
                                 )}
                                 {filterLabel}
@@ -126,15 +125,15 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                         </DropdownMenuTrigger>
                         <DropdownMenuContent side="bottom">
                             <DropdownMenuRadioGroup value={filter}>
-                                <DropdownMenuRadioItem value="" onClick={() => updateFilter("", filtersDict.title_filter, true)}>{filtersDict.no_filters}</DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', filtersDict.price, true)}>{filtersDict.price} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', filtersDict.price, false)}>{filtersDict.price} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', filtersDict.bedroom, true)}>{filtersDict.bedroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', filtersDict.bedroom, false)}>{filtersDict.bedroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', filtersDict.bathroom, true)}>{filtersDict.bathroom} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', filtersDict.bathroom, false)}>{filtersDict.bathroom} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', filtersDict.square, true)}>{filtersDict.square} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', filtersDict.square, false)}>{filtersDict.square} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="" onClick={() => updateFilter("", filtersDict?.title_filter ?? "Filters", true)}>{filtersDict?.no_filters ?? "No Filters"}</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|asc" onClick={() => updateFilter('price|asc', filtersDict?.price ?? "Price", true)}>{filtersDict?.price ?? "Price"} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="price|desc" onClick={() => updateFilter('price|desc', filtersDict?.price ?? "Price", false)}>{filtersDict?.price ?? "Price"} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|asc" onClick={() => updateFilter('bedrooms|asc', filtersDict?.bedroom ?? "Bedrooms", true)}>{filtersDict?.bedroom ?? "Bedrooms"} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bedrooms|desc" onClick={() => updateFilter('bedrooms|desc', filtersDict?.bedroom ?? "Bedrooms", false)}>{filtersDict?.bedroom ?? "Bedrooms"} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|asc" onClick={() => updateFilter('bathrooms|asc', filtersDict?.bathroom ?? "Bathrooms", true)}>{filtersDict?.bathroom ?? "Bathrooms"} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bathrooms|desc" onClick={() => updateFilter('bathrooms|desc', filtersDict?.bathroom ?? "Bathrooms", false)}>{filtersDict?.bathroom ?? "Bathrooms"} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|asc" onClick={() => updateFilter('square_meters|asc', filtersDict?.square ?? "Square Meters", true)}>{filtersDict?.square ?? "Square Meters"} <TrendingUp className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="square_meters|desc" onClick={() => updateFilter('square_meters|desc', filtersDict?.square ?? "Square Meters", false)}>{filtersDict?.square ?? "Square Meters"} <ArrowDown className='pl-1 h-6 w-6' /></DropdownMenuRadioItem>
                             </DropdownMenuRadioGroup>
                         </DropdownMenuContent>
                     </DropdownMenu>
@@ -143,7 +142,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
 
             <aside className="fixed left-20 h-full pt-40 options hidden lg:block">
-                <h3 className="mt-4 mb-2">{filtersDict.choose_model}:</h3>
+                <h3 className="mt-4 mb-2">{filtersDict?.choose_model ?? "Choose Model"}:</h3>
                 <RadioGroup defaultValue="finetune" onValueChange={handleModelChange}>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="finetune" id="r1" />
@@ -152,7 +151,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                             <Tooltip>
                                 <TooltipTrigger><Info className='h-4 w-4' /></TooltipTrigger>
                                 <TooltipContent>
-                                    <p>{filtersDict.model_finetune}</p>
+                                    <p>{filtersDict?.model_finetune ?? "Finetuned model explanation"}</p>
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
@@ -164,13 +163,13 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                             <Tooltip>
                                 <TooltipTrigger><Info className='h-4 w-4' /></TooltipTrigger>
                                 <TooltipContent>
-                                    <p>{filtersDict.model_system}</p>
+                                    <p>{filtersDict?.model_system ?? "System prompt explanation"}</p>
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
                     </div>
                 </RadioGroup>
-                <h3 className="mt-8 mb-2">{extraOptionsDict.title}:</h3>
+                <h3 className="mt-8 mb-2">{extraOptionsDict?.title ?? "Extra Options"}:</h3>
                 <ExtraOptionsCheckbox options={extraOptions} />
             </aside>
         </div>

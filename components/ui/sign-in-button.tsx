@@ -1,5 +1,4 @@
 'use client'
-import { useFiltersDictionary } from "@/hooks/useFiltersDictionary";
 import { Button } from "@/components/ui/button";
 import {
     SignInButton,
@@ -8,10 +7,11 @@ import {
     SignedOut,
 } from "@clerk/nextjs";
 import { useLocale } from '@/contexts/localeContext';
+import { useDictionary } from "@/hooks/useDictionary";
 
 
 export const Button_Signin = () => {
-    const filtersDict = useFiltersDictionary();
+    const filtersDict = useDictionary('filters');
     const { locale: currentLocale } = useLocale();
     const afterSignOutUrl = `/${currentLocale}`;
 
@@ -20,7 +20,7 @@ export const Button_Signin = () => {
             <SignedOut>
                 <SignInButton>
                     <Button variant="outline">
-                        {filtersDict.sign_in}
+                        {filtersDict?.sign_in ?? "Sign In"}
                     </Button>
                 </SignInButton>
             </SignedOut>

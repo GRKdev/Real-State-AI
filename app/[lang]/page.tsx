@@ -4,16 +4,16 @@ import { NavbarSearch } from '@/components/ui/SearchBar';
 import { useState, useEffect } from 'react';
 import { useLocale } from '@/contexts/localeContext';
 import { Property } from '@/types/property';
-import { usePropertyCardDictionary } from "@/hooks/usePropertyCardDictionary";
 import PropertyCardsContainer from '@/components/ui/property-card-container';
 import WelcomeMessage from '@/components/ui/welcome-message';
 import ErrorMessageAlert from '@/components/ui/error-message';
 import useSearchLogic from '@/hooks/useSearchLogic';
 import FooterCard from '@/components/ui/footer-card';
+import { useDictionary } from '@/hooks/useDictionary';
 
 export default function Home() {
   const { locale: currentLocale } = useLocale();
-  const propertyCardDict = usePropertyCardDictionary();
+  const propertyCardDict = useDictionary('property_card');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchCount, setSearchCount] = useState(0);
   const [prevResponse, setPrevResponse] = useState<Property[] | null>(null);
@@ -65,7 +65,7 @@ export default function Home() {
 
       />
 
-      {!isLoading && response.length > 0 && (
+      {!isLoading && response.length > 0 && propertyCardDict && (
         <FooterCard
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
