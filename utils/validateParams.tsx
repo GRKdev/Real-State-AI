@@ -54,11 +54,16 @@ function correctParameterName(key: string): string {
 export function validateAndCorrectParams(paramsString: string): string {
     let cleanedText = paramsString.trim();
 
+    // Remove the "P:" prefix if present
+    if (cleanedText.startsWith("P:")) {
+        cleanedText = cleanedText.slice(2).trim();
+    }
+
+    // Remove any hash symbols used for separation
     const hashIndex = cleanedText.indexOf('#');
     if (hashIndex !== -1) {
         cleanedText = cleanedText.substring(hashIndex + 1);
     }
-
     cleanedText = cleanedText.replace(/#/g, '');
 
     if (cleanedText.endsWith('%')) {
@@ -91,6 +96,7 @@ export function validateAndCorrectParams(paramsString: string): string {
 
     return correctedParams.join('&');
 }
+
 
 function processKeyValuePair(key: string, value: string, correctedParams: string[]) {
     const correctedKey = correctParameterName(key);
