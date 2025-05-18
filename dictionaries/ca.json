@@ -1,7 +1,7 @@
 {
   "extra_options": {
-    "title": "Opcions addicionals",
-    "bedrooms": "Habitacions",
+    "title": "Opcions Extra",
+    "bedrooms": "Dormitoris",
     "bathrooms": "Banys",
     "parking": "Parking",
     "balcony": "Balcó",
@@ -18,55 +18,56 @@
     "bathroom": "bany",
     "bathrooms": "banys",
     "month": "mes",
-    "total_results": "Resultats totals: ",
+    "total_results": "Total de resultats: ",
     "last_question": "Última pregunta: ",
-    "no_results": "No s'han trobat resultats. Si us plau, prova amb diferents criteris de cerca.",
+    "no_results": "No s'han trobat resultats. Si us plau, prova amb altres criteris de cerca.",
     "previous": "Anterior",
     "next": "Següent",
     "more_pages": "Més pàgines",
-    "error_login": "Necessites estar registrat per utilitzar aquesta funció. Si us plau, inicia sessió o registra't i torna-ho a provar.",
-    "total_cost": "Cost total de la resposta"
+    "error_login": "Necessites iniciar sessió per utilitzar aquesta funció. Si us plau, inicia sessió o registra't i torna-ho a provar.",
+    "total_cost": "Cost total d'aquesta resposta"
   },
   "filters": {
-    "sign_in": "Inicia sessió",
+    "sign_in": "Iniciar Sessió",
     "title_filter": "Filtres",
-    "no_filters": "Sense filtres",
+    "no_filters": "Sense filtre",
     "price": "Preu",
-    "bedroom": "Habitació",
-    "bathroom": "Banys",
-    "square": "Metres q.",
-    "searchbar": "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació.",
-    "microphone": "Registrat per utilitzar aquesta funcionalitat.",
-    "choose_model": "Escull el model",
-    "model_finetune": "Es fa servir un model entrenat per respondre amb parametres API.",
-    "model_system": "Es fa servir el poder de prompt engineering per generar els parametres de l'API."
+    "bedroom": "Dormitori",
+    "bathroom": "Bany",
+    "searchbar": "Cerca propietats o prem el micròfon per parlar, fes clic de nou per aturar la gravació.",
+    "square": "m²",
+    "microphone": "Inicia sessió per utilitzar aquesta funció.",
+    "choose_model": "Tria el model",
+    "model_finetune": "S'utilitza un model entrenat per respondre amb paràmetres d'API.",
+    "model_system": "S'utilitza el poder de l'enginyeria de prompts per generar els paràmetres de l'API."
   },
   "welcomeMessage": {
     "welcomeUser": {
       "welcome": "Benvingut",
-      "message": "! Gaudeix d'aquesta demostració.",
-      "welcome_no_user": "Benvingut a aquesta demostració, no oblideu registrar-vos per utilitzar-la."
+      "message": "! Gaudeix d'aquesta demo.",
+      "welcome_no_user": "Benvingut a aquesta demo, no oblidis registrar-te per utilitzar-la."
     },
     "overview": {
-      "title": "Demostració General",
-      "description": "Això és una demostració d'un motor de cerca per al mercat immobiliari andorrà. Utilitzant GPT-4o-mini d'OpenAI amb prompts del sistema acuradament dissenyats, el motor de cerca ofereix capacitats de cerca de propietats precises i eficients. Aquest enfocament assegura que els usuaris rebin els resultats més rellevants de manera ràpida i eficient."
+      "title": "Descripció General de la Demo",
+      "description": "Aquesta és una demo d'un motor de cerca per al mercat immobiliari d'Andorra. Utilitzant GPT-4o-mini d'OpenAI amb prompts del sistema acuradament elaborats, el motor de cerca ofereix capacitats de cerca de propietats precises i eficients. Aquest enfocament garanteix que els usuaris rebin els resultats més rellevants de manera ràpida i eficient."
     },
     "features": {
       "title": "Característiques",
       "items": [
-        "Suport Multilingüe: Atendre a un públic divers amb suport per al català, espanyol, anglès i francès.",
-        "Filtres de Cerca Avançats: Els usuaris poden refinar la seva cerca amb diversos filtres i opcions extra per trobar la seva propietat ideal.",
-        "Consultes Potenciades per IA: Aprofita GPT-4o-mini amb prompts del sistema per interpretar entrades de cerca i generar consultes d'API precises.",
-        "Cerca per Veu: Utilitza l'API Whisper d'OpenAI per processar comandes de veu per a consultes de cerca.",
-        "Actualitzacions en Temps Real: Actualitza dinàmicament els resultats de la cerca, proporcionant accés immediat a les últimes propietats."
+        "Suport Multilingüe: Atenguent a una audiència diversa amb suport per a català, espanyol, anglès i francès.",
+        "Filtres de Cerca Avançats: Els usuaris poden refinar la seva cerca amb diversos filtres i opcions addicionals per trobar la seva propietat ideal.",
+        "Consultes amb IA: Aprofa GPT-4o-mini amb prompts del sistema per interpretar les entrades de cerca i generar consultes d'API precises.",
+        "Cerca per Veu: Utilitza l'API Whisper d'OpenAI per processar ordres de veu per a consultes de cerca.",
+        "Actualitzacions en Temps Real: Actualitza dinàmicament els resultats de cerca, proporcionant accés immediat a les últimes propietats.",
+        "Suport de Chat en Viu: Chatbot Crisp integrat per a atenció al client instantània, consultes sobre propietats i informació de l'empresa."
       ]
     },
     "system_prompts": {
       "title": "Prompts del Sistema",
-      "description": "El nostre motor de cerca utilitza prompts del sistema acuradament dissenyats amb GPT-4o-mini per entendre i processar consultes en llenguatge natural. Aquest enfocament ofereix diverses avantatges:",
+      "description": "El nostre motor de cerca utilitza prompts del sistema acuradament elaborats amb GPT-4o-mini per entendre i processar consultes en llenguatge natural. Aquest enfocament ofereix diverses avantatges:",
       "items": [
         "Flexibilitat: Els prompts del sistema poden modificar-se i actualitzar-se fàcilment sense necessitat de tornar a entrenar el model.",
-        "Econòmic: No requereix fine-tuning, el que el fa més econòmic de mantenir i actualitzar.",
+        "Econòmic: No és necessari el fine-tuning, el que el fa més econòmic de mantenir i actualitzar.",
         "Actualitzacions Immediates: Els canvis en la lògica de cerca poden implementar-se instantàniament a través de modificacions en els prompts.",
         "Rendiment Consistent: Els prompts del sistema proporcionen una interpretació de consultes fiable i consistent."
       ]
@@ -74,24 +75,25 @@
     "technology": {
       "title": "Tecnologia",
       "items": [
-        "Next.js: Un marc de React que permet funcionalitats com la renderització del costat del servidor i la generació de llocs web estàtics. Utilitzat per construir la interfície d'usuari frontal, proporcionant una experiència d'usuari dinàmica i sensible.",
+        "Next.js: Un framework de React que permet funcionalitats com el renderitzat del costat del servidor i la generació de llocs web estàtics. Utilitzat per construir la interfície d'usuari, proporcionant una experiència d'usuari dinàmica i receptiva.",
         "GPT-4o-mini d'OpenAI: Un potent model de llenguatge utilitzat amb prompts del sistema per entendre i processar consultes immobiliàries de manera eficient.",
-        "Whisper d'OpenAI: Una API de Reconeixement de Veu que permet als usuaris introduir consultes de cerca mitjançant comandes de veu.",
-        "PostgreSQL de Vercel: La meva elecció per a una solució de base de dades gestionada i altament escalable, assegurant una gestió de dades robusta i segura.",
-        "Desplegament en Servidors de Vercel: Per a un allotjament sense problemes i un rendiment superior, la nostra plataforma està desplegada en la infraestructura d'avantguarda de Vercel.",
-        "Clerk: Un servei d'autenticació d'usuaris que proporciona una funcionalitat d'inici de sessió segura i personalitzable per al nostre Motor de Cerca Immobiliària."
+        "Whisper d'OpenAI: Una API de Veu a Text que permet als usuaris ingressar consultes de cerca mitjançant ordres de veu.",
+        "PostgreSQL de Vercel: La meva elecció per a una solució de base de dades altament escalable i gestionada, assegurant una gestió de dades robusta i segura.",
+        "Desplegament en Servidors Vercel: Per a un allotjament sense problemes i un rendiment superior, la nostra plataforma es desplega en la infraestructura d'última generació de Vercel.",
+        "Clerk: Un servei d'autenticació d'usuaris que proporciona funcionalitat d'inici de sessió segura i personalitzable per al nostre Motor de Cerca Immobiliària.",
+        "Crisp: Una plataforma integrada d'atenció al client que proporciona funcionalitat de chatbot automatitzat i suport de chat en viu per a assistència a l'usuari, consultes sobre propietats i informació de l'empresa."
       ]
     },
     "examples": {
       "title": "Exemples de Consultes",
-      "description": "A continuació, es mostren alguns exemples de consultes que podeu provar amb el nostre Motor de Cerca Immobiliària:",
+      "description": "A continuació, proporcionem alguns exemples de consultes que el Motor de Cerca Immobiliària pot processar:",
       "items": [
-        "Vull llogar un pis per menys de 1000€ --> Mostra pisos (pis, estudi, loft, àtic) de lloguer per menys de 1000€",
-        "Comprar casa a Encamp o Escaldes-Engordany --> Mostra cases (casa, casa adossada, xalet) en venda a Encamp o Escaldes-Engordany",
-        "Apartaments a Andorra la Vella --> Mostra apartaments (apartament, pis, estudi, loft, àtic) en venda o lloguer a Andorra la Vella",
-        "Vull llogar un parking per sota 100 euros --> Mostra parkings de lloguer per menys de 100€",
-        "Pis per llogar entre 750 i 1500€ --> Mostra apartaments de lloguer amb un preu entre 750 i 1500€",
-        "Apartament de 3 habitacions --> Mostra apartaments amb 3 habitacions"
+        "Vull llogar un apartament per menys de 1000€ --> Mostra apartaments (apartament, estudi, loft, àtic) per llogar per menys de 1000€",
+        "Comprar una casa a Encamp o Escaldes-Engordany --> Mostra cases (casa, adossat, xalet) en venda a Encamp o Escaldes-Engordany",
+        "Apartaments a Andorra la Vella --> Mostra apartaments (apartament, estudi, loft, àtic) en venda o lloguer a Andorra la Vella",
+        "Vull llogar un parking per menys de 100 euros --> Mostra places de parking per llogar per menys de 100€",
+        "Apartament per llogar entre 750 i 1500€ --> Mostra apartaments per llogar amb un preu entre 750 i 1500€",
+        "Apartament de 3 dormitoris --> Mostra apartaments amb 3 dormitoris en venda o lloguer"
       ]
     }
   }

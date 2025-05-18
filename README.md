@@ -11,6 +11,7 @@ Our Real Estate Search Engine is a cutting-edge platform designed specifically f
 - **AI-Powered Queries**: Leverages GPT-4o-mini with system prompts to interpret search inputs and generate precise API queries.
 - **Real-Time Updates**: Dynamically updates search results, providing immediate access to the latest properties.
 - **Voice Search**: Utilizes OpenAI's Whisper API to process voice commands for search queries.
+- **Live Chat Support**: Integrated Crisp chatbot for instant customer support, property inquiries, and company information. Users can interact with our automated assistant or connect with our support team directly through the chat interface.
 
 ## Why System Prompts?
 
@@ -37,6 +38,7 @@ For example:
 - **Vercel PostgreSQL**: My choice for a highly scalable and managed database solution, ensuring robust and secure data management.
 - **Deployment on Vercel Servers**: For seamless hosting and superior performance, our platform is deployed on Vercel's cutting-edge infrastructure.
 - **Clerk**: A user authentication service that provides secure and customizable login functionality for our Real Estate Search Engine.
+- **Crisp**: An integrated customer support platform providing automated chatbot functionality and live chat support for user assistance, property inquiries, and company information.
 
 ## Demo
 

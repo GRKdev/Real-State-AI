@@ -1,7 +1,7 @@
 {
   "extra_options": {
-    "title": "Opciones adicionales",
-    "bedrooms": "Habitaciones",
+    "title": "Opciones Extra",
+    "bedrooms": "Dormitorios",
     "bathrooms": "Baños",
     "parking": "Parking",
     "balcony": "Balcón",
@@ -18,55 +18,56 @@
     "bathroom": "baño",
     "bathrooms": "baños",
     "month": "mes",
-    "total_results": "Resultados totales: ",
+    "total_results": "Total de resultados: ",
     "last_question": "Última pregunta: ",
-    "no_results": "No se han encontrado resultados. Por favor, prueba con diferentes criterios de búsqueda.",
+    "no_results": "No se encontraron resultados. Por favor, intente con otros criterios de búsqueda.",
     "previous": "Anterior",
     "next": "Siguiente",
     "more_pages": "Más páginas",
-    "error_login": "Necesitas estar registrado para usar esta función. Por favor, inicia sesión o regístrate e inténtalo de nuevo.",
-    "total_cost": "Coste total de la respuesta"
+    "error_login": "Necesitas iniciar sesión para usar esta función. Por favor, inicia sesión o regístrate e inténtalo de nuevo.",
+    "total_cost": "Coste total de esta respuesta"
   },
   "filters": {
-    "sign_in": "Inicia sesión",
+    "sign_in": "Iniciar Sesión",
     "title_filter": "Filtros",
-    "no_filters": "Sin filtros",
+    "no_filters": "Sin filtro",
     "price": "Precio",
-    "bedroom": "Habitación",
-    "bathroom": "Baños",
-    "square": "Superficie",
-    "searchbar": "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación.",
-    "microphone": "Registrate para usar esta función.",
-    "choose_model": "Escoge el modelo",
-    "model_finetune": "Se utiliza un modelo entrenado para responder con parámetros API.",
-    "model_system": "Se utiliza el poder del diseño de prompts para generar los parámetros de la API."
+    "bedroom": "Dormitorio",
+    "bathroom": "Baño",
+    "searchbar": "Busca propiedades o presiona el micrófono para hablar, haz clic de nuevo para detener la grabación.",
+    "square": "m²",
+    "microphone": "Inicia sesión para usar esta función.",
+    "choose_model": "Elige el modelo",
+    "model_finetune": "Se utiliza un modelo entrenado para responder con parámetros de API.",
+    "model_system": "Se utiliza el poder de la ingeniería de prompts para generar los parámetros de la API."
   },
   "welcomeMessage": {
     "welcomeUser": {
       "welcome": "Bienvenido",
-      "message": "! Disfruta de esta demostración.",
-      "welcome_no_user": "Bienvenido a esta demostración, no olvides registrarte para usarla."
+      "message": "! Disfruta de esta demo.",
+      "welcome_no_user": "Bienvenido a esta demo, no olvides registrarte para usarla."
     },
     "overview": {
-      "title": "Demostración General",
-      "description": "Esto es una demostración de un motor de búsqueda para el mercado inmobiliario andorrano. Utilizando GPT-4o-mini de OpenAI con prompts del sistema cuidadosamente diseñados, el motor de búsqueda ofrece capacidades de búsqueda de propiedades precisas y eficientes. Este enfoque asegura que los usuarios reciban los resultados más relevantes de manera rápida y eficiente."
+      "title": "Descripción General de la Demo",
+      "description": "Esta es una demo de un motor de búsqueda para el mercado inmobiliario de Andorra. Utilizando GPT-4o-mini de OpenAI con prompts del sistema cuidadosamente elaborados, el motor de búsqueda ofrece capacidades de búsqueda de propiedades precisas y eficientes. Este enfoque garantiza que los usuarios reciban los resultados más relevantes de manera rápida y eficiente."
     },
     "features": {
       "title": "Características",
       "items": [
         "Soporte Multilingüe: Atendiendo a una audiencia diversa con soporte para catalán, español, inglés y francés.",
-        "Filtros de Búsqueda Avanzados: Los usuarios pueden refinar su búsqueda con varios filtros y opciones extra para encontrar su propiedad ideal.",
-        "Consultas Potenciadas por IA: Aprovecha GPT-4o-mini con prompts del sistema para interpretar entradas de búsqueda y generar consultas de API precisas.",
+        "Filtros de Búsqueda Avanzados: Los usuarios pueden refinar su búsqueda con varios filtros y opciones adicionales para encontrar su propiedad ideal.",
+        "Consultas con IA: Aprovecha GPT-4o-mini con prompts del sistema para interpretar las entradas de búsqueda y generar consultas de API precisas.",
         "Búsqueda por Voz: Utiliza la API Whisper de OpenAI para procesar comandos de voz para consultas de búsqueda.",
-        "Actualizaciones en Tiempo Real: Actualiza dinámicamente los resultados de búsqueda, proporcionando acceso inmediato a las últimas propiedades."
+        "Actualizaciones en Tiempo Real: Actualiza dinámicamente los resultados de búsqueda, proporcionando acceso inmediato a las últimas propiedades.",
+        "Soporte de Chat en Vivo: Chatbot Crisp integrado para atención al cliente instantánea, consultas sobre propiedades e información de la empresa."
       ]
     },
     "system_prompts": {
       "title": "Prompts del Sistema",
-      "description": "Nuestro motor de búsqueda utiliza prompts del sistema cuidadosamente diseñados con GPT-4o-mini para entender y procesar consultas en lenguaje natural. Este enfoque ofrece varias ventajas:",
+      "description": "Nuestro motor de búsqueda utiliza prompts del sistema cuidadosamente elaborados con GPT-4o-mini para entender y procesar consultas en lenguaje natural. Este enfoque ofrece varias ventajas:",
       "items": [
         "Flexibilidad: Los prompts del sistema pueden modificarse y actualizarse fácilmente sin necesidad de reentrenar el modelo.",
-        "Económico: No requiere fine-tuning, lo que lo hace más económico de mantener y actualizar.",
+        "Económico: No es necesario el fine-tuning, lo que lo hace más económico de mantener y actualizar.",
         "Actualizaciones Inmediatas: Los cambios en la lógica de búsqueda pueden implementarse instantáneamente a través de modificaciones en los prompts.",
         "Rendimiento Consistente: Los prompts del sistema proporcionan una interpretación de consultas confiable y consistente."
       ]
@@ -74,12 +75,13 @@
     "technology": {
       "title": "Tecnología",
       "items": [
-        "Next.js: Un marco de React que permite funcionalidades como la renderización del lado del servidor y la generación de sitios web estáticos. Utilizado para construir la interfaz frontal, proporcionando una experiencia de usuario dinámica y receptiva.",
+        "Next.js: Un framework de React que permite funcionalidades como el renderizado del lado del servidor y la generación de sitios web estáticos. Utilizado para construir la interfaz de usuario, proporcionando una experiencia de usuario dinámica y receptiva.",
         "GPT-4o-mini de OpenAI: Un potente modelo de lenguaje utilizado con prompts del sistema para entender y procesar consultas inmobiliarias de manera eficiente.",
-        "Whisper de OpenAI: Una API de Reconocimiento de Voz que permite a los usuarios introducir consultas de búsqueda mediante comandos de voz.",
+        "Whisper de OpenAI: Una API de Voz a Texto que permite a los usuarios ingresar consultas de búsqueda mediante comandos de voz.",
         "PostgreSQL de Vercel: Mi elección para una solución de base de datos altamente escalable y gestionada, asegurando una gestión de datos robusta y segura.",
-        "Despliegue en Servidores de Vercel: Para un alojamiento sin problemas y un rendimiento superior, nuestra plataforma está desplegada en la infraestructura de vanguardia de Vercel.",
-        "Clerk: Un servicio de autenticación de usuarios que proporciona una funcionalidad de inicio de sesión segura y personalizable para nuestro Motor de Búsqueda Inmobiliaria."
+        "Despliegue en Servidores Vercel: Para un alojamiento sin problemas y un rendimiento superior, nuestra plataforma se despliega en la infraestructura de última generación de Vercel.",
+        "Clerk: Un servicio de autenticación de usuarios que proporciona funcionalidad de inicio de sesión segura y personalizable para nuestro Motor de Búsqueda Inmobiliaria.",
+        "Crisp: Una plataforma integrada de atención al cliente que proporciona funcionalidad de chatbot automatizado y soporte de chat en vivo para asistencia al usuario, consultas sobre propiedades e información de la empresa."
       ]
     },
     "fine_tuned": {
@@ -94,14 +96,14 @@
     },
     "examples": {
       "title": "Ejemplos de Consultas",
-      "description": "A continuación, se presentan algunos ejemplos de consultas que puedes probar en nuestro Motor de Búsqueda Inmobiliaria:",
+      "description": "A continuación, proporcionamos algunos ejemplos de consultas que el Motor de Búsqueda Inmobiliaria puede procesar:",
       "items": [
-        "Quiero alquilar un piso por menos de 1000€ --> Muestra pisos (piso, estudio, loft, ático) de alquiler por menos de 1000€",
-        "Comprar casa en Encamp o Escaldes-Engordany --> Muestra casas (casa, casa adosada, chalet) en venta en Encamp o Escaldes-Engordany",
-        "Apartamentos en Andorra la Vella --> Muestra apartamentos (piso, estudio, loft, ático) en venta o alquiler en Andorra la Vella",
-        "Quiero alquilar un parking por debajo de 100 euros --> Muestra parkings de alquiler por menos de 100€",
-        "Piso para alquilar entre 750 y 1500€ --> Muestra apartamentos de alquiler con un precio entre 750 y 1500€",
-        "Apartamento de 3 habticiones --> Muestra apartamentos (piso, estudio, loft, ático) de 3 habitaciones"
+        "Quiero alquilar un apartamento por menos de 1000€ --> Muestra apartamentos (apartamento, estudio, loft, ático) para alquilar por menos de 1000€",
+        "Comprar una casa en Encamp o Escaldes-Engordany --> Muestra casas (casa, adosado, chalet) en venta en Encamp o Escaldes-Engordany",
+        "Apartamentos en Andorra la Vella --> Muestra apartamentos (apartamento, estudio, loft, ático) en venta o alquiler en Andorra la Vella",
+        "Quiero alquilar un parking por menos de 100 euros --> Muestra plazas de parking para alquilar por menos de 100€",
+        "Apartamento para alquilar entre 750 y 1500€ --> Muestra apartamentos para alquilar con un precio entre 750 y 1500€",
+        "Apartamento de 3 dormitorios --> Muestra apartamentos con 3 dormitorios en venta o alquiler"
       ]
     }
   }
