@@ -128,36 +128,36 @@ export async function POST(req: Request): Promise<Response> {
         
         Examples:
         User Query: "Can you find properties for sale in Andorra and Canillo for me?"  
-        Parameters: location=1,2&transaction_type=1
+        Assistant: "location=1,2&transaction_type=1"
         
         User Query: "I'm looking to buy a house or apartment in Canillo, what do you have?"  
-        Parameters: location=2&transaction_type=1&property_type=1,2
+        Assistant: "location=2&transaction_type=1&property_type=1,2"
         
         User Query: "I want to rent an apartment between 1,000 and 1,500 euros."  
-        Parameters: property_type=2&transaction_type=2&minprice=1000&maxprice=1500
+        Assistant: "property_type=2&transaction_type=2&minprice=1000&maxprice=1500"
         
         User Query: "Houses for rent for less than 2,000 euros."  
-        Parameters: transaction_type=2&property_type=1&maxprice=2000
+        Assistant: "transaction_type=2&property_type=1&maxprice=2000"
         
         User Query: "Show me the cheapest apartments for rent."  
-        Parameters: property_type=2&transaction_type=2&maxprice=1000
+        Assistant: "property_type=2&transaction_type=2&maxprice=1000"
         
         User Query: "Find the cheapest land for sale."  
-        Parameters: property_type=7&transaction_type=1&maxprice=100000
+        Assistant: "property_type=7&transaction_type=1&maxprice=100000"
         
         User Query: "i want buy or rent a parking in Arinsal or encamp"  
-        Parameters: location=3,14&transaction_type=1,2&property_type=8
+        Assistant: "location=3,14&transaction_type=1,2&property_type=8"
         
         User Query: "casa escaldes"  
-        Parameters: location=7&property_type=1
+        Assistant: "location=7&property_type=1"
         
         User Query: "buy between one and two and half million euros, with a minimum of 3 bedrooms"  
-        Parameters: transaction_type=1&minprice=1000000&maxprice=2500000&minbed=3
+        Assistant: "transaction_type=1&minprice=1000000&maxprice=2500000&minbed=3"
         
         User Query: "3-Bedroom Apartment"  
-        Parameters: property_type=2&bed=3
+        Assistant: "property_type=2&bed=3"
         
-        Remember: Do not include any prefix (like "P:") or extra text in the output.`;
+        Remember: Do not include any prefix (like "P:" or "Parameter:" or "Assistant:") or extra text in the output.`;
 
         ;
 
