@@ -5,7 +5,7 @@ export default function Footer() {
         <footer className="footer">
             <div className="px-4 py-3 flex items-center sm:flex-row flex-col">
 
-                <p className="hidden lg:block text-sm sm:py-2 sm:mt-0 mt-4 ">2024 —
+                <p className="hidden lg:block text-sm sm:py-2 sm:mt-0 mt-4 ">
                     <a href="https://github.com/GRKdev" target="_blank"> @GRKdev</a>
                 </p>
                 <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">

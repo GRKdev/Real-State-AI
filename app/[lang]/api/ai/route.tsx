@@ -118,7 +118,7 @@ Andorra, Andorra la Vella, Canillo, Encamp, La Massana, Ordino, Sant Julia, Esca
   studio, loft, hotel, office, commercial, industrial, land, parking, storage,  
   building, other.
 
-• **Only list something in "amenities"** if the user explicitly says “with X” or “including X”. Supported amenities:  
+• **Only list something in "amenities"** if the user explicitly says "with X" or "including X". Supported amenities:  
   terrace, parking, balcony, garden, electrodometics, heating, elevator, furnished.
 
 • **Translate** any non-English terms to English before generating JSON (e.g. "piso" → "apartment", "casa" → "house", "oficina" → "office").  
@@ -231,8 +231,9 @@ Andorra, Andorra la Vella, Canillo, Encamp, La Massana, Ordino, Sant Julia, Esca
     const queryString = params.toString();
 
     // Cost calculation
-    const pT = completion.usage.prompt_tokens || 0;
-    const cT = completion.usage.completion_tokens || 0;
+    const usage = completion.usage || { prompt_tokens: 0, completion_tokens: 0 };
+    const pT = usage.prompt_tokens;
+    const cT = usage.completion_tokens;
     const total_cost = ((pT * 0.15) + (cT * 0.6)) / 1_000_000;
 
     console.log('Final query:', queryString);
