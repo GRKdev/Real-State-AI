@@ -1,100 +1,98 @@
 {
-    "extra_options": {
-        "title": "Opcions addicionals",
-        "bedrooms": "Habitacions",
-        "bathrooms": "Banys",
-        "parking": "Parking",
-        "balcony": "Balcó",
-        "garden": "Jardí",
-        "elevator": "Ascensor",
-        "heating": "Calefacció",
-        "electrod": "Electrod.",
-        "furnished": "Moblat",
-        "terrace": "Terraça"
+  "extra_options": {
+    "title": "Opcions addicionals",
+    "bedrooms": "Habitacions",
+    "bathrooms": "Banys",
+    "parking": "Parking",
+    "balcony": "Balcó",
+    "garden": "Jardí",
+    "elevator": "Ascensor",
+    "heating": "Calefacció",
+    "electrod": "Electrod.",
+    "furnished": "Moblat",
+    "terrace": "Terrassa"
+  },
+  "property_card": {
+    "room": "habitació",
+    "rooms": "habitacions",
+    "bathroom": "bany",
+    "bathrooms": "banys",
+    "month": "mes",
+    "total_results": "Resultats totals: ",
+    "last_question": "Última pregunta: ",
+    "no_results": "No s'han trobat resultats. Si us plau, prova amb diferents criteris de cerca.",
+    "previous": "Anterior",
+    "next": "Següent",
+    "more_pages": "Més pàgines",
+    "error_login": "Necessites estar registrat per utilitzar aquesta funció. Si us plau, inicia sessió o registra't i torna-ho a provar.",
+    "total_cost": "Cost total de la resposta"
+  },
+  "filters": {
+    "sign_in": "Inicia sessió",
+    "title_filter": "Filtres",
+    "no_filters": "Sense filtres",
+    "price": "Preu",
+    "bedroom": "Habitació",
+    "bathroom": "Banys",
+    "square": "Metres q.",
+    "searchbar": "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació.",
+    "microphone": "Registrat per utilitzar aquesta funcionalitat.",
+    "choose_model": "Escull el model",
+    "model_finetune": "Es fa servir un model entrenat per respondre amb parametres API.",
+    "model_system": "Es fa servir el poder de prompt engineering per generar els parametres de l'API."
+  },
+  "welcomeMessage": {
+    "welcomeUser": {
+      "welcome": "Benvingut",
+      "message": "! Gaudeix d'aquesta demostració.",
+      "welcome_no_user": "Benvingut a aquesta demostració, no oblideu registrar-vos per utilitzar-la."
     },
-    "property_card": {
-      "room": "habitació",
-      "rooms": "habitacions",
-      "bathroom": "bany",
-      "bathrooms": "banys",
-      "month": "mes",
-      "total_results": "Resultats totals: ",
-      "last_question": "Última pregunta: ",
-      "no_results": "No s'han trobat resultats. Proveu amb altres criteris de cerca.",
-      "previous": "Anterior",
-      "next": "Següent",
-      "more_pages": "Més pàgines",
-      "error_login": "Necessites estar registrat per utilitzar aquesta funcionalitat. Si us plau, inicia sessió o registra't i torna-ho a provar.",
-      "total_cost": "Cost total d'aquesta resposta"
-
+    "overview": {
+      "title": "Demostració General",
+      "description": "Això és una demostració d'un motor de cerca per al mercat immobiliari andorrà. Utilitzant GPT-4o-mini d'OpenAI amb prompts del sistema acuradament dissenyats, el motor de cerca ofereix capacitats de cerca de propietats precises i eficients. Aquest enfocament assegura que els usuaris rebin els resultats més rellevants de manera ràpida i eficient."
     },
-    "filters": {
-      "sign_in": "Inicia sessió",
-      "title_filter": "Filtres",
-      "no_filters": "Sense filtres",
-      "price": "Preu",
-      "bedroom": "Habitació",
-      "bathroom": "Banys",
-      "square": "Metres q.",
-      "searchbar" : "Buscar propietats o premeu el micròfon per parlar, torneu a prémer per aturar la gravació.",
-      "microphone": "Registrat per utilitzar aquesta funcionalitat.",
-      "choose_model": "Escull el model",
-      "model_finetune": "Es fa servir un model entrenat per respondre amb parametres API.",
-      "model_system": "Es fa servir el poder de prompt engineering per generar els parametres de l'API."
+    "features": {
+      "title": "Característiques",
+      "items": [
+        "Suport Multilingüe: Atendre a un públic divers amb suport per al català, espanyol, anglès i francès.",
+        "Filtres de Cerca Avançats: Els usuaris poden refinar la seva cerca amb diversos filtres i opcions extra per trobar la seva propietat ideal.",
+        "Consultes Potenciades per IA: Aprofita GPT-4o-mini amb prompts del sistema per interpretar entrades de cerca i generar consultes d'API precises.",
+        "Cerca per Veu: Utilitza l'API Whisper d'OpenAI per processar comandes de veu per a consultes de cerca.",
+        "Actualitzacions en Temps Real: Actualitza dinàmicament els resultats de la cerca, proporcionant accés immediat a les últimes propietats."
+      ]
     },
-    "welcomeMessage": {
-        "welcomeUser": {
-          "welcome": "Benvingut",
-          "message": "! Gaudeix d'aquesta demostració.",
-          "welcome_no_user": "Benvigut a aquesta demostració, no oblideu registrar-vos per utilitzar-la."
-        },
-        "overview": {
-          "title": "Demostració General",
-          "description": "Això es una Demo de motor de cerca per al mercat immobiliari andorrà. Utilitzant un model afinat d'OpenAI (babbage-002), el motor de cerca ofereix una precisió i velocitat sense precedents. Aquest enfocament innovador assegura que els usuaris reben els resultats més rellevants de manera ràpida i eficient, més que utilitzant agents SQL tradicionals i més barat que generant SQL directament des d'un model de llenguatge gran (LLM)."
-        },
-        "features": {
-          "title": "Característiques",
-          "items": [
-            "Suport Multilingüe: Atendre a un públic divers amb suport per al català, espanyol, anglès i francès.",
-            "Filtres de Cerca Avançats: Els usuaris poden refinar la seva cerca amb diversos filtres i opcions extra per trobar la seva propietat ideal.",
-            "Consultes Potenciades per IA: Aprofita un model d'OpenAI afinat per interpretar entrades de cerca i generar consultes d'API precises.",
-            "Cerca per Veu: Utilitza l'API Whisper d'OpenAI per processar comandes de veu per a consultes de cerca.",
-            "Actualitzacions en Temps Real: Actualitza dinàmicament els resultats de la cerca, proporcionant accés immediat a les últimes propietats."
-          ]
-        },
-        "technology": {
-          "title": "Tecnologia",
-          "items": [
-            "Next.js: Un marc de React que permet funcionalitats com la renderització del costat del servidor i la generació de llocs web estàtics. Utilitzat per construir la interfície d'usuari frontal, proporcionant una experiència d'usuari dinàmica i sensible.",
-            "GPT d'OpenAI (babbage-002): Un model de llenguatge afinat per aquesta aplicació per entendre i processar consultes immobiliàries de manera eficient.",
-            "Whisper d'OpenAI: Una API de Text-a-Veu que permet als usuaris introduir consultes de cerca mitjançant comandes de veu.",
-            "PostgreSQL de Vercel: La meva elecció per a una solució de base de dades gestionada i altament escalable, assegurant una gestió de dades robusta i segura.",
-            "Desplegament en Servidors de Vercel: Per a un allotjament sense problemes i un rendiment superior, la nostra plataforma està desplegada en la infraestructura d'avantguarda de Vercel.",
-            "Clerk: Un servei d'autenticació d'usuaris que proporciona una funcionalitat d'inici de sessió segura i personalitzable per al nostre Motor de Cerca Immobiliària."
-          ]
-        },
-        "fine_tuned": {
-          "title": "Per què un Model Afinat?",
-          "description": "Escollir un model afinat en lloc d'agents SQL tradicionals o generar directament SQL des d'un gran model de llenguatge (LLM) presenta diversos avantatges:",
-          "items": [
-            "Precisió: Podem entrenar amb un conjunt de dades específic i tindrem menys Errors i Al·lucinacions.",
-            "Velocitat: Encara que l'afinament requereix un esforç inicial significatiu, el model resultant proporciona respostes més ràpides generant directament consultes d'API.",
-            "Importància de les Dades: La qualitat dels paràmetres de l'API depèn molt de les dades subjacents. L'afinament permet al model aprofitar conjunts de dades específics per millorar el rendiment.",
-            "Cost (x4-5 més barat): Encara que inicialment porta més treball, a la llarga, amb el model afinat és més barat. Exemple: 1 milió de respostes amb el model afinat costaria uns 120 $ de mitjana, mentre que fent servir directament un model del tipus GPT-3.5 costaria entre 500 $."
-          ]
-        },
-        "examples": {
-          "title": "Exemples de Cerca",
-          "description": "A continuació, es mostren alguns exemples de consultes que podeu provar amb el nostre Motor de Cerca Immobiliària:",
-          "items": [
-            "Vull llogar un pis per menys de 1000€ --> Mostra pisos (pis, estudi, loft, àtic) de lloguer per menys de 1000€",
-            "Comprar casa en Encamp o Escaldes-Engordany --> Mostra cases (casa, casa adossada, xalet) en venda a Encamp o Escaldes-Engordany",
-            "Apartaments en Andorra la Vella --> Mostra apartaments (apartament, pis, estudi, loft, àtic) en venda o lloguer a Andorra la Vella",
-            "Vull llogar un parking per sota 100 euros --> Mostra parkings de lloguer per menys de 100€",
-            "Pis per llogar entre 750 i 1500€ --> Mostra apartaments de lloguer amb un preu entre 750 i 1500€",
-            "Apartament de 3 habticions --> Mostra apartaments amb 3 habitacions"
-          ]
-        }
-      }
+    "system_prompts": {
+      "title": "Prompts del Sistema",
+      "description": "El nostre motor de cerca utilitza prompts del sistema acuradament dissenyats amb GPT-4o-mini per entendre i processar consultes en llenguatge natural. Aquest enfocament ofereix diverses avantatges:",
+      "items": [
+        "Flexibilitat: Els prompts del sistema poden modificar-se i actualitzar-se fàcilment sense necessitat de tornar a entrenar el model.",
+        "Econòmic: No requereix fine-tuning, el que el fa més econòmic de mantenir i actualitzar.",
+        "Actualitzacions Immediates: Els canvis en la lògica de cerca poden implementar-se instantàniament a través de modificacions en els prompts.",
+        "Rendiment Consistent: Els prompts del sistema proporcionen una interpretació de consultes fiable i consistent."
+      ]
+    },
+    "technology": {
+      "title": "Tecnologia",
+      "items": [
+        "Next.js: Un marc de React que permet funcionalitats com la renderització del costat del servidor i la generació de llocs web estàtics. Utilitzat per construir la interfície d'usuari frontal, proporcionant una experiència d'usuari dinàmica i sensible.",
+        "GPT-4o-mini d'OpenAI: Un potent model de llenguatge utilitzat amb prompts del sistema per entendre i processar consultes immobiliàries de manera eficient.",
+        "Whisper d'OpenAI: Una API de Reconeixement de Veu que permet als usuaris introduir consultes de cerca mitjançant comandes de veu.",
+        "PostgreSQL de Vercel: La meva elecció per a una solució de base de dades gestionada i altament escalable, assegurant una gestió de dades robusta i segura.",
+        "Desplegament en Servidors de Vercel: Per a un allotjament sense problemes i un rendiment superior, la nostra plataforma està desplegada en la infraestructura d'avantguarda de Vercel.",
+        "Clerk: Un servei d'autenticació d'usuaris que proporciona una funcionalitat d'inici de sessió segura i personalitzable per al nostre Motor de Cerca Immobiliària."
+      ]
+    },
+    "examples": {
+      "title": "Exemples de Consultes",
+      "description": "A continuació, es mostren alguns exemples de consultes que podeu provar amb el nostre Motor de Cerca Immobiliària:",
+      "items": [
+        "Vull llogar un pis per menys de 1000€ --> Mostra pisos (pis, estudi, loft, àtic) de lloguer per menys de 1000€",
+        "Comprar casa a Encamp o Escaldes-Engordany --> Mostra cases (casa, casa adossada, xalet) en venda a Encamp o Escaldes-Engordany",
+        "Apartaments a Andorra la Vella --> Mostra apartaments (apartament, pis, estudi, loft, àtic) en venda o lloguer a Andorra la Vella",
+        "Vull llogar un parking per sota 100 euros --> Mostra parkings de lloguer per menys de 100€",
+        "Pis per llogar entre 750 i 1500€ --> Mostra apartaments de lloguer amb un preu entre 750 i 1500€",
+        "Apartament de 3 habitacions --> Mostra apartaments amb 3 habitacions"
+      ]
+    }
+  }
 }
-

@@ -2,36 +2,37 @@
 
 ## Overview
 
-Our Real Estate Search Engine is a cutting-edge platform designed specifically for the Andorran property market. Utilizing a fine tuned model from OpenAI (babbage-02), the search engine offers unprecedented precision and speed. This innovative approach ensures that users receive the most relevant results quickly and efficiently, more than using traditional SQL agents or directly generating SQL from a large language model (LLM).
+Our Real Estate Search Engine is a cutting-edge platform designed specifically for the Andorran property market. Utilizing OpenAI's GPT-4o-mini with carefully crafted system prompts, the search engine offers precise and efficient property search capabilities. This approach ensures that users receive the most relevant results quickly and efficiently.
 
 ## Features
 
 - **Multilingual Support**: Catering to a diverse audience with support for Catalan, Spanish, English, and French.
 - **Advanced Search Filters**: Users can refine their search with various filters and extra options to find their ideal property.
-- **AI-Powered Queries**: Leverages a fine-tuned OpenAI model to interpret search inputs and generate precise API queries.
+- **AI-Powered Queries**: Leverages GPT-4o-mini with system prompts to interpret search inputs and generate precise API queries.
 - **Real-Time Updates**: Dynamically updates search results, providing immediate access to the latest properties.
-- **Voise Search**: Utilizes OpenAI's Whisper API to process voice commands for search queries.
+- **Voice Search**: Utilizes OpenAI's Whisper API to process voice commands for search queries.
 
-## Why a Fine-Tuned Model?
+## Why System Prompts?
 
-Choosing a fine-tuned model over traditional SQL agents or directly generating SQL from a large language model (LLM) presents several advantages:
+Using GPT-4o-mini with system prompts presents several advantages:
 
-- **Precision**: Fine-tuned models can better understand and process natural language queries, leading to more accurate search parameters and results.
-- **Speed**: Although fine-tuning requires significant initial effort, the resulting model provides faster responses by directly generating API queries.
-- **Data Importance**: The quality of the paramaters API heavily depends on the underlying data. Fine-tuning allows the model to leverage specific datasets for improved performance.
+- **Flexibility**: System prompts can be easily modified and updated without requiring model retraining.
+- **Cost-Effective**: No need for fine-tuning, making it more economical to maintain and update.
+- **Immediate Updates**: Changes to search logic can be implemented instantly through prompt modifications.
+- **Consistent Performance**: System prompts provide reliable and consistent query interpretation.
 
-Expamle of a traning data:
-```json
-{"prompt": "Penthouses for sale in Les Bons less than 400000 €%", "completion": "location=33&transaction_type=1&property_type=15&maxprice=400000%"}
-{"prompt": "Lofts for sale in Ordino%", "completion": "location=5&transaction_type=1&property_type=18%"}
+Example of a system prompt:
 ```
-
-
+You are a real estate search assistant. Convert natural language queries into API parameters.
+For example:
+- "Penthouses for sale in Les Bons less than 400000 €" → "location=33&transaction_type=1&property_type=15&maxprice=400000"
+- "Lofts for sale in Ordino" → "location=5&transaction_type=1&property_type=18"
+```
 
 ## Technologies
 
 - **Next.js**: A React framework that enables functionality such as server-side rendering and generating static websites. Used for building the frontend interface, providing a dynamic and responsive user experience.
-- **OpenAI's GPT (Babbage-02)**: A language model fine-tuned for this application to understand and process real estate queries efficiently.
+- **OpenAI's GPT-4o-mini**: A powerful language model used with system prompts to understand and process real estate queries efficiently.
 - **OpenAI's Whisper API**: A voice recognition API that allows users to input search queries using voice commands.
 - **Vercel PostgreSQL**: My choice for a highly scalable and managed database solution, ensuring robust and secure data management.
 - **Deployment on Vercel Servers**: For seamless hosting and superior performance, our platform is deployed on Vercel's cutting-edge infrastructure.

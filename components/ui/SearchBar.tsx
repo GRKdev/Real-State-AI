@@ -39,7 +39,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
     const extraOptionsDict = useDictionary('extra_options');
     const filtersDict = useDictionary('filters');
-    const [selectedModel, setSelectedModel] = useState('finetune');
+    const [selectedModel, setSelectedModel] = useState('system_prompt');
 
     const handleModelChange = (value: string) => {
         setSelectedModel(value);
@@ -142,8 +142,21 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
 
 
             <aside className="fixed left-20 h-full pt-40 options hidden lg:block">
-                <h3 className="mt-4 mb-2">{filtersDict?.choose_model ?? "Choose Model"}:</h3>
-                <RadioGroup defaultValue="finetune" onValueChange={handleModelChange}>
+                {/* <h3 className="mt-4 mb-2">{filtersDict?.choose_model ?? "Choose Model"}:</h3> */}
+                {/* <RadioGroup defaultValue="system_prompt" onValueChange={handleModelChange}>
+
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="system_prompt" id="r2" />
+                        <Label htmlFor="r1">System Prompt </Label>
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger><Info className='h-4 w-4' /></TooltipTrigger>
+                                <TooltipContent>
+                                    <p>{filtersDict?.model_system ?? "System prompt explanation"}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </div>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="finetune" id="r1" />
                         <Label htmlFor="r1">Finetuned </Label>
@@ -156,19 +169,7 @@ export const NavbarSearch: React.FC<NavbarSearchProps> = ({ onSearch, onClientSo
                             </Tooltip>
                         </TooltipProvider>
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="system_prompt" id="r2" />
-                        <Label htmlFor="r2">System Prompt </Label>
-                        <TooltipProvider>
-                            <Tooltip>
-                                <TooltipTrigger><Info className='h-4 w-4' /></TooltipTrigger>
-                                <TooltipContent>
-                                    <p>{filtersDict?.model_system ?? "System prompt explanation"}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
-                    </div>
-                </RadioGroup>
+                </RadioGroup> */}
                 <h3 className="mt-8 mb-2">{extraOptionsDict?.title ?? "Extra Options"}:</h3>
                 <ExtraOptionsCheckbox options={extraOptions} />
             </aside>

@@ -34,10 +34,10 @@ const WelcomeMessage: React.FC = () => {
                     <li key={index}>{item}</li>
                 )) || <p>Loading...</p>}
             </ul>
-            <h3>{welcomeMessageDict.fine_tuned?.title || 'Loading...'}</h3>
-            <p>{welcomeMessageDict.fine_tuned?.description || 'Loading...'}</p>
+            <h3>{welcomeMessageDict.system_prompts?.title || 'Loading...'}</h3>
+            <p>{welcomeMessageDict.system_prompts?.description || 'Loading...'}</p>
             <ul>
-                {welcomeMessageDict.fine_tuned?.items?.map((item, index) => (
+                {welcomeMessageDict.system_prompts?.items?.map((item, index) => (
                     <li key={index}>{item}</li>
                 )) || <p>Loading...</p>}
             </ul>

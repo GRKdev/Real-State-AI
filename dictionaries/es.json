@@ -1,102 +1,108 @@
 {
-    "extra_options": {
-        "title": "Opciones adicionales",
-        "bedrooms": "Habitaciones",
-        "bathrooms": "Baños",
-        "parking": "Parking",
-        "balcony": "Balcón",
-        "garden": "Jardín",
-        "elevator": "Ascensor",
-        "heating": "Calefacción",
-        "electrod": "Electrod.",
-        "furnished": "Amueblado",
-        "terrace": "Terraza"
-      
+  "extra_options": {
+    "title": "Opciones adicionales",
+    "bedrooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "parking": "Parking",
+    "balcony": "Balcón",
+    "garden": "Jardín",
+    "elevator": "Ascensor",
+    "heating": "Calefacción",
+    "electrod": "Electrod.",
+    "furnished": "Amueblado",
+    "terrace": "Terraza"
+  },
+  "property_card": {
+    "room": "habitación",
+    "rooms": "habitaciones",
+    "bathroom": "baño",
+    "bathrooms": "baños",
+    "month": "mes",
+    "total_results": "Resultados totales: ",
+    "last_question": "Última pregunta: ",
+    "no_results": "No se han encontrado resultados. Por favor, prueba con diferentes criterios de búsqueda.",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "more_pages": "Más páginas",
+    "error_login": "Necesitas estar registrado para usar esta función. Por favor, inicia sesión o regístrate e inténtalo de nuevo.",
+    "total_cost": "Coste total de la respuesta"
+  },
+  "filters": {
+    "sign_in": "Inicia sesión",
+    "title_filter": "Filtros",
+    "no_filters": "Sin filtros",
+    "price": "Precio",
+    "bedroom": "Habitación",
+    "bathroom": "Baños",
+    "square": "Superficie",
+    "searchbar": "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación.",
+    "microphone": "Registrate para usar esta función.",
+    "choose_model": "Escoge el modelo",
+    "model_finetune": "Se utiliza un modelo entrenado para responder con parámetros API.",
+    "model_system": "Se utiliza el poder del diseño de prompts para generar los parámetros de la API."
+  },
+  "welcomeMessage": {
+    "welcomeUser": {
+      "welcome": "Bienvenido",
+      "message": "! Disfruta de esta demostración.",
+      "welcome_no_user": "Bienvenido a esta demostración, no olvides registrarte para usarla."
     },
-    "property_card": {
-      "room": "habitación",
-      "rooms": "habitaciones",
-      "bathroom": "baño",
-      "bathrooms": "baños",
-      "month": "mes",
-      "total_results": "Resultados totales: ",
-      "last_question": "Última pregunta: ",
-      "no_results": "No se han encontrado resultados. Por favor, prueba con diferentes criterios de búsqueda.",
-      "previous": "Anterior",
-      "next": "Siguiente",
-      "more_pages": "Más páginas",
-      "error_login": "Necesitas estar registrado para usar esta función. Por favor, inicia sesión o regístrate e inténtalo de nuevo.",
-      "total_cost": "Coste total de la respuesta"
-      
+    "overview": {
+      "title": "Demostración General",
+      "description": "Esto es una demostración de un motor de búsqueda para el mercado inmobiliario andorrano. Utilizando GPT-4o-mini de OpenAI con prompts del sistema cuidadosamente diseñados, el motor de búsqueda ofrece capacidades de búsqueda de propiedades precisas y eficientes. Este enfoque asegura que los usuarios reciban los resultados más relevantes de manera rápida y eficiente."
     },
-    "filters": {
-      "sign_in": "Inicia sesión",
-
-      "title_filter": "Filtros",
-      "no_filters": "Sin filtros",
-      "price": "Precio",
-      "bedroom": "Habitación",
-      "bathroom": "Baños",
-      "square": "Superficie",
-      "searchbar" : "Buscar propiedades o pulse el micrófono para hablar, vuelva a pulsar para detener la grabación.",
-      "microphone": "Registrate para usar esta función.",
-      "choose_model": "Escoge el modelo",
-      "model_finetune": "Se utiliza un modelo entrenado para responder con parámetros API.",
-      "model_system": "Se utiliza el poder del diseño de prompts para generar los parámetros de la API."
+    "features": {
+      "title": "Características",
+      "items": [
+        "Soporte Multilingüe: Atendiendo a una audiencia diversa con soporte para catalán, español, inglés y francés.",
+        "Filtros de Búsqueda Avanzados: Los usuarios pueden refinar su búsqueda con varios filtros y opciones extra para encontrar su propiedad ideal.",
+        "Consultas Potenciadas por IA: Aprovecha GPT-4o-mini con prompts del sistema para interpretar entradas de búsqueda y generar consultas de API precisas.",
+        "Búsqueda por Voz: Utiliza la API Whisper de OpenAI para procesar comandos de voz para consultas de búsqueda.",
+        "Actualizaciones en Tiempo Real: Actualiza dinámicamente los resultados de búsqueda, proporcionando acceso inmediato a las últimas propiedades."
+      ]
     },
-    "welcomeMessage": {
-        "welcomeUser": {
-          "welcome": "Bienvenido",
-          "message": "! Disfruta de esta demostración.",
-          "welcome_no_user": "Bienvenido a esta demostración, no olvides registrarte para usarla."
-        },
-        "overview": {
-          "title": "Demostración General",
-          "description": "Esto es una demostración de un motor de búsqueda para el mercado inmobiliario andorrano. Utilizando un modelo afinado de OpenAI (babbage-002), el motor de búsqueda ofrece una precisión y velocidad sin precedentes. Este enfoque innovador asegura que los usuarios reciban los resultados más relevantes de manera rápida y eficiente, más que usando agentes SQL tradicionales y más barato que generando SQL directamente desde un modelo de lenguaje grande (LLM)."
-        },
-        "features": {
-          "title": "Características",
-          "items": [
-            "Soporte Multilingüe: Atendiendo a una audiencia diversa con soporte para catalán, español, inglés y francés.",
-            "Filtros de Búsqueda Avanzados: Los usuarios pueden refinar su búsqueda con varios filtros y opciones extra para encontrar su propiedad ideal.",
-            "Consultas Potenciadas por IA: Aprovecha un modelo de OpenAI afinado para interpretar entradas de búsqueda y generar consultas de API precisas.",
-            "Búsqueda por Voz: Utiliza la API Whisper de OpenAI para procesar comandos de voz para consultas de búsqueda.",
-            "Actualizaciones en Tiempo Real: Actualiza dinámicamente los resultados de búsqueda, proporcionando acceso inmediato a las últimas propiedades."
-          ]
-        },
-        "technology": {
-          "title": "Tecnología",
-          "items": [
-            "Next.js: Un marco de React que permite funcionalidades como la renderización del lado del servidor y la generación de sitios web estáticos. Utilizado para construir la interfaz frontal, proporcionando una experiencia de usuario dinámica y receptiva.",
-            "GPT de OpenAI (babbage-002): Un modelo de lenguaje afinado para esta aplicación para entender y procesar consultas inmobiliarias de manera eficiente.",
-            "Whisper de OpenAI: Una API de Texto-a-Voz que permite a los usuarios introducir consultas de búsqueda mediante comandos de voz.",
-            "PostgreSQL de Vercel: Mi elección para una solución de base de datos altamente escalable y gestionada, asegurando una gestión de datos robusta y segura.",
-            "Despliegue en Servidores de Vercel: Para un alojamiento sin problemas y un rendimiento superior, nuestra plataforma está desplegada en la infraestructura de vanguardia de Vercel.",
-            "Clerk: Un servicio de autenticación de usuarios que proporciona una funcionalidad de inicio de sesión segura y personalizable para nuestro Motor de Búsqueda Inmobiliaria."
-          ]
-        },
-        "fine_tuned": {
-          "title": "¿Por qué un Modelo Afinado?",
-          "description": "Elegir un modelo afinado sobre agentes SQL tradicionales o generar directamente SQL desde un gran modelo de lenguaje (LLM) presenta varias ventajas:",
-          "items": [
-            "Precisión: Podemos entrenar con un conjunto de datos específico y tendremos menos Errores y Alucinaciones.",
-            "Velocidad: Aunque el afinado requiere un esfuerzo inicial significativo, el modelo resultante proporciona respuestas más rápidas generando directamente consultas de API.",
-            "Importancia de los Datos: La calidad de los parámetros de la API depende en gran medida de los datos subyacentes. El afinado permite que el modelo aproveche conjuntos de datos específicos para mejorar el rendimiento.",
-            "Coste: Aunque inicialmente lleva más trabajo, a la larga, con el modelo afinado es más barato. Ejemplo: 1 millón de respuestas con el modelo afinado costaría unos 120$ de media, mientras que usando directamente un modelo del tipo GPT-3.5 haciendo uso del system prompt costaría entre 500$."
-          ]
-        },     
-        "examples": {
-          "title": "Ejemplos de Consultas",
-          "description": "A continuación, se presentan algunos ejemplos de consultas que puedes probar en nuestro Motor de Búsqueda Inmobiliaria:",
-          "items": [
-            "Quiero alquilar un piso por menos de 1000€ --> Muestra pisos (piso, estudio, loft, ático) de alquiler por menos de 1000€",
-            "Comprar casa en Encamp o Escaldes-Engordany --> Muestra casas (casa, casa adosada, chalet) en venta en Encamp o Escaldes-Engordany",
-            "Apartamentos en Andorra la Vella --> Muestra apartamentos (piso, estudio, loft, ático) en venta o alquiler en Andorra la Vella",
-            "Quiero alquilar un parking por debajo de 100 euros --> Muestra parkings de alquiler por menos de 100€",
-            "Piso para alquilar entre 750 y 1500€ --> Muestra apartamentos de alquiler con un precio entre 750 y 1500€",
-            "Apartamento de 3 habticiones --> Muestra apartamentos (piso, estudio, loft, ático) de 3 habitaciones"
-          ]
-          
-        }        
-      }
+    "system_prompts": {
+      "title": "Prompts del Sistema",
+      "description": "Nuestro motor de búsqueda utiliza prompts del sistema cuidadosamente diseñados con GPT-4o-mini para entender y procesar consultas en lenguaje natural. Este enfoque ofrece varias ventajas:",
+      "items": [
+        "Flexibilidad: Los prompts del sistema pueden modificarse y actualizarse fácilmente sin necesidad de reentrenar el modelo.",
+        "Económico: No requiere fine-tuning, lo que lo hace más económico de mantener y actualizar.",
+        "Actualizaciones Inmediatas: Los cambios en la lógica de búsqueda pueden implementarse instantáneamente a través de modificaciones en los prompts.",
+        "Rendimiento Consistente: Los prompts del sistema proporcionan una interpretación de consultas confiable y consistente."
+      ]
+    },
+    "technology": {
+      "title": "Tecnología",
+      "items": [
+        "Next.js: Un marco de React que permite funcionalidades como la renderización del lado del servidor y la generación de sitios web estáticos. Utilizado para construir la interfaz frontal, proporcionando una experiencia de usuario dinámica y receptiva.",
+        "GPT-4o-mini de OpenAI: Un potente modelo de lenguaje utilizado con prompts del sistema para entender y procesar consultas inmobiliarias de manera eficiente.",
+        "Whisper de OpenAI: Una API de Reconocimiento de Voz que permite a los usuarios introducir consultas de búsqueda mediante comandos de voz.",
+        "PostgreSQL de Vercel: Mi elección para una solución de base de datos altamente escalable y gestionada, asegurando una gestión de datos robusta y segura.",
+        "Despliegue en Servidores de Vercel: Para un alojamiento sin problemas y un rendimiento superior, nuestra plataforma está desplegada en la infraestructura de vanguardia de Vercel.",
+        "Clerk: Un servicio de autenticación de usuarios que proporciona una funcionalidad de inicio de sesión segura y personalizable para nuestro Motor de Búsqueda Inmobiliaria."
+      ]
+    },
+    "fine_tuned": {
+      "title": "¿Por qué un Modelo Afinado?",
+      "description": "Elegir un modelo afinado sobre agentes SQL tradicionales o generar directamente SQL desde un gran modelo de lenguaje (LLM) presenta varias ventajas:",
+      "items": [
+        "Precisión: Podemos entrenar con un conjunto de datos específico y tendremos menos Errores y Alucinaciones.",
+        "Velocidad: Aunque el afinado requiere un esfuerzo inicial significativo, el modelo resultante proporciona respuestas más rápidas generando directamente consultas de API.",
+        "Importancia de los Datos: La calidad de los parámetros de la API depende en gran medida de los datos subyacentes. El afinado permite que el modelo aproveche conjuntos de datos específicos para mejorar el rendimiento.",
+        "Coste: Aunque inicialmente lleva más trabajo, a la larga, con el modelo afinado es más barato. Ejemplo: 1 millón de respuestas con el modelo afinado costaría unos 120$ de media, mientras que usando directamente un modelo del tipo GPT-3.5 haciendo uso del system prompt costaría entre 500$."
+      ]
+    },
+    "examples": {
+      "title": "Ejemplos de Consultas",
+      "description": "A continuación, se presentan algunos ejemplos de consultas que puedes probar en nuestro Motor de Búsqueda Inmobiliaria:",
+      "items": [
+        "Quiero alquilar un piso por menos de 1000€ --> Muestra pisos (piso, estudio, loft, ático) de alquiler por menos de 1000€",
+        "Comprar casa en Encamp o Escaldes-Engordany --> Muestra casas (casa, casa adosada, chalet) en venta en Encamp o Escaldes-Engordany",
+        "Apartamentos en Andorra la Vella --> Muestra apartamentos (piso, estudio, loft, ático) en venta o alquiler en Andorra la Vella",
+        "Quiero alquilar un parking por debajo de 100 euros --> Muestra parkings de alquiler por menos de 100€",
+        "Piso para alquilar entre 750 y 1500€ --> Muestra apartamentos de alquiler con un precio entre 750 y 1500€",
+        "Apartamento de 3 habticiones --> Muestra apartamentos (piso, estudio, loft, ático) de 3 habitaciones"
+      ]
+    }
+  }
 }
