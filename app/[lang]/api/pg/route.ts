@@ -1,46 +1,39 @@
+// app/[lang]/ai/api/pg/route.tsx
 import { type NextRequest } from 'next/server';
 import { Pool } from 'pg';
-import { auth } from '@clerk/nextjs';
-
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: { rejectUnauthorized: false }
 });
-
-
 
 export async function GET(request: NextRequest) {
   // const { userId } = auth();
-  // if (!userId) {
-  //   return new Response('Unauthorized', { status: 401 });
-  // }
+  // if (!userId) return new Response('Unauthorized', { status: 401 });
 
-  const searchParams = request.nextUrl.searchParams;
+  const sp = request.nextUrl.searchParams;
   const queryParams = {
-    location: searchParams.get('location'),
-    transaction_type: searchParams.get('transaction_type'),
-    property_type: searchParams.get('property_type'),
-    orderby: searchParams.get('order'),
-    maxPrice: searchParams.get('maxprice'),
-    minPrice: searchParams.get('minprice'),
-    terrace: searchParams.get('terrace'),
-    parking: searchParams.get('parking'),
-    balcony: searchParams.get('balcony'),
-    garden: searchParams.get('garden'),
-    elevator: searchParams.get('elevator'),
-    heating: searchParams.get('heating'),
-    electrodometics: searchParams.get('electrodometics'),
-    furnished: searchParams.get('furnished'),
-    reference_number: searchParams.get('reference_number'),
-    bedrooms: searchParams.get('bed'),
-    bathrooms: searchParams.get('bath'),
-    minBedrooms: searchParams.get('minbed'),
-    maxBedrooms: searchParams.get('maxbed'),
-    minBathrooms: searchParams.get('minbath'),
-    maxBathrooms: searchParams.get('maxbath'),
+    location: sp.get('location'),
+    transaction_type: sp.get('transaction_type'),
+    property_type: sp.get('property_type'),
+    orderby: sp.get('order'),
+    maxPrice: sp.get('maxprice'),
+    minPrice: sp.get('minprice'),
+    terrace: sp.get('terrace'),
+    parking: sp.get('parking'),
+    balcony: sp.get('balcony'),
+    garden: sp.get('garden'),
+    elevator: sp.get('elevator'),
+    heating: sp.get('heating'),
+    electrodometics: sp.get('electrodometics'),
+    furnished: sp.get('furnished'),
+    reference_number: sp.get('reference_number'),
+    bedrooms: sp.get('bed'),
+    bathrooms: sp.get('bath'),
+    minBedrooms: sp.get('minbed'),
+    maxBedrooms: sp.get('maxbed'),
+    minBathrooms: sp.get('minbath'),
+    maxBathrooms: sp.get('maxbath'),
   };
 
   const { sqlQuery, params } = constructQuery(queryParams);
@@ -48,7 +41,7 @@ export async function GET(request: NextRequest) {
   if (params.length === 0) {
     return new Response(JSON.stringify([]), {
       headers: { 'Content-Type': 'application/json' },
-      status: 200,
+      status: 200
     });
   }
 
@@ -56,13 +49,13 @@ export async function GET(request: NextRequest) {
     const { rows: items } = await pool.query(sqlQuery, params);
     return new Response(JSON.stringify(items), {
       headers: { 'Content-Type': 'application/json' },
-      status: 200,
+      status: 200
     });
   } catch (error) {
     console.error(error);
     return new Response(JSON.stringify([]), {
       headers: { 'Content-Type': 'application/json' },
-      status: 500,
+      status: 500
     });
   }
 }
@@ -156,14 +149,14 @@ function getConditionAndValues(key: string, value: string, offset: number) {
   const actualKey = numericKeys.includes(baseKey) ? baseKey : key;
 
   if (booleanKeys.includes(key)) {
-    return { 
-      condition: `${actualKey} = $${offset + 1}`, 
+    return {
+      condition: `${actualKey} = $${offset + 1}`,
       values: [value === '1' || value.toLowerCase() === 'true']
     };
   }
 
-  return { 
-    condition: `${actualKey} ${operator} $${offset + 1}`, 
+  return {
+    condition: `${actualKey} ${operator} $${offset + 1}`,
     values: [numericKeys.includes(baseKey) ? value : value === 'true']
   };
 }

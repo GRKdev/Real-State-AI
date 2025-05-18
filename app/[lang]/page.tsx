@@ -20,7 +20,6 @@ export default function Home() {
   const [postsPerPage] = useState(6);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const [selectedModel, setSelectedModel] = useState('finetune');
   const { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, handleClientSort, totalCost } = useSearchLogic(currentLocale, propertyCardDict, setCurrentPage);
   const currentData = response.slice(firstPostIndex, lastPostIndex);
 
@@ -34,9 +33,8 @@ export default function Home() {
     }
   }, [response]);
 
-  const handleSearchWithModel = (message: string, filter: string, model: string) => {
-    setSelectedModel(model);
-    handleSearch(message, filter, model);
+  const handleSearchWithModel = (message: string, filter: string) => {
+    handleSearch(message, filter);
   };
 
   return (

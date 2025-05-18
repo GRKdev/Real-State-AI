@@ -1,80 +1,93 @@
+// hooks/useSearchLogic.tsx
 import { useState } from 'react';
 import { Property } from '@/types/property';
 
-const useSearchLogic = (locale: string, propertyCardDict: any, setCurrentPage: (page: number) => void) => {
-    const [response, setResponse] = useState<Property[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [searchCount, setSearchCount] = useState(0);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [hasSearched, setHasSearched] = useState(false);
-    const [lastSearchMessage, setLastSearchMessage] = useState('');
-    const [totalCost, setTotalCost] = useState<number>(0);
-  
-    const handleSearch = async (message: string, combinedFilter: string, selectedModel: string) => {
-      setIsLoading(true);
-      setResponse([]);
-      setSearchCount(prevCount => prevCount + 1);
-      setHasSearched(true);
-      setErrorMessage('');
-      setLastSearchMessage(message);
-      setCurrentPage(1);
+const useSearchLogic = (
+  locale: string,
+  propertyCardDict: any,
+  setCurrentPage: (page: number) => void
+) => {
+  const [response, setResponse] = useState<Property[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchCount, setSearchCount] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [hasSearched, setHasSearched] = useState(false);
+  const [lastSearchMessage, setLastSearchMessage] = useState('');
+  const [totalCost, setTotalCost] = useState<number>(0);
 
-    const messageToAI = message
-    const api_endpoint = selectedModel === 'finetune' 
-    ? `/${locale}/api/ai-ft`  // Fine Tuned Model
-    : `/${locale}/api/ai`;    // Original Model System prompt
-    const pg_endpoint = `/${locale}/api/pg`;
+  const handleSearch = async (message: string, combinedFilter: string) => {
+    setIsLoading(true);
+    setResponse([]);
+    setSearchCount((c) => c + 1);
+    setHasSearched(true);
+    setErrorMessage('');
+    setLastSearchMessage(message);
+    setCurrentPage(1);
 
-    
     try {
-      console.log('API endpoint:', api_endpoint);
-      const res = await fetch(api_endpoint, {
+      const aiRes = await fetch(`/${locale}/api/ai`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: messageToAI, combinedFilter }),
+        body: JSON.stringify({ message })
       });
-      if (res.status === 401) {
+
+      if (aiRes.status === 401) {
         throw new Error(propertyCardDict.error_login);
       }
-      if (!res.ok) throw new Error(`HTTP error! Try again.`);
-      const data = await res.json();
+      if (!aiRes.ok) throw new Error('Failed to fetch AI filters.');
 
-      if (data.text) {
-        setTotalCost(data.total_cost);
-        const [order, ...extras] = combinedFilter.split('&');
-        const finalResponseText = data.text + (extras.length ? `&${extras.join('&')}` : '') + (order ? `&order=${order}` : '');
-        console.log('Final response text:', finalResponseText);
-        const apiEndpoint = `${pg_endpoint}?${finalResponseText}`;
-        const propertiesResponse = await fetch(apiEndpoint);
-        if (!propertiesResponse.ok) throw new Error(`HTTP error! status: ${propertiesResponse.status}`);
-
-        const propertiesData: Property[] = await propertiesResponse.json();
-        setResponse(propertiesData);
-      } else {
+      const data = await aiRes.json();
+      if (!data.text) {
         setResponse([]);
+        return;
       }
-    } catch (error: any) {
-      console.error('Error processing the response:', error.message);
-      setErrorMessage(error.message);
 
+      setTotalCost(data.total_cost);
+
+      // Append any client-side filters and ordering
+      const finalQS = combinedFilter
+        ? `${data.text}&${combinedFilter}`
+        : data.text;
+
+      console.log('Final query string:', finalQS);
+
+      const propRes = await fetch(`/${locale}/api/pg?${finalQS}`);
+      if (!propRes.ok) {
+        throw new Error(`Listings fetch failed: ${propRes.status}`);
+      }
+      const listings: Property[] = await propRes.json();
+      setResponse(listings);
+    } catch (err: any) {
+      console.error('Search error:', err);
+      setErrorMessage(err.message || 'An error occurred');
       setResponse([]);
     } finally {
       setIsLoading(false);
     }
   };
+
   const handleClientSort = (sortOption: string) => {
     const [key, order] = sortOption.split('|');
     const sorted = [...response].sort((a, b) => {
-      const valueA = a[key as keyof Property];
-      const valueB = b[key as keyof Property];
-      if (order === 'asc') return (valueA < valueB ? -1 : valueA > valueB ? 1 : 0);
-      if (order === 'desc') return (valueB < valueA ? -1 : valueB > valueA ? 1 : 0);
-      return 0;
+      const va = a[key as keyof Property];
+      const vb = b[key as keyof Property];
+      if (order === 'asc') return va < vb ? -1 : va > vb ? 1 : 0;
+      return vb < va ? -1 : vb > va ? 1 : 0;
     });
     setResponse(sorted);
   };
 
-  return { response, isLoading, errorMessage, hasSearched, lastSearchMessage, handleSearch, searchCount, handleClientSort, totalCost};
+  return {
+    response,
+    isLoading,
+    errorMessage,
+    hasSearched,
+    lastSearchMessage,
+    handleSearch,
+    searchCount,
+    handleClientSort,
+    totalCost
+  };
 };
 
 export default useSearchLogic;
