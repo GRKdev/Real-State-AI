@@ -106,5 +106,93 @@
         "Apartamento de 3 dormitorios --> Muestra apartamentos con 3 dormitorios en venta o alquiler"
       ]
     }
+  },
+  "language_names": {
+    "en": "Inglés",
+    "es": "Español",
+    "ca": "Catalán",
+    "fr": "Francés"
+  },
+  "manage_properties": {
+    "headings": {
+      "publish": "Publicar una propiedad",
+      "table": "Tus propiedades publicadas"
+    },
+    "translation": {
+      "banner": "Estás publicando en {language}. {note}",
+      "auto": "Las traducciones se generarán automáticamente con IA en {languages}.",
+      "single": "El contenido se guardará solo en este idioma."
+    },
+    "form": {
+      "labels": {
+        "title": "Título",
+        "photo": "URL de la foto",
+        "price": "Precio (EUR)",
+        "squareMeters": "Metros cuadrados",
+        "bedrooms": "Habitaciones",
+        "bathrooms": "Baños",
+        "transactionType": "Tipo de operación",
+        "parish": "Parroquia",
+        "location": "Localización específica (opcional)",
+        "propertyType": "Tipo de propiedad (opcional)",
+        "description": "Descripción",
+        "amenities": "Servicios"
+      },
+      "placeholders": {
+        "title": "Apartamento soleado en Ordino",
+        "photo": "https://...",
+        "price": "450000",
+        "squareMeters": "120",
+        "bedrooms": "3",
+        "bathrooms": "2",
+        "description": "Describe los puntos destacados, los servicios cercanos y cualquier aspecto único de esta propiedad..."
+      },
+      "selects": {
+        "sameAsParish": "Igual que la parroquia",
+        "selectType": "Selecciona un tipo"
+      },
+      "transactionTypes": {
+        "1": "Venta",
+        "2": "Alquiler"
+      }
+    },
+    "buttons": {
+      "reset": "Reiniciar",
+      "publish": "Publicar propiedad",
+      "publishing": "Publicando...",
+      "delete": "Eliminar",
+      "deleting": "Eliminando..."
+    },
+    "messages": {
+      "createSuccess": "Propiedad publicada correctamente.",
+      "createError": "No se pudo publicar la propiedad.",
+      "deleteSuccess": "Propiedad eliminada.",
+      "deleteError": "No se pudo eliminar la propiedad."
+    },
+    "table": {
+      "empty": "Todavía no has publicado propiedades.",
+      "columns": {
+        "reference": "REF",
+        "title": "Título",
+        "price": "Precio",
+        "parish": "Parroquia",
+        "created": "Creación",
+        "actions": "Acciones"
+      }
+    },
+    "validation": {
+      "titleLength": "El título debe tener al menos 4 caracteres.",
+      "descriptionLength": "La descripción debe tener al menos 10 caracteres.",
+      "pricePositive": "El precio debe ser un número positivo.",
+      "priceFinite": "El precio debe ser un número finito.",
+      "squarePositive": "Los metros cuadrados deben ser un número positivo.",
+      "squareFinite": "Los metros cuadrados deben ser un número finito.",
+      "bedroomsPositive": "Las habitaciones deben ser cero o un número positivo.",
+      "bedroomsFinite": "Las habitaciones deben ser un número finito.",
+      "bathroomsPositive": "Los baños deben ser cero o un número positivo.",
+      "bathroomsFinite": "Los baños deben ser un número finito.",
+      "transactionType": "Selecciona un tipo de operación válido.",
+      "parish": "Selecciona una parroquia válida."
+    }
   }
 }

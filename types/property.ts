@@ -1,5 +1,5 @@
 export type Property = {
-    reference_number: string;
+    id: number;
     title_cat: string;
     title_esp: string;
     title_en: string;
@@ -16,6 +16,19 @@ export type Property = {
     transaction_type: number;
     real_state: number;
     parish: number;
+    location?: number | null;
+    property_type?: number | null;
+    terrace?: boolean;
+    parking?: boolean;
+    balcony?: boolean;
+    garden?: boolean;
+    elevator?: boolean;
+    heating?: boolean;
+    electrodometics?: boolean;
+    furnished?: boolean;
+    clerk_user_id?: string | null;
+    is_user_generated?: boolean | null;
+    created_at?: string | null;
   };
 
 export type PropertyCardProps = {

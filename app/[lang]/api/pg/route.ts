@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     heating: sp.get('heating'),
     electrodometics: sp.get('electrodometics'),
     furnished: sp.get('furnished'),
-    reference_number: sp.get('reference_number'),
+    id: sp.get('id'),
     bedrooms: sp.get('bed'),
     bathrooms: sp.get('bath'),
     minBedrooms: sp.get('minbed'),
@@ -135,7 +135,7 @@ const operatorMap = {
 
 function getConditionAndValues(key: string, value: string, offset: number) {
   const inConditionKeys = ['location', 'transaction_type', 'property_type'];
-  const numericKeys = ['price', 'bedrooms', 'bathrooms', 'referenceNumber'];
+  const numericKeys = ['price', 'bedrooms', 'bathrooms', 'id'];
   const booleanKeys = ['terrace', 'parking', 'balcony', 'garden', 'elevator', 'heating', 'electrodometics', 'furnished'];
 
   if (inConditionKeys.includes(key)) {
@@ -160,3 +160,4 @@ function getConditionAndValues(key: string, value: string, offset: number) {
     values: [numericKeys.includes(baseKey) ? value : value === 'true']
   };
 }
+

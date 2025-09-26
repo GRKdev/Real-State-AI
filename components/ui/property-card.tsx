@@ -65,6 +65,7 @@ export default function PropertyCard({
     const displayTitle = property[titleKey] ? property[titleKey] : property.title_en;
     const descriptionKey = descriptionLocaleMap[locale];
     const displayDescription = property[descriptionKey] ? property[descriptionKey] : property.description_en;
+    const detailIdentifier = String(property.id);
 
     return (
         <div className={`card-container ${className}`} style={style}>
@@ -74,7 +75,7 @@ export default function PropertyCard({
                         <div className="card">
                             <CardHeader>
                                 <div className="image-container">
-                                    <a href={`${locale}/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
+                                    <a href={`${locale}/property/${detailIdentifier}`} target="_blank" rel="noopener noreferrer">
 
                                         <MyImage
                                             alt={property.title_cat}
@@ -114,7 +115,7 @@ export default function PropertyCard({
 
                                 <Separator className="mb-2" />
 
-                                <a href={`${locale}/property/${property.reference_number}`} target="_blank" rel="noopener noreferrer">
+                                <a href={`${locale}/property/${detailIdentifier}`} target="_blank" rel="noopener noreferrer">
                                     <h3 className="text-lg font-semibold title-container hover:text-orange-500">
                                         {displayTitle}
                                     </h3>
@@ -145,7 +146,7 @@ export default function PropertyCard({
                                     </p>
                                     <p className="flex justify-between items-center text-sm text-gray-500 text-right gap-1 ">
                                         <Hash className="text-gray-500 h-4 w-4" />
-                                        Ref: {property.reference_number}</p>
+                                        REF: {detailIdentifier}</p>
                                 </div>
                                 <div className="flex justify-center pt-2">
                                     <TabsList>
@@ -368,4 +369,10 @@ function MapIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
         </svg>
     )
 }
+
+
+
+
+
+
 

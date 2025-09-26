@@ -96,5 +96,93 @@
         "Apartament de 3 dormitoris --> Mostra apartaments amb 3 dormitoris en venda o lloguer"
       ]
     }
+  },
+  "language_names": {
+    "en": "Anglès",
+    "es": "Castellà",
+    "ca": "Català",
+    "fr": "Francès"
+  },
+  "manage_properties": {
+    "headings": {
+      "publish": "Publica una propietat",
+      "table": "Les teves propietats publicades"
+    },
+    "translation": {
+      "banner": "Estàs publicant en {language}. {note}",
+      "auto": "Les traduccions es generaran automàticament amb IA en {languages}.",
+      "single": "El contingut es desarà només en aquest idioma."
+    },
+    "form": {
+      "labels": {
+        "title": "Títol",
+        "photo": "URL de la foto",
+        "price": "Preu (EUR)",
+        "squareMeters": "Metres quadrats",
+        "bedrooms": "Habitacions",
+        "bathrooms": "Banys",
+        "transactionType": "Tipus d'operació",
+        "parish": "Parròquia",
+        "location": "Ubicació específica (opcional)",
+        "propertyType": "Tipus de propietat (opcional)",
+        "description": "Descripció",
+        "amenities": "Serveis"
+      },
+      "placeholders": {
+        "title": "Apartament assolellat a Ordino",
+        "photo": "https://...",
+        "price": "450000",
+        "squareMeters": "120",
+        "bedrooms": "3",
+        "bathrooms": "2",
+        "description": "Descriu els punts destacats, els serveis propers i qualsevol element únic d'aquesta propietat..."
+      },
+      "selects": {
+        "sameAsParish": "Igual que la parròquia",
+        "selectType": "Selecciona un tipus"
+      },
+      "transactionTypes": {
+        "1": "Venda",
+        "2": "Lloguer"
+      }
+    },
+    "buttons": {
+      "reset": "Restableix",
+      "publish": "Publica la propietat",
+      "publishing": "Publicant...",
+      "delete": "Elimina",
+      "deleting": "Eliminant..."
+    },
+    "messages": {
+      "createSuccess": "Propietat publicada correctament.",
+      "createError": "No s'ha pogut publicar la propietat.",
+      "deleteSuccess": "Propietat eliminada.",
+      "deleteError": "No s'ha pogut eliminar la propietat."
+    },
+    "table": {
+      "empty": "Encara no has publicat cap propietat.",
+      "columns": {
+        "reference": "REF",
+        "title": "Títol",
+        "price": "Preu",
+        "parish": "Parròquia",
+        "created": "Data de creació",
+        "actions": "Accions"
+      }
+    },
+    "validation": {
+      "titleLength": "El títol ha de tenir almenys 4 caràcters.",
+      "descriptionLength": "La descripció ha de tenir almenys 10 caràcters.",
+      "pricePositive": "El preu ha de ser un nombre positiu.",
+      "priceFinite": "El preu ha de ser un nombre finit.",
+      "squarePositive": "Els metres quadrats han de ser un nombre positiu.",
+      "squareFinite": "Els metres quadrats han de ser un nombre finit.",
+      "bedroomsPositive": "Les habitacions han de ser zero o un nombre positiu.",
+      "bedroomsFinite": "Les habitacions han de ser un nombre finit.",
+      "bathroomsPositive": "Els banys han de ser zero o un nombre positiu.",
+      "bathroomsFinite": "Els banys han de ser un nombre finit.",
+      "transactionType": "Selecciona un tipus d'operació vàlid.",
+      "parish": "Selecciona una parròquia vàlida."
+    }
   }
 }

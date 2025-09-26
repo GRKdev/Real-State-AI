@@ -28,14 +28,23 @@ const PropertyCardsContainer: React.FC<PropertyCardsContainerProps> = ({
         {isLoading ? (
             [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
         ) : currentData.length > 0 ? (
-            currentData.map((property, index) => (
-                <PropertyCard
-                    key={property.reference_number}
-                    property={property}
-                    className={!prevResponse || !prevResponse.find(prev => prev.reference_number === property.reference_number) ? 'new-result' : ''}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                />
-            ))
+            currentData.map((property, index) => {
+                const propertyIdentifier = String(property.id);
+                const isNewResult =
+                    !prevResponse ||
+                    !prevResponse.find(
+                        (prev) => String(prev.id) === propertyIdentifier
+                    );
+
+                return (
+                    <PropertyCard
+                        key={propertyIdentifier}
+                        property={property}
+                        className={isNewResult ? 'new-result' : ''}
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                    />
+                );
+            })
         ) : !errorMessage && hasSearched && (
             <div className="w-full text-center py-4">
                 <p className="text-center pt-32 pb-20 text-lg">{propertyCardDict.no_results}</p>
@@ -48,3 +57,4 @@ const PropertyCardsContainer: React.FC<PropertyCardsContainerProps> = ({
 );
 
 export default PropertyCardsContainer;
+

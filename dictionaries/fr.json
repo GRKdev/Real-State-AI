@@ -106,5 +106,93 @@
         "Appartement de 3 chambres --> Affiche les appartements avec 3 chambres à vendre ou à louer"
       ]
     }
+  },
+  "language_names": {
+    "en": "Anglais",
+    "es": "Espagnol",
+    "ca": "Catalan",
+    "fr": "Français"
+  },
+  "manage_properties": {
+    "headings": {
+      "publish": "Publier un bien",
+      "table": "Vos biens publiés"
+    },
+    "translation": {
+      "banner": "Vous publiez en {language}. {note}",
+      "auto": "Les traductions seront générées automatiquement avec IA en {languages}.",
+      "single": "Le contenu sera enregistré uniquement dans cette langue."
+    },
+    "form": {
+      "labels": {
+        "title": "Titre",
+        "photo": "URL de la photo",
+        "price": "Prix (EUR)",
+        "squareMeters": "Superficie (m²)",
+        "bedrooms": "Chambres",
+        "bathrooms": "Salles de bain",
+        "transactionType": "Type de transaction",
+        "parish": "Paroisse",
+        "location": "Emplacement spécifique (optionnel)",
+        "propertyType": "Type de bien (optionnel)",
+        "description": "Description",
+        "amenities": "Équipements"
+      },
+      "placeholders": {
+        "title": "Appartement lumineux à Ordino",
+        "photo": "https://...",
+        "price": "450000",
+        "squareMeters": "120",
+        "bedrooms": "3",
+        "bathrooms": "2",
+        "description": "Décrivez les points forts, les services à proximité et tout élément unique de ce bien..."
+      },
+      "selects": {
+        "sameAsParish": "Identique à la paroisse",
+        "selectType": "Sélectionnez un type"
+      },
+      "transactionTypes": {
+        "1": "Vente",
+        "2": "Location"
+      }
+    },
+    "buttons": {
+      "reset": "Réinitialiser",
+      "publish": "Publier le bien",
+      "publishing": "Publication...",
+      "delete": "Supprimer",
+      "deleting": "Suppression..."
+    },
+    "messages": {
+      "createSuccess": "Bien publié avec succès.",
+      "createError": "Échec de la publication du bien.",
+      "deleteSuccess": "Bien supprimé.",
+      "deleteError": "Échec de la suppression du bien."
+    },
+    "table": {
+      "empty": "Aucun bien publié pour le moment.",
+      "columns": {
+        "reference": "REF",
+        "title": "Titre",
+        "price": "Prix",
+        "parish": "Paroisse",
+        "created": "Créé",
+        "actions": "Actions"
+      }
+    },
+    "validation": {
+      "titleLength": "Le titre doit comporter au moins 4 caractères.",
+      "descriptionLength": "La description doit comporter au moins 10 caractères.",
+      "pricePositive": "Le prix doit être un nombre positif.",
+      "priceFinite": "Le prix doit être un nombre fini.",
+      "squarePositive": "La superficie doit être un nombre positif.",
+      "squareFinite": "La superficie doit être un nombre fini.",
+      "bedroomsPositive": "Le nombre de chambres doit être nul ou positif.",
+      "bedroomsFinite": "Le nombre de chambres doit être un nombre fini.",
+      "bathroomsPositive": "Le nombre de salles de bain doit être nul ou positif.",
+      "bathroomsFinite": "Le nombre de salles de bain doit être un nombre fini.",
+      "transactionType": "Sélectionnez un type de transaction valide.",
+      "parish": "Sélectionnez une paroisse valide."
+    }
   }
 }

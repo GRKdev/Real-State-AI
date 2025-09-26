@@ -106,5 +106,93 @@
         "3 bedroom apartment --> Show apartments with 3 bedrooms for sale or rent"
       ]
     }
+  },
+  "language_names": {
+    "en": "English",
+    "es": "Spanish",
+    "ca": "Catalan",
+    "fr": "French"
+  },
+  "manage_properties": {
+    "headings": {
+      "publish": "Publish a property",
+      "table": "Your published properties"
+    },
+    "translation": {
+      "banner": "You are publishing in {language}. {note}",
+      "auto": "Translations will be automatically generated with AI in {languages}.",
+      "single": "Content will be stored in this language only."
+    },
+    "form": {
+      "labels": {
+        "title": "Title",
+        "photo": "Photo URL",
+        "price": "Price (EUR)",
+        "squareMeters": "Square meters",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "transactionType": "Transaction type",
+        "parish": "Parish",
+        "location": "Specific location (optional)",
+        "propertyType": "Property type (optional)",
+        "description": "Description",
+        "amenities": "Amenities"
+      },
+      "placeholders": {
+        "title": "Sunny apartment in Ordino",
+        "photo": "https://...",
+        "price": "450000",
+        "squareMeters": "120",
+        "bedrooms": "3",
+        "bathrooms": "2",
+        "description": "Describe highlights, nearby services, and anything unique about this property..."
+      },
+      "selects": {
+        "sameAsParish": "Same as parish",
+        "selectType": "Select a type"
+      },
+      "transactionTypes": {
+        "1": "Sale",
+        "2": "Rent"
+      }
+    },
+    "buttons": {
+      "reset": "Reset",
+      "publish": "Publish property",
+      "publishing": "Publishing...",
+      "delete": "Delete",
+      "deleting": "Deleting..."
+    },
+    "messages": {
+      "createSuccess": "Property published successfully.",
+      "createError": "Failed to publish property.",
+      "deleteSuccess": "Property deleted.",
+      "deleteError": "Failed to delete property."
+    },
+    "table": {
+      "empty": "No properties published yet.",
+      "columns": {
+        "reference": "REF",
+        "title": "Title",
+        "price": "Price",
+        "parish": "Parish",
+        "created": "Created",
+        "actions": "Actions"
+      }
+    },
+    "validation": {
+      "titleLength": "Title must be at least 4 characters long.",
+      "descriptionLength": "Description must be at least 10 characters long.",
+      "pricePositive": "Price must be a positive number.",
+      "priceFinite": "Price must be a finite number.",
+      "squarePositive": "Square meters must be a positive number.",
+      "squareFinite": "Square meters must be a finite number.",
+      "bedroomsPositive": "Bedrooms must be zero or a positive number.",
+      "bedroomsFinite": "Bedrooms must be a finite number.",
+      "bathroomsPositive": "Bathrooms must be zero or a positive number.",
+      "bathroomsFinite": "Bathrooms must be a finite number.",
+      "transactionType": "Select a valid transaction type.",
+      "parish": "Select a valid parish."
+    }
   }
 }
