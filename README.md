@@ -12,6 +12,7 @@ Our Real Estate Search Engine is a cutting-edge platform designed specifically f
 - **Real-Time Updates**: Dynamically updates search results, providing immediate access to the latest properties.
 - **Voice Search**: Utilizes OpenAI's Whisper API to process voice commands for search queries.
 - **Live Chat Support**: Integrated Crisp chatbot for instant customer support, property inquiries, and company information. Users can interact with our automated assistant or connect with our support team directly through the chat interface.
+- **Property Management**: Sign in to publish, view, and delete your property listings, with AI-generated translations for supported languages.
 
 ## Why System Prompts?
 
